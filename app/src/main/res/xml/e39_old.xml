@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E39 (1996-1998)">
-    <location name="RIGHT GLOVE BOX">
+    <location name="In the glove box on top">
         <fuse id="1" current="30A" type="medium" name="Wiper relay." />
         <fuse id="2" current="30A" type="medium" name="Headlight washer module." />
         <fuse id="3" current="30A" type="medium" name="Horn relay." />
@@ -42,6 +42,24 @@
         <fuse id="39" current="7.5A" type="medium" name="Driver and passenger makeup mirror light. Charging socket." />
         <fuse id="40" current="5A" type="medium" name="Instrument cluster. Seat load assembly. \nDriver and passenger seat belt switch. \nAirbag left / right front sensor." />
         <fuse id="41" current="5A" type="medium" name="Light module (LCM). Brake light switch." />
-
+        <fuse id="42" current="5A" type="medium" name="Supplemental restraint system control module (SRS)." />
+        <fuse id="43" current="5A" type="medium" name="Unloader relay (terminal R)." />
+        <fuse id="44" current="5A" type="medium" name="Multifunction steering wheel control module. \nMulti-information display (MID). \nIntegrated radio information system (IRIS)." />
+        <fuse id="45" current="7.5A" type="medium" name="Sun blind switch." />
+    </location>
+    <location name="In the trunk on the right above the battery">
+        <fuse id="46" current="15A" type="medium" name="Park heating relay." />
+        <fuse id="47" current="15A" type="medium" name="Independent park / auxiliary heating. \nReceiver, independent heating." />
+        <fuse id="48" current="5A" type="medium" name="Electronic rear view mirror. Interior protection control module. \nControl module, radio-operated passenger compartment protection. \nTilt sensor. Anti-theft horn (DWA)." />
+        <fuse id="49" current="30A" type="medium" name="Rear defogger relay. \nAir suspension relay, compressor pump control." />
+        <fuse id="50" current="7.5A" type="medium" name="Air suspension control unit." />
+        <fuse id="51" current="30A" type="medium" name="Air suspension relay, compressor pump control." />
+        <fuse id="52" current="30A" type="medium" name="Cigar lighter relay. Front cigar lighter." />
+        <fuse id="53" current="5A" type="medium" name="Antenna amplifier with remote control central locking. \nCentral locking fuel tank access flap relay. \nLift gate lock switch. Rear lid motor relay. \nRear window motor relay." />
+        <fuse id="54" current="15A" type="medium" name="Fuel pump relay." />
+        <fuse id="55" current="20A" type="medium" name="Rear intermittent wipe / wash control unit." />
+        <fuse id="56" current="30A" type="medium" name="On-board monitor. Radio. Video module. CD changer. \nAudio amplifier. Navigation control module. GPS receiver." />
+        <fuse id="57" current="10A" type="medium" name="Transceiver / charging electronics. Compensator." />
+        <fuse id="57" current="10A" type="medium" name="Transceiver / charging electronics. Compensator." />
     </location>
 </fuses>
