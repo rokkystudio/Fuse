@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="BMW E39 (1996-1998)">
+    <location name="RIGHT GLOVE BOX">
+        <fuse id="1" current="30A" type="medium" name="Wiper relay." />
+        <fuse id="2" current="30A" type="medium" name="Headlight washer module." />
+        <fuse id="3" current="30A" type="medium" name="Horn relay." />
+        <fuse id="4" current="30A" type="medium" name="General module (ZKE)." />
+        <fuse id="5" current="20A" type="medium" name="Sunroof module (SHD)." />
+        <fuse id="6" current="30A" type="medium" name="Front passenger door lock switch. \nPassenger door module (PM-BT)." />
+        <fuse id="7" current="20A" type="medium" name="Auxiliary fan speed relay." />
+        <fuse id="8" current="25A" type="medium" name="ABS/ASC control module." />
+        <fuse id="9" current="15A" type="medium" name="Heating and A/C control module." />
+        <fuse id="10" current="30A" type="medium" name="Front passenger seat adjustment." />
+        <fuse id="11" current="7.5A" type="medium" name="General module (ZKE)." />
+        <fuse id="12" current="5A" type="medium" name="Electronic drive-away protection control module (EWS)." />
+        <fuse id="13" current="30A" type="medium" name="Driver seat / steering column adjustment. \nSeat / steering column memory control module (SM / LSM)." />
+        <fuse id="14" current="5A" type="medium" name="Engine control module (DME / DDE)." />
+        <fuse id="15" current="7.5A" type="medium" name="Generator. Oil level sensor. Temperature switch. \nAutomatic transmission range switch. Diagnostic plug." />
+        <fuse id="16" current="5A" type="medium" name="Light module (LCM)." />
+        <fuse id="17" current="10A" type="medium" name="ASC / DSC switch. ASC / DSC control module. \nFuel pump relay. (M51)." />
+        <fuse id="18" current="5A" type="medium" name="Instrument cluster (KOMBI / IKE)." />
+        <fuse id="19" current="5A" type="medium" name="Heating and A/C control module. Rear defogger relay. \nAuxiliary fan speed relay." />
+        <fuse id="20" current="5A" type="medium" name="Heating and A/C control module. Rear defogger relay. \nAuxiliary fan speed relay." />
+        <fuse id="21" current="5A" type="medium" name="Electrochromic rear view mirror. Closed-circuit current cut-off relay. \nTerminal control relay (JP). Garage door opener (USA). \nPark distance control module. \nCigar lighter relay." />
+        <fuse id="22" current="30A" type="medium" name="Auxiliary fan speed relay." />
+        <fuse id="23" current="5A" type="medium" name="Heating and A/C control module." />
+        <fuse id="24" current="5A" type="medium" name="Instrument cluster. Transmission range indicator light. \nIntegrated instrument cluster control module (IKE). Steering angle sensor." />
+        <fuse id="25" current="7.5A" type="medium" name="Multi-information display (MID). \nIntegrated radio information system (IRIS). OBD II (USA)." />
+        <fuse id="26" current="5A" type="medium" name="Wiper relays." />
+        <fuse id="27" current="30A" type="medium" name="General module (ZKE)." />
+        <fuse id="28" current="30A" type="medium" name="Blower relay." />
+        <fuse id="29" current="30A" type="medium" name="Driver door lock switch. Driver door module (PM-FT)." />
+        <fuse id="30" current="25A" type="medium" name="ABS valve relay." />
+        <fuse id="31" current="10A" type="medium" name="ASC / DSC switch. ASC / DSC control module. Fuel pump relay. \nFuel changeover circuit. Leakage diagnosis pump. \nSecondary air injection pump relay. Fuel tank vent valve. \nSteering angle sensor." />
+        <fuse id="32" current="15A" type="medium" name="Driver and passenger seat heater. Heater switch." />
+        <fuse id="33" current="" type="medium" name="Not used." />
+        <fuse id="34" current="10A" type="medium" name="Steering wheel heater." />
+        <fuse id="35" current="" type="medium" name="Not used." />
+        <fuse id="36" current="" type="medium" name="Not used." />
+        <fuse id="37" current="5A" type="medium" name="Electronic drive-away protection control (EWS). \nTransmit / receive module (EWS)." />
+        <fuse id="38" current="5A" type="medium" name="General module (ZKE). Integrated instrument cluster control module (IKE). \nHorn relay. Diagnostic plug. Transmission range indicator light. \nRain sensor. Switch for shiftlock." />
+        <fuse id="39" current="7.5A" type="medium" name="Driver and passenger makeup mirror light. Charging socket." />
+        <fuse id="40" current="5A" type="medium" name="Instrument cluster. Seat load assembly. \nDriver and passenger seat belt switch. \nAirbag left / right front sensor." />
+        <fuse id="41" current="5A" type="medium" name="Light module (LCM). Brake light switch." />
+
+    </location>
+</fuses>
