@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E39 (1996-1998)">
-    <location name="In the glove box on top">
+    <location name="In glove box top">
         <fuse id="1" current="30A" type="medium" name="Wiper relay." />
         <fuse id="2" current="30A" type="medium" name="Headlight washer module." />
         <fuse id="3" current="30A" type="medium" name="Horn relay." />
@@ -47,7 +47,8 @@
         <fuse id="44" current="5A" type="medium" name="Multifunction steering wheel control module. \nMulti-information display (MID). \nIntegrated radio information system (IRIS)." />
         <fuse id="45" current="7.5A" type="medium" name="Sun blind switch." />
     </location>
-    <location name="In the trunk on the right above the battery">
+
+    <location name="In right side of luggage compartment">
         <fuse id="46" current="15A" type="medium" name="Park heating relay." />
         <fuse id="47" current="15A" type="medium" name="Independent park / auxiliary heating. \nReceiver, independent heating." />
         <fuse id="48" current="5A" type="medium" name="Electronic rear view mirror. Interior protection control module. \nControl module, radio-operated passenger compartment protection. \nTilt sensor. Anti-theft horn (DWA)." />
@@ -60,6 +61,14 @@
         <fuse id="55" current="20A" type="medium" name="Rear intermittent wipe / wash control unit." />
         <fuse id="56" current="30A" type="medium" name="On-board monitor. Radio. Video module. CD changer. \nAudio amplifier. Navigation control module. GPS receiver." />
         <fuse id="57" current="10A" type="medium" name="Transceiver / charging electronics. Compensator." />
-        <fuse id="57" current="10A" type="medium" name="Transceiver / charging electronics. Compensator." />
+        <fuse id="58" current="10A" type="medium" name="Unloader relay (terminal R)." />
+        <fuse id="59" current="5A" type="medium" name="Cigar lighter relay. Trailer connector." />
+        <fuse id="60" current="15A" type="medium" name="Electronic shock absorber control module (EDC). \nEDC switch." />
+        <fuse id="61" current="5A" type="medium" name="Park distance control module (PDC)." />
+        <fuse id="62" current="" type="medium" name="Not used." />
+        <fuse id="63" current="7.5A" type="medium" name="Radio relay. Loud alarm relay. \nTransparency relay. Alarm control unit." />
+        <fuse id="64" current="30A" type="medium" name="Radio. CD changer. Amplifier. On-board monitor. \nVideo module. Navigation control module. GPS receiver." />
+        <fuse id="65" current="10A" type="medium" name="Transceiver / charging electronics." />
+        <fuse id="66" current="10A" type="medium" name="Unloader relay (terminal R). Rear defogger relay." />
     </location>
 </fuses>
