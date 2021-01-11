@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/FuseID"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:paddingStart="@dimen/table_padding"
+        android:paddingEnd="@dimen/table_padding"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/FuseIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="@dimen/table_padding"
+        android:src="@drawable/medium_40a"
+    />
+
+    <TextView
+        android:id="@+id/FuseName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:paddingStart="@dimen/table_padding"
+        android:paddingEnd="@dimen/table_padding"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>

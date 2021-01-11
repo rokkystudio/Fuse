@@ -2,10 +2,15 @@ package com.rokkystudio.fuse;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.media.Image;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -17,11 +22,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
 public class FuseLayout extends ScrollView
 {
+    private LayoutInflater mLayoutInflater;
     private LinearLayout mRootLayout;
 
     public FuseLayout(Context context) {
@@ -35,8 +43,9 @@ public class FuseLayout extends ScrollView
     }
 
     private void init(Context context) {
+        mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(context);
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         mRootLayout.setLayoutParams(params);
         mRootLayout.setOrientation(LinearLayout.VERTICAL);
         addView(mRootLayout);
@@ -64,52 +73,27 @@ public class FuseLayout extends ScrollView
     }
 
     public void addTitle(String title) {
-        TextView textView = new TextView(getContext());
-        textView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-        textView.setTextColor(getResources().getColor(R.color.black));
-        textView.setTextSize(getResources().getDimension(R.dimen.text_size));
-        textView.setBackgroundColor(Color.BLUE);
-        textView.setText(title);
-        mRootLayout.addView(textView);
+        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
+        ((TextView) viewGroup.findViewById(R.id.FuseTitle)).setText(title);
+        mRootLayout.addView(viewGroup);
     }
 
     public void addLocation(String location) {
-        TextView textView = new TextView(getContext());
-        textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-        textView.setTextColor(getResources().getColor(R.color.black));
-        textView.setTextSize(getResources().getDimension(R.dimen.text_size));
-        textView.setText(location);
-        mRootLayout.addView(textView);
+        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
+        ((TextView) viewGroup.findViewById(R.id.FuseLocation)).setText(location);
+        mRootLayout.addView(viewGroup);
     }
 
-    public void addFuse(String id, String current, String name)
-    {
-        LinearLayout row = new LinearLayout(getContext());
-        row.setOrientation(LinearLayout.HORIZONTAL);
-        row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+    public void addFuse(String id, String type, String current, String name) {
+        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_item, mRootLayout, false);
+        ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(id);
+        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImage(type, current));
+        ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(name);
+        mRootLayout.addView(viewGroup);
+    }
 
-        TextView idView = new TextView(getContext());
-        idView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-        idView.setTextColor(getResources().getColor(R.color.black));
-        idView.setTextSize(getResources().getDimension(R.dimen.text_size));
-        idView.setText(id);
-        row.addView(idView);
-
-        TextView currentView = new TextView(getContext());
-        currentView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-        currentView.setTextColor(getResources().getColor(R.color.black));
-        currentView.setTextSize(getResources().getDimension(R.dimen.text_size));
-        currentView.setText(current);
-        row.addView(currentView);
-
-        TextView nameView = new TextView(getContext());
-        nameView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
-        nameView.setTextColor(getResources().getColor(R.color.black));
-        nameView.setTextSize(getResources().getDimension(R.dimen.text_size));
-        nameView.setText(name);
-        row.addView(nameView);
-
-        mRootLayout.addView(row);
+    public void addSeparator() {
+        mRootLayout.addView(mLayoutInflater.inflate(R.layout.fuse_separator, mRootLayout, false));
     }
 
     private void parseXML(XmlPullParser parser) throws XmlPullParserException, IOException
@@ -138,17 +122,53 @@ public class FuseLayout extends ScrollView
     }
 
     private void fuses(XmlPullParser parser) {
-        addTitle(parser.getAttributeValue("", "name"));
+        addTitle(parser.getAttributeValue(null, "name"));
     }
 
     private void location(XmlPullParser parser) {
-        addLocation(parser.getAttributeValue("", "name"));
+        addLocation(parser.getAttributeValue(null, "name"));
     }
 
     private void fuse(XmlPullParser parser) {
-        String id = parser.getAttributeValue("", "id");
-        String current = parser.getAttributeValue("", "current");
-        String name = parser.getAttributeValue("", "name");
-        addFuse(id, current, name);
+        String id = parser.getAttributeValue(null, "id");
+        String type = parser.getAttributeValue(null, "type");
+        String current = parser.getAttributeValue(null, "current");
+        String name = parser.getAttributeValue(null, "name");
+        addFuse(id, type, current, name);
+        addSeparator();
+    }
+
+    private int getFuseImage(String type, String current)
+    {
+        if (type.equalsIgnoreCase("MEDIUM"))
+        {
+            switch (current) {
+                case "1A":
+                    return R.drawable.medium_1a;
+                case "2A":
+                    return R.drawable.medium_2a;
+                case "3A":
+                    return R.drawable.medium_3a;
+                case "5A":
+                    return R.drawable.medium_5a;
+                case "7.5A":
+                    return R.drawable.medium_7_5a;
+                case "10A":
+                    return R.drawable.medium_10a;
+                case "15A":
+                    return R.drawable.medium_15a;
+                case "20A":
+                    return R.drawable.medium_20a;
+                case "25A":
+                    return R.drawable.medium_25a;
+                case "30A":
+                    return R.drawable.medium_30a;
+                case "40A":
+                    return R.drawable.medium_40a;
+                case "50A":
+                    return R.drawable.medium_50a;
+            }
+        }
+        return 0;
     }
 }
