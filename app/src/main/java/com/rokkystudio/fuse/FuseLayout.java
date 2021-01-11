@@ -2,16 +2,12 @@ package com.rokkystudio.fuse;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-
-import androidx.annotation.RequiresApi;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -22,17 +18,28 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.END_TAG;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
-public class FuseTable extends TableLayout
+public class FuseLayout extends ScrollView
 {
-    public FuseTable(Context context) {
+    private LinearLayout mRootLayout;
+
+    public FuseLayout(Context context) {
         super(context);
+        init(context);
     }
 
-    public FuseTable(Context context, AttributeSet attrs) {
+    public FuseLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+    }
+
+    private void init(Context context) {
+        mRootLayout = new LinearLayout(context);
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        mRootLayout.setLayoutParams(params);
+        mRootLayout.setOrientation(LinearLayout.VERTICAL);
+        addView(mRootLayout);
     }
 
     public void loadXml(int resource) {
@@ -56,67 +63,53 @@ public class FuseTable extends TableLayout
         invalidate();
     }
 
-    public void addTitle(String title)
-    {
-        TableRow rowView = new TableRow(getContext());
-        rowView.setLayoutParams(new LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
-        rowView.setBackgroundColor(Color.GRAY);
-
+    public void addTitle(String title) {
         TextView textView = new TextView(getContext());
-        textView.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        textView.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
         textView.setTextColor(getResources().getColor(R.color.black));
         textView.setTextSize(getResources().getDimension(R.dimen.text_size));
         textView.setBackgroundColor(Color.BLUE);
         textView.setText(title);
-        rowView.addView(textView);
-
-        addView(rowView);
+        mRootLayout.addView(textView);
     }
 
-    public void addLocation(String location)
-    {
-        TableRow rowView = new TableRow(getContext());
-        rowView.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        rowView.setBackgroundColor(Color.GREEN);
-
+    public void addLocation(String location) {
         TextView textView = new TextView(getContext());
-        textView.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         textView.setTextColor(getResources().getColor(R.color.black));
         textView.setTextSize(getResources().getDimension(R.dimen.text_size));
         textView.setText(location);
-        rowView.addView(textView);
-
-        addView(rowView);
+        mRootLayout.addView(textView);
     }
 
     public void addFuse(String id, String current, String name)
     {
-        TableRow rowView = new TableRow(getContext());
-        rowView.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        rowView.setBackgroundColor(Color.RED);
+        LinearLayout row = new LinearLayout(getContext());
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 
         TextView idView = new TextView(getContext());
-        idView.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        idView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         idView.setTextColor(getResources().getColor(R.color.black));
         idView.setTextSize(getResources().getDimension(R.dimen.text_size));
         idView.setText(id);
-        rowView.addView(idView);
+        row.addView(idView);
 
         TextView currentView = new TextView(getContext());
-        currentView.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        currentView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         currentView.setTextColor(getResources().getColor(R.color.black));
         currentView.setTextSize(getResources().getDimension(R.dimen.text_size));
         currentView.setText(current);
-        rowView.addView(currentView);
+        row.addView(currentView);
 
         TextView nameView = new TextView(getContext());
-        nameView.setLayoutParams(new LayoutParams(WRAP_CONTENT, WRAP_CONTENT));
+        nameView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT));
         nameView.setTextColor(getResources().getColor(R.color.black));
         nameView.setTextSize(getResources().getDimension(R.dimen.text_size));
         nameView.setText(name);
-        rowView.addView(nameView);
+        row.addView(nameView);
 
-        addView(rowView);
+        mRootLayout.addView(row);
     }
 
     private void parseXML(XmlPullParser parser) throws XmlPullParserException, IOException

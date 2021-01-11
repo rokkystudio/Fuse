@@ -13,7 +13,7 @@ public class FragmentFuses extends Fragment
 {
     private static final String XML_RESOURCE = "XML_RESOURCE";
     private View mRootView = null;
-    private FuseTable mFuseTable = null;
+    private FuseLayout mFuseLayout = null;
     private int mResourse = 0;
 
     public static FragmentFuses newInstance(int resource) {
@@ -40,8 +40,8 @@ public class FragmentFuses extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView != null) return mRootView;
         mRootView = inflater.inflate(R.layout.fragment_fuses, container, false);
-        mFuseTable = mRootView.findViewById(R.id.FuseTable);
-        mFuseTable.loadXml(mResourse);
+        mFuseLayout = mRootView.findViewById(R.id.FuseTable);
+        mFuseLayout.loadXml(mResourse);
         return mRootView;
     }
 }
