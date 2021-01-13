@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu name="BMW">
     <folder name="1 Series">
-        <item name="E81 E82 E87 E88 E89" date="09/2004 - 10/2013" link="e81_82_87_88_89_old.xml" />
+        <!-- item name="E81 E82 E87 E88 E89" date="09/2004 - 10/2013" link="e81_82_87_88_89_old.xml" /-->
     </folder>
 
     <folder name="3 Series">
-        <item name="E90 E91 E92 E93" date="10/2004 - 06/2013" link="e90_91_92_93.xml" />
-        <item name="E46" date="12/1997 - 09/2006" link="e46.xml" />
-        <item name="E36" date="11/1989 - 08/2000" link="e30.xml" />
-        <item name="E30" date="12/1981 - 02/1994" link="e30.xml" />
+        <!--item name="E90 E91 E92 E93" date="10/2004 - 06/2013" link="e90_91_92_93.xml" /-->
+        <!--item name="E46" date="12/1997 - 09/2006" link="e46.xml" /-->
+        <!--item name="E36" date="11/1989 - 08/2000" link="e30.xml" /-->
+        <!--item name="E30" date="12/1981 - 02/1994" link="e30.xml" /-->
     </folder>
 
     <folder name="5 Series">
-        <item name="E60 E61" date="07/2003 - 05/2010" link="e60_61.xml" />
+        <!--item name="E60 E61" date="07/2003 - 05/2010" link="e60_61.xml" /-->
         <item name="E39 Restyling" date="09/1998 - 10/2003" link="e39_new.xml" />
         <item name="E39 Basis" date="12/1995 - 09/1998" link="e39_old.xml" />
-        <item name="E34" date="04/1987 - 06/1996" link="e34.xml" />
-        <item name="E28" date="11/1980 - 12/1987" link="e28.xml" />
+        <!--item name="E34" date="04/1987 - 06/1996" link="e34.xml" /-->
+        <!--item name="E28" date="11/1980 - 12/1987" link="e28.xml" /-->
     </folder>
 
     <folder name="6 Series">
-        <item name="E63 E64" date="08/2003 - 07/2010" link="e63_64.xml" />
-        <item name="E24" date="11/1975 - 04/1989" link="e24.xml" />
+        <!--item name="E63 E64" date="08/2003 - 07/2010" link="e63_64.xml" /-->
+        <!--item name="E24" date="11/1975 - 04/1989" link="e24.xml" /-->
     </folder>
 
     <folder name="7 Series">
-        <item name="F01 F02 F03 F04" date="08/2008 - 06/2015" link="f01_02_03_04.xml" />
-        <item name="E65 E66 E67 E68" date="11/2001 - 11/2008" link="e65_66_67_68.xml" />
-        <item name="E38 Restyling" date="09/1998 - 07/2001" link="e38_new.xml" />
-        <item name="E38 Basis" date="03/1994 - 09/1998" link="e38_old.xml" />
-        <item name="E32" date="11/1985 - 04/1994" link="e32.xml" />
-        <item name="E23" date="10/1976 - 06/1986" link="e23.xml" />
+        <!--item name="F01 F02 F03 F04" date="08/2008 - 06/2015" link="f01_02_03_04.xml" /-->
+        <!--item name="E65 E66 E67 E68" date="11/2001 - 11/2008" link="e65_66_67_68.xml" /-->
+        <!--item name="E38 Restyling" date="09/1998 - 07/2001" link="e38_new.xml" /-->
+        <!--item name="E38 Basis" date="03/1994 - 09/1998" link="e38_old.xml" /-->
+        <!--item name="E32" date="11/1985 - 04/1994" link="e32.xml" /-->
+        <!--item name="E23" date="10/1976 - 06/1986" link="e23.xml" /-->
     </folder>
 
     <folder name="8 Series">
-        <item name="E31" date="07/1989 - 05/1999" link="e31.xml" />
+        <!--item name="E31" date="07/1989 - 05/1999" link="e31.xml" /-->
     </folder>
 
     <folder name="X3 Series">
-        <item name="E83" date="08/2003 - 08/2010" link="e83.xml" />
+        <!--item name="E83" date="08/2003 - 08/2010" link="e83.xml" /-->
     </folder>
 
     <folder name="X5 Series">
-        <item name="E70" date="08/2006 - 06/2013" link="e70.xml" />
-        <item name="E53" date="09/1999 - 09/2006" link="e53.xml" />
+        <!--item name="E70" date="08/2006 - 06/2013" link="e70.xml" /-->
+        <!--item name="E53" date="09/1999 - 09/2006" link="e53.xml" /-->
     </folder>
 
     <folder name="X6 Series">
-        <item name="E71" date="12/2007 - 06/2014" link="e71.xml" />
+        <!--item name="E71" date="12/2007 - 06/2014" link="e71.xml" /-->
     </folder>
 
     <folder name="Z4 Series">
-        <item name="E89" date="02/2009 - 08/2016" link="e89.xml" />
-        <item name="E85 E86" date="09/2002 - 08/2008" link="e85_86.xml" />
+        <!--item name="E89" date="02/2009 - 08/2016" link="e89.xml" /-->
+        <!--item name="E85 E86" date="09/2002 - 08/2008" link="e85_86.xml" /-->
     </folder>
 
     <folder name="Z8 Series">
-        <item name="E52" date="03/2000 - 07/2003" link="e52.xml" />
+        <!--item name="E52" date="03/2000 - 07/2003" link="e52.xml" /-->
     </folder>
 </menu>
