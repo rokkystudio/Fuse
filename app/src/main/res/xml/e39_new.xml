@@ -8,7 +8,7 @@
         <fuse id="5" current="30A" type="medium" name="Sunroof module (SHD)." />
         <fuse id="6" current="30A" type="medium" name="Passenger door module (PM-BT)." />
         <fuse id="7" current="20A" type="medium" name="Auxiliary fan relay (up to 09/2000)." />
-        <fuse id="7" current="30A" type="medium" name="Front cigar lighter (from 09/2000)." />
+        <fuse id="7" current="30A" type="medium" name="Front cigar lighter (as of 09/2000)." />
         <fuse id="8" current="" type="medium" name="Not used." />
         <fuse id="9" current="15A" type="medium" name="Heating / Air conditioner module (IHR/IHKA)." />
         <fuse id="10" current="30A" type="medium" name="Front passenger seat adjustment." />
@@ -21,20 +21,19 @@
         <fuse id="17" current="10A" type="medium" name="Switching center. ASC/DSC module. Fuel pump relay." />
         <fuse id="18" current="5A" type="medium" name="Instrument cluster (KOMBI/IKE)." />
         <fuse id="19" current="5A" type="medium" name="Unloader relay." />
-
-        <fuse id="20" current="7.5A" type="medium" name="Heating. Air conditioner. Rear defogger relay. Auxiliary fan relay. RDC. DWS. Starter relay." />
+        <fuse id="20" current="7.5A" type="medium" name="Heating / Air conditioner module (IHR/IHKA). Rear defogger relay. Auxiliary fan relay. Tire-pressure monitoring system (RDC/DWS). Starter relay." />
         <fuse id="21" current="5A" type="medium" name="Electrochromic mirrors. Closed-circuit current cut-off. Terminal control relay. Garage door opener. Park distance control (PDC). Cigar lighter relay." />
         <fuse id="22" current="30A" type="medium" name="Auxiliary fan relay (up to 09/2000)." />
-        <fuse id="22" current="25A" type="medium" name="Fuel pump relay (from 09/2000)." />
+        <fuse id="22" current="25A" type="medium" name="Fuel pump relay (as of 09/2000)." />
         <fuse id="23" current="7.5A" type="medium" name="Rear multi information display (MID)." />
-        <fuse id="24" current="5A" type="medium" name="Instrument cluster. Transmission range indicator light. Instrument cluster (IKE / KOMBI). Steering angle sensor. RDC." />
+        <fuse id="24" current="5A" type="medium" name="Instrument cluster (KOMBI/IKE). Transmission range indicator light. Steering angle sensor. Tire-pressure monitoring system RDC." />
         <fuse id="25" current="7.5A" type="medium" name="Multi information display (MID). OBD II." />
         <fuse id="26" current="" type="medium" name="Not used." />
         <fuse id="27" current="30A" type="medium" name="General module (ZKE)." />
         <fuse id="28" current="15A" type="medium" name="AGS transmission." />
         <fuse id="29" current="30A" type="medium" name="Driver door lock switch. Driver door module (PM-FT)." />
-        <fuse id="30" current="25A" type="medium" name="ABS (ASC / DCS)." />
-        <fuse id="31" current="10A" type="medium" name="ABS (ASC / DSC). Fuel pump relay. Fuel changeover circuit. Leakage diagnosis pump. Secondary air injection pump relay. Steering angle sensor. Switching center." />
+        <fuse id="30" current="25A" type="medium" name="ASC/DCS module." />
+        <fuse id="31" current="10A" type="medium" name="ASC/DSC module. Fuel pump relay. Fuel changeover circuit. Leakage diagnosis pump. Secondary air injection pump relay. Steering angle sensor. Switching center." />
         <fuse id="32" current="25A" type="medium" name="Switching center." />
         <fuse id="33" current="" type="medium" name="Not used." />
         <fuse id="34" current="10A" type="medium" name="Steering wheel heater." />
@@ -43,36 +42,36 @@
         <fuse id="37" current="5A" type="medium" name="Electronic drive-away protection control (EWS)." />
         <fuse id="38" current="5A" type="medium" name="General module (ZKE). Horn relay. Diagnostic socket. Transmission range indicator light. Rain sensor. Switch for shiftlock." />
         <fuse id="39" current="7.5A" type="medium" name="Driver and passenger makeup mirror light. Charging socket." />
-        <fuse id="40" current="5A" type="medium" name="Instrument cluster (IKE / KOMBI). Seat load assembly. Driver and passenger seat belt switch. Airbag left / right front sensor." />
+        <fuse id="40" current="5A" type="medium" name="Instrument cluster (IKE/KOMBI). Seat load assembly. Driver and passenger seat belt switch. Airbag left / right front sensor." />
         <fuse id="41" current="5A" type="medium" name="Light module (LCM). Clutch pedal switch. Brake light switch." />
         <fuse id="42" current="5A" type="medium" name="Supplemental restraint system (SRS)." />
         <fuse id="43" current="5A" type="medium" name="Unloader relay. Intermittent wipe / wash rear window." />
-        <fuse id="44" current="5A" type="medium" name="Multifunction steering wheel (MFL). Front / rear multi information display (MID)." />
+        <fuse id="44" current="5A" type="medium" name="Multifunction steering wheel (MFL). Multi-information display (MID)." />
         <fuse id="45" current="7.5A" type="medium" name="Switching center." />
     </location>
 
     <location name="Luggage compartment">
         <fuse id="46" current="" type="medium" name="Not used." />
-        <fuse id="47" current="15A" type="medium" name="Independent park / auxiliary heating. Receiver, independent heating (up to 03/1999)." />
-        <fuse id="47" current="20A" type="medium" name="Independent park / auxiliary heating. Receiver, independent heating (from 03/1999)." />
+        <fuse id="47" current="15A" type="medium" name="Independent heating. Independent heating receiver (up to 03/1999)." />
+        <fuse id="47" current="20A" type="medium" name="Independent heating. Receiver, independent heating (as of 03/1999)." />
         <fuse id="48" current="5A" type="medium" name="Electronic rear view mirror. Interior protection. Tilt sensor. Anti-theft horn (DWA)." />
         <fuse id="49" current="30A" type="medium" name="Compressor pump relay." />
-        <fuse id="50" current="7.5A" type="medium" name="Air suspension." />
+        <fuse id="50" current="7.5A" type="medium" name="Air suspension module." />
         <fuse id="51" current="30A" type="medium" name="Rear cigar lighter." />
         <fuse id="52" current="30A" type="medium" name="Front cigar lighter. Charging socket." />
-        <fuse id="53" current="5A" type="medium" name="Antenna amplifier. Remote central locking. Lift gate lock switch. Rear lid / window motor relay." />
+        <fuse id="53" current="5A" type="medium" name="Antenna amplifier. Remote central locking. Fuel tank flap relay. Lift gate switch. Rear lid / window motor relay." />
         <fuse id="54" current="15A" type="medium" name="Fuel pump relay." />
         <fuse id="55" current="20A" type="medium" name="Intermittent wipe / wash rear window." />
-        <fuse id="56" current="30A" type="medium" name="Monitor. Radio. Video. CD. Audio amplifier. Navigation. GPS." />
+        <fuse id="56" current="30A" type="medium" name="On-board monitor. Radio. Video. CD. Amplifier. Navigation. GPS." />
         <fuse id="57" current="10A" type="medium" name="Telephone. Compensator. Voice input. Transceiver. Charging. Eject box." />
         <fuse id="58" current="10A" type="medium" name="Unloader relay." />
         <fuse id="59" current="20A" type="medium" name="Trailer socket." />
         <fuse id="60" current="15A" type="medium" name="Electronic shock absorber (EDC). Switching center." />
         <fuse id="61" current="25A" type="medium" name="Rear seats heater switch." />
-        <fuse id="62" current="7.5A" type="medium" name="Alarm switch. (Protection)" />
-        <fuse id="63" current="15A" type="medium" name="Transceiver relay. Radio switch. (Protection)" />
-        <fuse id="64" current="10A" type="medium" name="Intercom (WSA). (Protection)" />
-        <fuse id="65" current="25A" type="medium" name="Windscreen defogger relay. (Protection)" />
+        <fuse id="62" current="7.5A" type="medium" name="Alarm switch (Protection)." />
+        <fuse id="63" current="15A" type="medium" name="Transceiver relay. Radio switch (Protection)." />
+        <fuse id="64" current="10A" type="medium" name="Intercom (WSA) (Protection)." />
+        <fuse id="65" current="25A" type="medium" name="Windscreen defogger relay (Protection)." />
         <fuse id="66" current="40A" type="medium" name="Rear defogger relay." />
         <fuse id="67" current="40A" type="medium" name="Rear lid module." />
     </location>

@@ -50,13 +50,13 @@
 
     <location name="Luggage compartment">
         <fuse id="46" current="15A" type="medium" name="Park heating relay." />
-        <fuse id="47" current="15A" type="medium" name="Independent park / auxiliary heating. Independent heating receiver." />
-        <fuse id="48" current="5A" type="medium" name="Electronic rear view mirror. Interior protection. Tilt sensor. Anti-theft horn. (DWA)" />
+        <fuse id="47" current="15A" type="medium" name="Independent heating. Independent heating receiver." />
+        <fuse id="48" current="5A" type="medium" name="Electronic rear view mirror. Interior protection. Tilt sensor. Anti-theft horn (DWA)." />
         <fuse id="49" current="30A" type="medium" name="Rear defogger relay. Air suspension compressor relay." />
         <fuse id="50" current="7.5A" type="medium" name="Air suspension module." />
         <fuse id="51" current="30A" type="medium" name="Air suspension compressor relay." />
         <fuse id="52" current="30A" type="medium" name="Cigar lighter relay." />
-        <fuse id="53" current="5A" type="medium" name="Antenna amplifier. Remote control central locking. Fuel tank flap relay. Lift gate switch. Rear lid motor relay. Rear window motor relay." />
+        <fuse id="53" current="5A" type="medium" name="Antenna amplifier. Remote central locking. Fuel tank flap relay. Lift gate switch. Rear lid / window motor relay." />
         <fuse id="54" current="15A" type="medium" name="Fuel pump relay." />
         <fuse id="55" current="20A" type="medium" name="Rear intermittent wipe / wash module." />
         <fuse id="56" current="30A" type="medium" name="On-board monitor. Radio. Video. CD. Amplifier. Navigation. GPS." />
