@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E23">
-    <location name="Glove box">
+<fuses name="BMW E23 (1982)">
+    <location name="Power distribution box">
+        <image src="e23_1982.png" />
         <fuse id="1" current="16A" type="cylinder" name="Fuel delivery. Evaporative control. Idle speed control." />
         <fuse id="2" current="8A" type="cylinder" name="Headlights. Right low beam." />
         <fuse id="3" current="8A" type="cylinder" name="Headlights. Left low beam." />
@@ -18,6 +19,17 @@
         <fuse id="15" current="8A" type="cylinder" name="Right fog lights." />
         <fuse id="16" current="8A" type="cylinder" name="Left fog lights." />
         <fuse id="17" current="25A" type="cylinder" name="Auxiliary fan." />
-        <fuse id="" current="25A" type="cylinder" name="Auxiliary fan." />
+    </location>
+
+    <location name="Power window circuit breaker">
+        <fuse id="~" current="25A" type="medium" name="Power windows." />
+    </location>
+
+    <location name="Inline radio">
+        <fuse id="~" current="1A" type="medium" name="Radio." />
+    </location>
+
+    <location name="Auxiliary fan fuses (2)">
+        <fuse id="~" current="25A" type="medium" name="Auxiliary fan." />
     </location>
 </fuses>
