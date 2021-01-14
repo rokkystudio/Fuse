@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E23 (1983) 733i">
+<fuses name="BMW E23 (1984) 733i">
     <location name="Power distribution box">
         <fuse id="1" current="15A" type="medium" name="Headlights." />
         <fuse id="2" current="15A" type="medium" name="Headlights." />
@@ -9,8 +9,8 @@
         <fuse id="6" current="7.5A" type="medium" name="Active check control. Stop lights. Cruise control." />
         <fuse id="7" current="15A" type="medium" name="Horn." />
         <fuse id="8" current="" type="medium" name="Not used." />
-        <fuse id="9" current="15A" type="medium" name="Idle speed control. Active check control. Brake lining warning." />
-        <fuse id="10" current="7.5A" type="medium" name="On-board computer. Service interval indicator. Speedometer / Gauges / Warning indicator." />
+        <fuse id="9" current="15A" type="medium" name="Idle speed control." />
+        <fuse id="10" current="7.5A" type="medium" name="Active check control. Brake lining warning. On-board computer. Service interval indicator. Speedometer / Gauges / Warning indicator." />
         <fuse id="11" current="15A" type="medium" name="Fuel delivery." />
         <fuse id="12" current="7.5A" type="medium" name="Active check control. On-board computer. Radio. Warning indicators." />
         <fuse id="13" current="7.5A" type="medium" name="Headlights." />
@@ -22,12 +22,12 @@
         <fuse id="19" current="25A" type="medium" name="Sunroof." />
         <fuse id="20" current="25A" type="medium" name="Rear defogger." />
         <fuse id="21" current="7.5A" type="medium" name="Active check control. Auto-charging flashlight. Gauges. Glove box light. Ignition key warning. Interior lights. On-board computer. Radio. Seatbelt warning. Service interval indicator. Speedometer / Gauges / Warning indicators. Trunk light." />
-        <fuse id="22" current="7.5A" type="medium" name="No data." />
-        <fuse id="23" current="7.5A" type="medium" name="No data." />
+        <fuse id="22" current="7.5A" type="medium" name="Front park / Tail / Underhood lights." />
+        <fuse id="23" current="7.5A" type="medium" name="Front park / Tail / Rear marker / License / Dash lights." />
         <fuse id="24" current="15A" type="medium" name="Turn / Hazard warning lights." />
         <fuse id="25" current="" type="medium" name="Not used." />
-        <fuse id="26" current="30A" type="medium" name="No data." />
-        <fuse id="27" current="25A" type="medium" name="Central locking. Heated door lock." />
+        <fuse id="26" current="30A" type="medium" name="Power seats. Power windows." />
+        <fuse id="27" current="25A" type="medium" name="Central locking. Heated door lock. On-board computer." />
         <fuse id="28" current="25A" type="medium" name="Cigar lighter. Power antenna." />
         <fuse id="29" current="7.5A" type="medium" name="Fog lights." />
         <fuse id="30" current="7.5A" type="medium" name="Fog lights." />
