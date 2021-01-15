@@ -30,7 +30,13 @@
         <!--item name="E38 Restyling" date="09/1998 - 07/2001" link="e38_new.xml" /-->
         <!--item name="E38 Basis" date="03/1994 - 09/1998" link="e38_old.xml" /-->
         <!--item name="E32" date="11/1985 - 04/1994" link="e32.xml" /-->
-        <!--item name="E23" date="10/1976 - 06/1986" link="e23.xml" /-->
+        <folder name="E23" date="10/1976 - 06/1986" >
+            <item name="E23 (1982) 733i" link="e23_1982.xml" />
+            <item name="E23 (1983) 733i" link="e23_1983.xml" />
+            <item name="E23 (1984) 733i" link="e23_1984.xml" />
+            <item name="E23 (1985) 735i" link="e23_1985.xml" />
+            <item name="E23 (1986) 735i" link="e23_1986.xml" />
+        </folder>
     </folder>
 
     <folder name="8 Series">

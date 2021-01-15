@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E23 (1985) 735i">
-    <location name="Power distribution box">
+    <location name="Power distribution box" src="e23_1985.png">
         <fuse id="1" current="15A" type="medium" name="Headlights." />
         <fuse id="2" current="15A" type="medium" name="Headlights." />
         <fuse id="3" current="15A" type="medium" name="Auxiliary fan." />

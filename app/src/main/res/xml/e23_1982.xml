@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E23 (1982) 733i">
-    <location name="Power distribution box">
-        <image src="e23_1982.png" />
+    <location name="Power distribution box" src="e23_1982.png">
         <fuse id="1" current="16A" type="cylinder" name="Fuel delivery. Evaporative control. Idle speed control." />
         <fuse id="2" current="8A" type="cylinder" name="Headlights. Right low beam." />
         <fuse id="3" current="8A" type="cylinder" name="Headlights. Left low beam." />
