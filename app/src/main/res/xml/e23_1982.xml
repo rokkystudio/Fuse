@@ -5,7 +5,7 @@
         <fuse id="2" current="8A" type="cylinder" name="Headlights. Right low beam." />
         <fuse id="3" current="8A" type="cylinder" name="Headlights. Left low beam." />
         <fuse id="4" current="25A" type="cylinder" name="Cigar lighters." />
-        <fuse id="5" current="8A" type="cylinder" name="Active check control. Auto-charging flashlight. Central locking. Gauges. Glove box light. Heated door lock. Ignition / Seatbelt key warning. Interior lights. Turn / Hazard warning lights. On-board computer. Radio / Power antenna. Trunk light." />
+        <fuse id="5" current="8A" type="cylinder" name="Active check control. Auto-charging flashlight. Central locking. Gauges. Glove box light. Heated door lock. Ignition key / Seatbelt warning. Interior lights. Turn / Hazard warning lights. On-board computer. Radio / Power antenna. Trunk light." />
         <fuse id="6" current="8A" type="cylinder" name="Active check control. Backup lights. Transmission range lights. Brake lining warning. Cruise control. Dash lights. Gauges. Idle speed control. Interior lights. Power mirrors. Power windows. Seatbelt warning. Speedometer. Warning indicator." />
         <fuse id="7" current="8A" type="cylinder" name="Headlight. High beams." />
         <fuse id="8" current="8A" type="cylinder" name="Headlight. High beams." />
