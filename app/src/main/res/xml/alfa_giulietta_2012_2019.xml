@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo Giulietta 2012-2019">
+    <location name="On the left under dashboard">
+        <fuse id="1 (F42)" current="5A" type="medium" name="ABS / ESP. Electric power steering." />
+        <fuse id="2" current="7.5A" type="medium" name="Airbag." />
+        <fuse id="3" current="7.5A" type="medium" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="4" current="5A" type="medium" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="5" current="5A" type="medium" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="6" current="5A" type="medium" name="Power control module." />
+        <fuse id="7" current="20A" type="medium" name="Central locking." />
+        <fuse id="8" current="20A" type="medium" name="Power window rear right." />
+        <fuse id="9" current="15A" type="medium" name="Navigation display." />
+        <fuse id="10" current="20A" type="medium" name="Power window front right." />
+        <fuse id="11" current="20A" type="medium" name="Power window front left." />
+        <fuse id="12" current="20A" type="medium" name="Power window rear left." />
+        <fuse id="13" current="7.5A" type="medium" name="Headlights low beam." />
+        <fuse id="14" current="20A" type="medium" name="Headlights low beam." />
+        <fuse id="15" current="7.5A" type="medium" name="Headlight high beam." />
+        <fuse id="16" current="7.5A" type="medium" name="Headlight high beam." />
+    </location>
+
+    <location name="Power window circuit breaker">
+        <fuse id="~" current="25A" type="medium" name="Power windows." />
+    </location>
+</fuses>

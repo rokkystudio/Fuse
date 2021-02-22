@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo Giulietta 2010-2012">
+    <location name="On the left under dashboard">
+        <fuse id="1 (F42)" current="5A" type="medium" name="ABS / ESP. Electric power steering." />
+        <fuse id="2" current="7.5A" type="medium" name="Airbag." />
+        <fuse id="3" current="7.5A" type="medium" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="4" current="5A" type="medium" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="5" current="5A" type="medium" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="6" current="5A" type="medium" name="Power control module." />
+        <fuse id="7" current="20A" type="medium" name="Central locking." />
+        <fuse id="8" current="20A" type="medium" name="Power window rear right." />
+        <fuse id="9" current="15A" type="medium" name="Navigation display." />
+        <fuse id="10" current="20A" type="medium" name="Power window front right." />
+        <fuse id="11" current="20A" type="medium" name="Power window front left." />
+        <fuse id="12" current="20A" type="medium" name="Power window rear left." />
+        <fuse id="13" current="7.5A" type="medium" name="Control panel." />
+        <fuse id="14" current="20A" type="medium" name="Windshield washer pump." />
+        <fuse id="15" current="7.5A" type="medium" name="Headlights low beam." />
+        <fuse id="16" current="7.5A" type="medium" name="Headlight high beam." />
+        16	7.5А	Ближний свет фар (до 2012)
+        Левая лампа дальнего света фары (после 2012)
+        17	7.5А
+        Левая фара дальнего света (до 2012)
+
+        Левый противотуманный фонарь (после 2012)
+
+        18	7.5А
+        Правая фара дальнего света (до 2012)
+
+        Правый противотуманный фонарь (после 2012)
+
+        19
+        7.5А (до 2012)
+
+        20А (после 2012)
+
+        Левый противотуманный фонарь (до 2012)
+
+        Насос стеклоомывателя лобового стекла (после 2012)
+
+        20	7.5А
+        Правый противотуманный фонарь  (до 2012)
+
+        Панель управления (после 2012)
+
+        21	10А	Передний свет (и) вежливости
+        Подсветка багажного отделения
+        Дверные фонари
+        Солнцезащитный козырек
+        Бардачок свет
+        22	10А	Блок управления дверью
+        Радио
+        Система Bluetooth
+        Навигация
+        Блок климат-контроля
+        Датчики тревоги
+        Сирена
+        Диагностика
+    </location>
+
+    <location name="Power window circuit breaker">
+        <fuse id="~" current="25A" type="medium" name="Power windows." />
+    </location>
+</fuses>
