@@ -3,20 +3,26 @@
     <location name="On the left under dashboard">
         <fuse id="1 (F42)" current="5A" type="medium" name="ABS / ESP. Electric power steering." />
         <fuse id="2" current="7.5A" type="medium" name="Airbag." />
-        <fuse id="3" current="7.5A" type="medium" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
-        <fuse id="4" current="5A" type="medium" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
-        <fuse id="5" current="5A" type="medium" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
-        <fuse id="6" current="5A" type="medium" name="Power control module." />
-        <fuse id="7" current="20A" type="medium" name="Central locking." />
-        <fuse id="8" current="20A" type="medium" name="Power window rear right." />
-        <fuse id="9" current="15A" type="medium" name="Navigation display." />
-        <fuse id="10" current="20A" type="medium" name="Power window front right." />
-        <fuse id="11" current="20A" type="medium" name="Power window front left." />
-        <fuse id="12" current="20A" type="medium" name="Power window rear left." />
-        <fuse id="13" current="7.5A" type="medium" name="Headlights low beam." />
-        <fuse id="14" current="20A" type="medium" name="Headlights low beam." />
+        <fuse id="3 (F37)" current="7.5A" type="medium" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="4 (F51)" current="5A" type="medium" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="5 (F49)" current="5A" type="medium" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="6 (F31)" current="5A" type="medium" name="Power control module." />
+        <fuse id="7 (F38)" current="20A" type="medium" name="Central locking." />
+        <fuse id="8 (F34)" current="20A" type="medium" name="Power window rear right." />
+        <fuse id="9 (F89)" current="15A" type="medium" name="Navigation display." />
+        <fuse id="10 (F48)" current="20A" type="medium" name="Power window front right." />
+        <fuse id="11 (F47)" current="20A" type="medium" name="Power window front left." />
+        <fuse id="12 (F33)" current="20A" type="medium" name="Power window rear left." />
+        <fuse id="13 (F13)" current="7.5A" type="medium" name="Headlights low beam." />
+        <fuse id="14 (F12)" current="20A" type="medium" name="Headlights low beam." />
         <fuse id="15" current="7.5A" type="medium" name="Headlight high beam." />
         <fuse id="16" current="7.5A" type="medium" name="Headlight high beam." />
+        <fuse id="17" current="7.5A" type="medium" name="Fog lamp left." />
+        <fuse id="18" current="7.5A" type="medium" name="Fog lamp right." />
+        <fuse id="19" current="20A" type="medium" name="Windshield washer pump." />
+        <fuse id="20" current="7.5A" type="medium" name="Control panel." />
+        <fuse id="21" current="10A" type="medium" name="Front courtesy lights. Luggage compartment lights. Door lights. Sunshield. Glove box light." />
+        <fuse id="22" current="10A" type="medium" name="Door control module. Radio. Bluetooth. Climate control. Alarm sensors.  Siren. Diagnostics." />
     </location>
 
     <location name="Power window circuit breaker">
