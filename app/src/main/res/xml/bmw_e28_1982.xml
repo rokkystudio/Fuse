@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E28 (1982) 528e">
     <location name="Power distribution box">
-        <fuse id="1" current="16A" type="cylinder" name="Fuel delivery. Evaporative control. Idle speed control." />
-        <fuse id="2" current="8A" type="cylinder" name="Active check control. Headlights. Right low beam." />
-        <fuse id="3" current="8A" type="cylinder" name="Active check control. Headlights. Left low beam." />
-        <fuse id="4" current="25A" type="cylinder" name="Cigar lighters." />
-        <fuse id="5" current="8A" type="cylinder" name="Active check control. Central locking. Digital clock. Gauges. Glove box light. Ignition key / Seatbelt warning. Interior lights. Turn / Hazard warning lights. Power antenna. Auto-charging flashlight. Trunk light." />
-        <fuse id="6" current="8A" type="cylinder" name="Active check control. Backup lights. Transmission range lights. Brake lining warning. Charging system. Cruise control. Dash lights. Heater / Air conditioner. Idle speed control. Ignition. Interior lights. Power mirrors. Power windows. Seatbelt warning. Speedometer. Start. Warning indicator." />
-        <fuse id="7" current="8A" type="cylinder" name="Headlight. Right high beams." />
-        <fuse id="8" current="8A" type="cylinder" name="Headlight. Left high beams." />
-        <fuse id="9" current="8A" type="cylinder" name="Active check control. Headlights. Fog lights. Dash illumination lights. Front park / Tail / Underhood lights. Rear marker, license lights." />
-        <fuse id="10" current="8A" type="cylinder" name="Active check control. Front park / Front marker / Tail lights." />
-        <fuse id="11" current="16A" type="cylinder" name="Active check control. Horns. Turn / Hazard warning lights. Wiper / Washer." />
-        <fuse id="12" current="8A" type="cylinder" name="Active check control. Radio. Stop lights. Cruise control. Warning indicators." />
-        <fuse id="13" current="25A" type="cylinder" name="Rear defogger. Sunroof." />
-        <fuse id="14" current="25A" type="cylinder" name="Auxiliary fan. Dash lights. Heater / Air conditioner." />
-        <fuse id="15" current="8A" type="cylinder" name="Fog lights (right)." />
-        <fuse id="16" current="8A" type="cylinder" name="Fog lights (left)." />
-        <fuse id="17" current="25A" type="cylinder" name="Auxiliary fan." />
+        <fuse id="1" current="16A" name="Fuel delivery. Evaporative control. Idle speed control." />
+        <fuse id="2" current="8A" name="Active check control. Headlights. Right low beam." />
+        <fuse id="3" current="8A" name="Active check control. Headlights. Left low beam." />
+        <fuse id="4" current="25A" name="Cigar lighters." />
+        <fuse id="5" current="8A" name="Active check control. Central locking. Digital clock. Gauges. Glove box light. Ignition key / Seatbelt warning. Interior lights. Turn / Hazard warning lights. Power antenna. Auto-charging flashlight. Trunk light." />
+        <fuse id="6" current="8A" name="Active check control. Backup lights. Transmission range lights. Brake lining warning. Charging system. Cruise control. Dash lights. Heater / Air conditioner. Idle speed control. Ignition. Interior lights. Power mirrors. Power windows. Seatbelt warning. Speedometer. Start. Warning indicator." />
+        <fuse id="7" current="8A" name="Headlight. Right high beams." />
+        <fuse id="8" current="8A" name="Headlight. Left high beams." />
+        <fuse id="9" current="8A" name="Active check control. Headlights. Fog lights. Dash illumination lights. Front park / Tail / Underhood lights. Rear marker, license lights." />
+        <fuse id="10" current="8A" name="Active check control. Front park / Front marker / Tail lights." />
+        <fuse id="11" current="16A" name="Active check control. Horns. Turn / Hazard warning lights. Wiper / Washer." />
+        <fuse id="12" current="8A" name="Active check control. Radio. Stop lights. Cruise control. Warning indicators." />
+        <fuse id="13" current="25A" name="Rear defogger. Sunroof." />
+        <fuse id="14" current="25A" name="Auxiliary fan. Dash lights. Heater / Air conditioner." />
+        <fuse id="15" current="8A" name="Fog lights (right)." />
+        <fuse id="16" current="8A" name="Fog lights (left)." />
+        <fuse id="17" current="25A" name="Auxiliary fan." />
     </location>
 
     <location name="Power window circuit breaker">
-        <fuse id="~" current="25A" type="medium" name="Power windows." />
+        <fuse current="25A" name="Power windows." />
     </location>
 
     <location name="Inline radio">
-        <fuse id="~" current="1A" type="medium" name="Radio." />
+        <fuse current="1A" name="Radio." />
     </location>
 </fuses>

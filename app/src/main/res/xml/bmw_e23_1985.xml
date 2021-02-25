@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fuses name="BMW E23 (1985) 735i">
     <location name="Power distribution box" src="e23_1985.png">
-        <fuse id="1" current="15A" type="medium" name="Headlights." />
-        <fuse id="2" current="15A" type="medium" name="Headlights." />
-        <fuse id="3" current="15A" type="medium" name="Auxiliary fan." />
-        <fuse id="4" current="15A" type="medium" name="Turn / Hazard warning lights." />
-        <fuse id="5" current="25A" type="medium" name="Wiper / Washer. Windshield washer jet heater." />
-        <fuse id="6" current="7.5A" type="medium" name="Active check control. Stop lights. Cruise control." />
-        <fuse id="7" current="15A" type="medium" name="Horn." />
-        <fuse id="8" current="" type="medium" name="Not used." />
-        <fuse id="9" current="7.5A" type="medium" name="Backup lights. Fuel control." />
-        <fuse id="10" current="7.5A" type="medium" name="Active check control. Brake lining warning. On-board computer. Seatbelt warning. Service interval indicator. Speedometer / Gauges / Warning indicator." />
-        <fuse id="11" current="15A" type="medium" name="Fuel delivery." />
-        <fuse id="12" current="7.5A" type="medium" name="Active check control. On-board computer. Radio. Warning indicators." />
-        <fuse id="13" current="7.5A" type="medium" name="Headlights." />
-        <fuse id="14" current="7.5A" type="medium" name="Headlights." />
-        <fuse id="15" current="" type="medium" name="Not used." />
-        <fuse id="16" current="30A" type="medium" name="Auxiliary fan. Vacuum pump. Heating. Air conditioner." />
-        <fuse id="17" current="15A" type="medium" name="Heating. Air conditioner. Interior lights. Power mirrors. Power windows. Seatbelt warning. Stop lights. Cruise control. Windshield washer jet heaters." />
-        <fuse id="18" current="30A" type="medium" name="Auxiliary fan." />
-        <fuse id="19" current="30A" type="medium" name="Sunroof." />
-        <fuse id="20" current="30A" type="medium" name="Rear defogger." />
-        <fuse id="21" current="7.5A" type="medium" name="Active check control. Auto-charging flashlight. Gauges. Glove box light. Interior lights. On-board computer. Radio. Service interval indicator. Trunk light." />
-        <fuse id="22" current="7.5A" type="medium" name="Active check control. Front park / Tail lights." />
-        <fuse id="23" current="7.5A" type="medium" name="Active check control. Rear defogger. Front park / Tail / Underhood lights. Visor / Dash lights. Rear marker / License lights." />
-        <fuse id="24" current="15A" type="medium" name="Turn / Hazard warning lights." />
-        <fuse id="25" current="" type="medium" name="Not used." />
-        <fuse id="26" current="30A" type="medium" name="Power seats. Power windows." />
-        <fuse id="27" current="30A" type="medium" name="Central locking. Heated door lock. On-board computer." />
-        <fuse id="28" current="30A" type="medium" name="Cigar lighter. Power antenna." />
-        <fuse id="29" current="7.5A" type="medium" name="Fog lights." />
-        <fuse id="30" current="7.5A" type="medium" name="Fog lights." />
+        <fuse id="1" current="15A" name="Headlights." />
+        <fuse id="2" current="15A" name="Headlights." />
+        <fuse id="3" current="15A" name="Auxiliary fan." />
+        <fuse id="4" current="15A" name="Turn / Hazard warning lights." />
+        <fuse id="5" current="25A" name="Wiper / Washer. Windshield washer jet heater." />
+        <fuse id="6" current="7.5A" name="Active check control. Stop lights. Cruise control." />
+        <fuse id="7" current="15A" name="Horn." />
+        <fuse id="8" name="Not used." />
+        <fuse id="9" current="7.5A" name="Backup lights. Fuel control." />
+        <fuse id="10" current="7.5A" name="Active check control. Brake lining warning. On-board computer. Seatbelt warning. Service interval indicator. Speedometer / Gauges / Warning indicator." />
+        <fuse id="11" current="15A" name="Fuel delivery." />
+        <fuse id="12" current="7.5A" name="Active check control. On-board computer. Radio. Warning indicators." />
+        <fuse id="13" current="7.5A" name="Headlights." />
+        <fuse id="14" current="7.5A" name="Headlights." />
+        <fuse id="15" name="Not used." />
+        <fuse id="16" current="30A" name="Auxiliary fan. Vacuum pump. Heating. Air conditioner." />
+        <fuse id="17" current="15A" name="Heating. Air conditioner. Interior lights. Power mirrors. Power windows. Seatbelt warning. Stop lights. Cruise control. Windshield washer jet heaters." />
+        <fuse id="18" current="30A" name="Auxiliary fan." />
+        <fuse id="19" current="30A" name="Sunroof." />
+        <fuse id="20" current="30A" name="Rear defogger." />
+        <fuse id="21" current="7.5A" name="Active check control. Auto-charging flashlight. Gauges. Glove box light. Interior lights. On-board computer. Radio. Service interval indicator. Trunk light." />
+        <fuse id="22" current="7.5A" name="Active check control. Front park / Tail lights." />
+        <fuse id="23" current="7.5A" name="Active check control. Rear defogger. Front park / Tail / Underhood lights. Visor / Dash lights. Rear marker / License lights." />
+        <fuse id="24" current="15A" name="Turn / Hazard warning lights." />
+        <fuse id="25" name="Not used." />
+        <fuse id="26" current="30A" name="Power seats. Power windows." />
+        <fuse id="27" current="30A" name="Central locking. Heated door lock. On-board computer." />
+        <fuse id="28" current="30A" name="Cigar lighter. Power antenna." />
+        <fuse id="29" current="7.5A" name="Fog lights." />
+        <fuse id="30" current="7.5A" name="Fog lights." />
     </location>
 
     <location name="Power window circuit breaker">
-        <fuse id="~" current="25A" type="medium" name="Power windows." />
+        <fuse current="25A" name="Power windows." />
     </location>
 </fuses>

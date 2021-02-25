@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo Giulietta 2012-2019">
+<fuses name="Alfa Romeo Giulietta (Type 940) 2012-2019">
+    <location name="Engine compartment" image="alfa_romeo_giulietta_engine">
+        <fuse id="F09" current="30A"  name="Headlamp washer pump." />
+        <fuse id="F10" current="15A"  name="Horn." />
+    </location>
+
     <location name="On the left under dashboard">
-        <fuse id="1 (F42)" current="5A" type="medium" name="ABS / ESP. Electric power steering." />
-        <fuse id="2" current="7.5A" type="medium" name="Airbag." />
-        <fuse id="3 (F37)" current="7.5A" type="medium" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
-        <fuse id="4 (F51)" current="5A" type="medium" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
-        <fuse id="5 (F49)" current="5A" type="medium" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
-        <fuse id="6 (F31)" current="5A" type="medium" name="Power control module." />
-        <fuse id="7 (F38)" current="20A" type="medium" name="Central locking." />
-        <fuse id="8 (F34)" current="20A" type="medium" name="Power window rear right." />
-        <fuse id="9 (F89)" current="15A" type="medium" name="Navigation display." />
-        <fuse id="10 (F48)" current="20A" type="medium" name="Power window front right." />
-        <fuse id="11 (F47)" current="20A" type="medium" name="Power window front left." />
-        <fuse id="12 (F33)" current="20A" type="medium" name="Power window rear left." />
-        <fuse id="13 (F13)" current="7.5A" type="medium" name="Headlights low beam." />
-        <fuse id="14 (F12)" current="20A" type="medium" name="Headlights low beam." />
-        <fuse id="15" current="7.5A" type="medium" name="Headlight high beam." />
-        <fuse id="16" current="7.5A" type="medium" name="Headlight high beam." />
-        <fuse id="17" current="7.5A" type="medium" name="Fog lamp left." />
-        <fuse id="18" current="7.5A" type="medium" name="Fog lamp right." />
-        <fuse id="19" current="20A" type="medium" name="Windshield washer pump." />
-        <fuse id="20" current="7.5A" type="medium" name="Control panel." />
-        <fuse id="21" current="10A" type="medium" name="Front courtesy lights. Luggage compartment lights. Door lights. Sunshield. Glove box light." />
-        <fuse id="22" current="10A" type="medium" name="Door control module. Radio. Bluetooth. Climate control. Alarm sensors.  Siren. Diagnostics." />
+        <fuse id="1 (F42)" current="5A" name="ABS / ESP. Electric power steering." />
+        <fuse id="2 (F50)" current="7.5A" name="Airbag." />
+        <fuse id="3 (F37)" current="7.5A" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="4 (F51)" current="5A" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="5 (F49)" current="5A" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="6 (F31)" current="5A" name="Power control module." />
+
+        <fuse id="7 (F38)" current="20A" name="Central locking." />
+        <fuse id="8 (F34)" current="20A" name="Power window rear right." />
+        <fuse id="9 (F89)" current="15A" name="Navigation display." />
+        <fuse id="10 (F48)" current="20A" name="Power window front right." />
+        <fuse id="11 (F47)" current="20A" name="Power window front left." />
+        <fuse id="12 (F33)" current="20A" name="Power window rear left." />
+
+        <fuse id="13 (F13)" current="7.5A" name="Halogen headlights low beam left." />
+        <fuse id="13 (F13)" current="15A" name="Xenon headlights low beam left." />
+
+        <fuse id="14 (F12)" current="7.5A" name="Halogen headlights low beam right." />
+        <fuse id="14 (F12)" current="15A" name="Xenon headlights low beam right." />
+
+        <fuse id="15 (F90)" current="7.5A" name="Headlight high beam." />
+        <fuse id="16 (F91)" current="7.5A" name="Headlight high beam." />
+        <fuse id="17 (F92)" current="7.5A" name="Fog lamp left." />
+        <fuse id="18 (F93)" current="7.5A" name="Fog lamp right." />
+        <fuse id="19 (F43)" current="20A" name="Windshield washer pump." />
+        <fuse id="20 (F53)" current="7.5A" name="Control panel." />
+        <fuse id="21 (F32)" current="10A" name="Front courtesy lights. Luggage compartment lights. Door lights. Sunshield. Glove box light." />
+        <fuse id="22 (F36)" current="10A" name="Door control module. Radio. Bluetooth. Climate control. Alarm sensors.  Siren. Diagnostics." />
     </location>
 
     <location name="Power window circuit breaker">
-        <fuse id="~" current="25A" type="medium" name="Power windows." />
+        <fuse current="25A" name="Power windows." />
     </location>
 </fuses>
