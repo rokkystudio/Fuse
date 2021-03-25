@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo 4C 2017-2019">
+    <location name="Engine compartment">
+        <image name="Fuse box location" src="alfa_romeo/4c/2017_2019/engine_location.jpg" />
+
+        <fuse id="F01" current="70A" name="Body controller." />
+        <fuse id="F03" current="20A" name="Ignition switch." />
+        <fuse id="F04" current="40A" name="Anti-Lock brake pump" />
+        <fuse id="F05" current="20A" name="Anti-Lock brake valve." />
+        <fuse id="F06" current="40A" name="Radiator fan (low speed)." />
+        <fuse id="F07" current="50A" name="Radiator fan (high speed)." />
+        <fuse id="F08" current="20A" name="Blower motor." />
+
+        <fuse id="F09" current="5A" name="Headlight beam switch." />
+        <fuse id="F10" current="10A" name="Horn." />
+        <fuse id="F11" current="20A" name="Powertrain." />
+        <fuse id="F14" current="15A" name="Alfa twin clutch transmission." />
+        <fuse id="F15" current="15A" name="Alfa twin clutch transmission." />
+        <fuse id="F16" current="5A" name="Alfa twin clutch transmission. ECM." />
+        <fuse id="F17" current="10A" name="Powertrain." />
+        <fuse id="F18" current="5A" name="Powertrain." />
+        <fuse id="F19" current="7.5A" name="Air conditioning compressor." />
+        <fuse id="F21" current="20A" name="Fuel Pump." />
+        <fuse id="F22" current="20A" name="Engine control unit power supply." />
+        <fuse id="F24" current="5A" name="Anti-Lock brake system (ABS)." />
+        <fuse id="F30" current="10A" name="Water pump. HVAC." />
+        <fuse id="F82" current="30A" name="Headlamp washer." />
+        <fuse id="F83" current="40A" name="Alfa twin clutch transmission pump." />
+        <fuse id="F84" current="5A" name="After run pump." />
+        <fuse id="F86" current="15A" name="Rear power outlet." />
+        <fuse id="F88" current="7.5A" name="Heated Mirrors." />
+    </location>
+
+    <location name="Dashboard fuse box">
+        <fuse id="F53 (3)" current="7.5A" name="Instrument panel node." />
+        <fuse id="F38 (4)" current="15A" name="Central door locking." />
+        <fuse id="F36 (5)" current="10A" name="Diagnostic socket. Vehicle radio. TPMS. Alarm." />
+        <fuse id="F43 (6)" current="20A" name="Bi-directional washer." />
+        <fuse id="F48 (7)" current="20A" name="Passenger power window." />
+        <fuse id="F50 (9)" current="7.5A" name="Airbag." />
+        <fuse id="F51 (10)" current="7.5A" name="Headlamp washer relay. A/C compressor relay. High beam relay. Parking ECU. Vehicle radio. Stop lamp switch." />
+        <fuse id="F37 (11)" current="7.5A" name="Stop light switch. Instrument panel node." />
+        <fuse id="F49 (12)" current="5A" name="Transmission shifter module. Cigar lighter light. Drive style unit. Heated mirrors relay." />
+        <fuse id="F31 (13)" current="5A" name="Climate control. Body controller." />
+        <fuse id="F47 (14)" current="20A" name="Driver power window." />
+    </location>
+</fuses>

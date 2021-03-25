@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo Giulietta 2012-2019">
+    <location name="Engine compartment">
+        <image name="Fuse box location" src="alfa_romeo/giulietta/2012_2019/engine_location.jpg" />
+        <image name="Fuse box diagram" src="alfa_romeo/giulietta/2012_2019/engine_diagram.jpg" />
+
+        <fuse id="F09" current="30A" name="Headlamp washer pump power supply." />
+        <fuse id="F10" current="15A" name="Horn." />
+        <fuse id="F19" current="7.5A" name="AC compressor." />
+        <fuse id="F20" current="30A" name="Heated rear window." />
+        <fuse id="F21" current="15A" name="Fuel pump." />
+        <fuse id="F85" current="15A" name="Cigar lighter. Power socket." />
+        <fuse id="F86" current="15A" name="Boot power socket." />
+        <fuse id="F87" current="5A" name="IBS battery charge status sensor for Start&amp;Stop system." />
+        <fuse id="F88" current="7.5A" name="External mirror defogger." />
+    </location>
+
+    <location name="Dashboard fuse box (Left-hand drive)">
+        <image name="Fuse box location" src="alfa_romeo/giulietta/2012_2019/left_dashboard_location.jpg" />
+        <image name="Fuse box diagram" src="alfa_romeo/giulietta/2012_2019/left_dashboard_diagram.jpg" />
+
+        <fuse id="F42 (1)" current="5A" name="Body computer supply." />
+        <fuse id="F50 (2)" current="7.5A" name="Airbag." />
+        <fuse id="F37 (3)" current="7.5A" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="F51 (4)" current="5A" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="F49 (5)" current="5A" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="F31 (6)" current="5A" name="Power control module." />
+        <fuse id="F38 (7)" current="20A" name="Central locking." />
+        <fuse id="F34 (8)" current="20A" name="Power window rear right." />
+        <fuse id="F89 (9)" current="15A" name="Navigation display." />
+        <fuse id="F48 (10)" current="20A" name="Power window front right." />
+        <fuse id="F47 (11)" current="20A" name="Power window front left." />
+        <fuse id="F33 (12)" current="20A" name="Power window rear left." />
+        <fuse id="F13 (13)" current="7.5A" name="Halogen headlights low beam left." />
+        <fuse id="F13 (13)" current="15A" name="Xenon headlights low beam left." />
+        <fuse id="F12 (14)" current="7.5A" name="Halogen headlights low beam right." />
+        <fuse id="F12 (14)" current="15A" name="Xenon headlights low beam right." />
+        <fuse id="F90 (15)" current="7.5A" name="Headlight high beam left." />
+        <fuse id="F91 (16)" current="7.5A" name="Headlight high beam right." />
+        <fuse id="F92 (17)" current="7.5A" name="Fog lamp left." />
+        <fuse id="F93 (18)" current="7.5A" name="Fog lamp right." />
+        <fuse id="F43 (19)" current="20A" name="Windshield washer pump." />
+        <fuse id="F53 (20)" current="7.5A" name="Control panel." />
+        <fuse id="F32 (21)" current="10A" name="Front courtesy lights. Luggage compartment lights. Door lights. Sunshield. Glove box light." />
+        <fuse id="F36 (22)" current="10A" name="Door control module. Radio. Bluetooth. Climate control. Alarm sensors. Siren. Diagnostics." />
+    </location>
+
+    <location name="Dashboard fuse box (Right-hand drive)">
+        <image name="Fuse box location" src="alfa_romeo/giulietta/2012_2019/right_dashboard_location.jpg" />
+        <image name="Fuse box diagram" src="alfa_romeo/giulietta/2012_2019/right_dashboard_diagram.jpg" />
+
+        <fuse id="F42 (1)" current="5A" name="Body computer supply." />
+        <fuse id="F50 (2)" current="7.5A" name="Airbag." />
+        <fuse id="F37 (3)" current="7.5A" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
+        <fuse id="F51 (4)" current="5A" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />
+        <fuse id="F49 (5)" current="5A" name="Power mirrors. Lighting control. Sunroof. Power seats. Climate control module. Sensors." />
+        <fuse id="F31 (6)" current="5A" name="Power control module." />
+        <fuse id="F38 (7)" current="20A" name="Central locking." />
+        <fuse id="F34 (8)" current="20A" name="Power window rear right." />
+        <fuse id="F89 (9)" current="15A" name="Navigation display." />
+        <fuse id="F48 (10)" current="20A" name="Power window front right." />
+        <fuse id="F47 (11)" current="20A" name="Power window front left." />
+        <fuse id="F33 (12)" current="20A" name="Power window rear left." />
+        <fuse id="F13 (13)" current="7.5A" name="Halogen headlights low beam left." />
+        <fuse id="F13 (13)" current="15A" name="Xenon headlights low beam left." />
+        <fuse id="F12 (14)" current="7.5A" name="Halogen headlights low beam right." />
+        <fuse id="F12 (14)" current="15A" name="Xenon headlights low beam right." />
+        <fuse id="F90 (15)" current="7.5A" name="Headlight high beam left." />
+        <fuse id="F91 (16)" current="7.5A" name="Headlight high beam right." />
+        <fuse id="F92 (17)" current="7.5A" name="Fog lamp left." />
+        <fuse id="F93 (18)" current="7.5A" name="Fog lamp right." />
+        <fuse id="F43 (19)" current="20A" name="Windshield washer pump." />
+        <fuse id="F53 (20)" current="7.5A" name="Control panel." />
+        <fuse id="F32 (21)" current="10A" name="Front courtesy lights. Luggage compartment lights. Door lights. Sunshield. Glove box light." />
+        <fuse id="F36 (22)" current="10A" name="Door control module. Radio. Bluetooth. Climate control. Alarm sensors. Siren. Diagnostics." />
+    </location>
+
+    <location name="Luggage compartment">
+        <image name="Fuse box diagram" src="alfa_romeo/giulietta/2012_2019/luggage_diagram.jpg" />
+
+        <fuse id="F1" current="15A" name="Left front seat movement." />
+        <fuse id="F2" current="15A" name="Right front seat movement." />
+        <fuse id="F3" current="15A" name="Electric sun roof." />
+        <fuse id="F4" current="15A" name="Lumbar adjustment devices." />
+        <fuse id="F5" current="15A" name="Front seat heating." />
+        <fuse id="F6" current="20A" name="Bose amplifier. Subwoofer." />
+    </location>
+</fuses>

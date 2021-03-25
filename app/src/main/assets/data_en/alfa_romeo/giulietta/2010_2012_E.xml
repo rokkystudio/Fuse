@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo Giulietta (Type 940) 2010-2012">
-    <location name="On the left under dashboard">
-        <fuse id="1 (F42)" current="5A" name="ABS / ESP. Electric power steering." />
+<fuses name="Alfa Romeo Giulietta 2010-2012">
+    <location name="Engine compartment">
+        <image name="Fuse box diagram" src="alfa_romeo/giulietta/2010_2012/engine_diagram.jpg" />
+
+        <fuse id="F09" current="30A" name="Headlamp washer pump power supply." />
+        <fuse id="F10" current="15A" name="Horn." />
+        <fuse id="F19" current="7.5A" name="AC compressor." />
+        <fuse id="F20" current="30A" name="Heated rear window." />
+        <fuse id="F21" current="15A" name="Fuel pump." />
+        <fuse id="F85" current="15A" name="Cigar lighter. Power socket." />
+    </location>
+
+    <fuse id="F86" current="15A" name="Boot power socket." />
+    <fuse id="F87" current="5A" name="IBS battery charge status sensor for Start&amp;Stop system." />
+    <fuse id="F88" current="7.5A" name="External mirror defogger." />
+
+    <location name="Engine compartment">
+        <fuse id="F42 (1)" current="5A" name="Body computer supply." />
+
+        // TODO https://www.autogenius.info/alfa-romeo-giulietta-2010-2013-fuse-box-diagram/
+
+
+
+
         <fuse id="2 (F50)" current="7.5A" name="Airbag." />
         <fuse id="3 (F37)" current="7.5A" name="Headlight control module. Control panel. Brake light switch. Seat belt warning." />
         <fuse id="4 (F51)" current="5A" name="Power control module. Headlight control module. Brake light switch. Clutch pedal switch. Parking sensor. Voltage regulator. Radio. Bluetooth. Navigation display. Brake pressure sensor. Climate control module. Air quality sensor." />

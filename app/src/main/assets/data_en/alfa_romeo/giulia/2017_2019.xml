@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo Giulia 2017-2019">
+    <location name="Fuse box under passenger side footboard">
+        <image name="Fuse box location" src="alfa_romeo/giulia/footboard_location.jpg" />
+        <image name="Fuse box diagram" src="alfa_romeo/giulia/footboard_diagram.jpg" />
+
+        <fuse id="F33" current="25A" name="Front power window (driver side)." />
+        <fuse id="F34" current="25A" name="Front power window (passenger side)." />
+        <fuse id="F36" current="15A" name="Supply for connect system (Information and entertainment system). Climate control system. Alarm. Power door mirror folding. EOBD system. USB port." />
+        <fuse id="F38" current="20A" name="Safe lock device (Driver side door unlock). Doors unlock. Central lock." />
+        <fuse id="F43" current="20A" name="Windshield washer pump." />
+        <fuse id="F47" current="25A" name="Rear left power window." />
+        <fuse id="F48" current="25A" name="Rear right power window." />
+        <fuse id="F94" current="15A" name="Heater rear window coil. Cigar lighter." />
+    </location>
+
+    <location name="Luggage Compartment Fuse Box">
+        <image name="Fuse box location" src="alfa_romeo/giulia/luggage_location.jpg" />
+        <image name="Fuse box diagram" src="alfa_romeo/giulia/luggage_diagram.jpg" />
+
+        <fuse id="F1" current="40A" name="Tow hook module (TTM)." />
+        <fuse id="F8" current="30A" name="Hi-Fi system." />
+        <fuse id="F17" current="7.5A" name="KL15/a USB Recharge (C070)." />
+        <fuse id="F21" current="10A" name="I-Drive. USB. AUX." />
+        <fuse id="F22" current="20A" name="KL15/a 12V Power outlet (R053)." />
+    </location>
+
+</fuses>
