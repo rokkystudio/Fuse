@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="Alfa Romeo MiTo 2014">
+    <location name="Engine compartment">
+        <image name="Fuse box diagram" src="alfa_romeo/mito/2014/engine_diagram.jpg" />
+
+        <fuse id="F03" current="20A" name="Starter." />
+        <fuse id="F08" current="40A" name="Passenger electric fan." />
+        <fuse id="F09" current="5A" name="Additional heater." />
+        <fuse id="F10" current="15A" name="Two-tone horns." />
+        <fuse id="F14" current="15A" name="Main beam headlights." />
+        <fuse id="F15" current="30" name="Additional heater (PTC 1)." />
+        <fuse id="F19" current="7.5A" name="Air conditioning compressor." />
+        <fuse id="F20" current="30A" name="Heated rear windscreen. Defrosting system." />
+        <fuse id="F21" current="15A" name="Fuel pump." />
+        <fuse id="F30" current="15A" name="Fog lights." />
+        <fuse id="F81" current="60A" name="Additional heater (PTC2)." />
+        <fuse id="F82" current="40A" name="Additional heater (PTC1)." />
+        <fuse id="F82" current="50A" name="Additional heater (PTC2)." />
+        <fuse id="F83" current="" name="Not used." />
+        <fuse id="F84" current="20A" name="Hi-Fi sound system." />
+        <fuse id="F85" current="15A" name="Power socket on tunnel." />
+        <fuse id="F87" current="7.5A" name="Mirror heater. Windscreen jets heater. Windscreen heater relay." />
+    </location>
+
+    <location name="Dashboard fuse box">
+        <image name="Fuse box diagram" src="alfa_romeo/mito/2014/dashboard_diagram.jpg" />
+
+        <fuse id="F12" current="7.5A" name="Right dipped beam headlight." />
+        <fuse id="F13" current="7.5A" name="Left dipped beam headlight." />
+        <fuse id="F13" current="7.5A" name="Headlight alignment adjustment system." />
+        <fuse id="F32" current="5A" name="Front roof light. Luggage compartment roof light. Sun visor courtesy light. Door puddle lights. Glove compartment light." />
+        <fuse id="F36" current="10A" name="Radio. Sound system. Climate control. Alarm system. Volumetric system. EOBD diagnosis socket. Tyre pressure monitoring." />
+        <fuse id="F37" current="5A" name="Instrument panel. Brake light switch." />
+        <fuse id="F38" current="15A" name="Door lock motor. Safe lock door motor. Tailgate unlocking motor." />
+        <fuse id="F43" current="20A" name="Windscreen / Rear window washer pump." />
+        <fuse id="F47" current="20A" name="Electric window (driver side)." />
+        <fuse id="F48" current="20A" name="Electric window (passenger side)." />
+        <fuse id="F49" current="5A" name="Parking sensor. Rain sensor. Dusk sensor. Electrochromic mirror. Seat belts warning light. Lighting / Central / Driver / Steering wheel control panel. Front seats heater. Volumetric sensor. Sunroof." />
+        <fuse id="F51" current="5A" name="Clutch switch. Brake light switch. Engine module relay. Climate control module. Flow meter. Water presence in diesel sensor. Radio." />
+        <fuse id="F53" current="5A" name="Instrument panel." />
+    </location>
+
+    <location name="Luggage compartment">
+        <image name="Fuse box diagram" src="alfa_romeo/mito/2014/luggage_diagram.jpg" />
+
+        <fuse id="F1" current="20A" name="Electric roof opening system." />
+        <fuse id="F3" current="15A" name="Luggage compartment power socket." />
+        <fuse id="F6" current="15A" name="Front seat heater." />
+    </location>
+</fuses>
