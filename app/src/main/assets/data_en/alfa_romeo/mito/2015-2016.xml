@@ -35,7 +35,7 @@
         <fuse id="F47" current="20A" name="Electric window (driver side)." />
         <fuse id="F48" current="20A" name="Electric window (passenger side)." />
         <fuse id="F49" current="5A" name="Parking sensor. Rain sensor. Dusk sensor. Electrochromic mirror. Soft top. Control lighting. Tyre pressure monitoring. Cigar lighter. SBR system panel." />
-        <fuse id="F51" current="5A" name="Climate control module. Radio. Bluetooth. Brake light switch. Clutch switch. Reverse switch. Flow meter. Water presence in diesel sensor." />
+        <fuse id="F51" current="5A" name="Climate control module. Radio. Bluetooth. Brake light switch. Clutch switch. Reverse gear switch. Airflow meter. Water presence in diesel sensor." />
         <fuse id="F53" current="5A" name="Instrument panel." />
     </location>
 
