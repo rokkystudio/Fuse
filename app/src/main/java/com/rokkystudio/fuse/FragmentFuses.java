@@ -9,17 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.InputStream;
+
 public class FragmentFuses extends Fragment
 {
-    private static final String XML_RESOURCE = "XML_RESOURCE";
+    private static final String XML_FILENAME = "XML_FILENAME";
     private View mRootView = null;
     private FuseLayout mFuseLayout = null;
-    private int mResourse = 0;
+    private String mXmlFileName = "";
 
-    public static FragmentFuses newInstance(int resource) {
+    public static FragmentFuses newInstance(String filename) {
         FragmentFuses fragment = new FragmentFuses();
         Bundle args = new Bundle();
-        args.putInt(XML_RESOURCE, resource);
+        args.putString(XML_FILENAME, filename);
         fragment.setArguments(args);
         return fragment;
     }
@@ -32,7 +34,7 @@ public class FragmentFuses extends Fragment
         setHasOptionsMenu(true);
 
         if (getArguments() != null) {
-            mResourse = getArguments().getInt(XML_RESOURCE);
+            mXmlFileName = getArguments().getString(XML_FILENAME);
         }
     }
 
@@ -41,7 +43,7 @@ public class FragmentFuses extends Fragment
         if (mRootView != null) return mRootView;
         mRootView = inflater.inflate(R.layout.fragment_fuses, container, false);
         mFuseLayout = mRootView.findViewById(R.id.FuseTable);
-        mFuseLayout.loadXml(mResourse);
+        mFuseLayout.loadXml(mXmlFileName);
         return mRootView;
     }
 }

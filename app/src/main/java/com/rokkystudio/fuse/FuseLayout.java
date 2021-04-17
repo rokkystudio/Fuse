@@ -144,29 +144,29 @@ public class FuseLayout extends ScrollView
         {
             switch (current) {
                 case "1A":
-                    return R.drawable.medium_1a;
+                    return R.drawable.fuse_1a;
                 case "2A":
-                    return R.drawable.medium_2a;
+                    return R.drawable.fuse_2a;
                 case "3A":
-                    return R.drawable.medium_3a;
+                    return R.drawable.fuse_3a;
                 case "5A":
-                    return R.drawable.medium_5a;
+                    return R.drawable.fuse_5a;
                 case "7.5A":
-                    return R.drawable.medium_7_5a;
+                    return R.drawable.fuse_7_5a;
                 case "10A":
-                    return R.drawable.medium_10a;
+                    return R.drawable.fuse_10a;
                 case "15A":
-                    return R.drawable.medium_15a;
+                    return R.drawable.fuse_15a;
                 case "20A":
-                    return R.drawable.medium_20a;
+                    return R.drawable.fuse_20a;
                 case "25A":
-                    return R.drawable.medium_25a;
+                    return R.drawable.fuse_25a;
                 case "30A":
-                    return R.drawable.medium_30a;
+                    return R.drawable.fuse_30a;
                 case "40A":
-                    return R.drawable.medium_40a;
+                    return R.drawable.fuse_40a;
                 case "50A":
-                    return R.drawable.medium_50a;
+                    return R.drawable.fuse_50a;
             }
         }
         return 0;

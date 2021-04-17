@@ -20,7 +20,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:padding="@dimen/table_padding"
-        android:src="@drawable/medium_40a"
+        android:src="@drawable/fuse_40a"
     />
 
     <TextView

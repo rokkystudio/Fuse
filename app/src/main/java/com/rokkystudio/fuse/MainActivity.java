@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         getSupportFragmentManager().beginTransaction()
-            .add(R.id.MainFrame, FragmentFuses.newInstance(R.xml.bmw_e39_old))
+            .add(R.id.MainFrame, FragmentFuses.newInstance("bmw/e39_old.xml"))
             .commit();
     }
 }
