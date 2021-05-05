@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/LocationWrapper">
 
-    <TextView
-        android:id="@+id/FuseLocation"
+    <LinearLayout
+        android:id="@+id/LocationHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/table_padding"
-        android:textAlignment="center"
-        android:background="#FFCCCCCC"
-        android:textSize="@dimen/location_size"
-    />
+        android:orientation="horizontal"
+        android:background="#FFCCCCCC">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/CollapseArrow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow_up"/>
+
+        <TextView
+            android:id="@+id/FuseLocation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/table_padding"
+            android:textAlignment="center"
+            android:textSize="@dimen/location_size"
+        />
+
+    </LinearLayout>
+</LinearLayout>

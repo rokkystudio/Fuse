@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fuses name="BMW E39 (1996-1998)">
+    <location name="Glove box">
+        <image src="images/bmw/e39/1996_1998/glovebox_diagram.png" />
+
+        <fuse id="1" current="30A" name="Wiper relay." />
+        <fuse id="2" current="30A" name="Headlight washer module." />
+        <fuse id="3" current="30A" name="Horn relay." />
+        <fuse id="4" current="30A" name="General module (ZKE)." />
+        <fuse id="5" current="20A" name="Sunroof module (SHD)." />
+        <fuse id="6" current="30A" name="Front passenger door lock switch. Passenger door module (PM-BT)." />
+        <fuse id="7" current="20A" name="Auxiliary fan relay." />
+        <fuse id="8" current="25A" name="ABS/ASC module." />
+        <fuse id="9" current="15A" name="Heating / Air conditioner module (IHR/IHKA)." />
+        <fuse id="10" current="30A" name="Front passenger seat adjustment." />
+        <fuse id="11" current="7.5A" name="General module (ZKE)." />
+        <fuse id="12" current="5A" name="Electronic drive-away protection control module (EWS)." />
+        <fuse id="13" current="30A" name="Driver seat / steering column adjustment. Seat / steering column memory (SM/LSM)." />
+        <fuse id="14" current="5A" name="Engine module (DME/DDE)." />
+        <fuse id="15" current="7.5A" name="Generator. Oil level sensor. Temperature switch. Transmission range switch. Diagnostic socket." />
+        <fuse id="16" current="5A" name="Light module (LCM)." />
+        <fuse id="17" current="10A" name="ASC/DSC switch. ASC/DSC module. Fuel pump relay (M51)." />
+        <fuse id="18" current="5A" name="Instrument cluster (KOMBI/IKE)." />
+        <fuse id="19" current="5A" name="Heating / Air conditioner module (IHR/IHKA). Rear defogger relay. Auxiliary fan relay." />
+        <fuse id="20" current="5A" name="Heating / Air conditioner module (IHR/IHKA). Rear defogger relay. Auxiliary fan relay." />
+        <fuse id="21" current="5A" name="Electrochromic rear view mirror. Closed-circuit current cut-off relay. Terminal control relay (JP). Garage door opener (USA). Park distance module (PDC). Cigar lighter relay." />
+        <fuse id="22" current="30A" name="Auxiliary fan relay." />
+        <fuse id="23" current="5A" name="Heating / Air conditioner module (IHR/IHKA)." />
+        <fuse id="24" current="5A" name="Instrument cluster (KOMBI/IKE). Transmission range indicator. Steering angle sensor." />
+        <fuse id="25" current="7.5A" name="Multi-information display (MID). Integrated radio information system (IRIS). OBD II (USA)." />
+        <fuse id="26" current="5A" name="Wiper relays." />
+        <fuse id="27" current="30A" name="General module (ZKE)." />
+        <fuse id="28" current="30A" name="Blower relay." />
+        <fuse id="29" current="30A" name="Driver door lock switch. Driver door module (PM-FT)." />
+        <fuse id="30" current="25A" name="ABS valve relay." />
+        <fuse id="31" current="10A" name="ASC/DSC switch. ASC/DSC module. Fuel pump relay. Fuel changeover circuit. Leakage diagnosis pump. Secondary air injection pump relay. Fuel tank vent valve. Steering angle sensor." />
+        <fuse id="32" current="15A" name="Driver and passenger seat heater. Heater switch." />
+        <fuse id="33" current="" name="Not used." />
+        <fuse id="34" current="10A" name="Steering wheel heater." />
+        <fuse id="35" current="" name="Not used." />
+        <fuse id="36" current="" name="Not used." />
+        <fuse id="37" current="5A" name="Electronic drive-away protection control (EWS). Transmit / receive module (EWS)." />
+        <fuse id="38" current="5A" name="General module (ZKE). Instrument cluster (KOMBI/IKE). Horn relay. Diagnostic socket. Transmission range indicator. Rain sensor. Switch for shiftlock." />
+        <fuse id="39" current="7.5A" name="Driver and passenger makeup mirror light. Charging socket." />
+        <fuse id="40" current="5A" name="Instrument cluster (KOMBI/IKE). Seat load assembly. Seats belt switch. Airbag left / right front sensor." />
+        <fuse id="41" current="5A" name="Light module (LCM). Brake light switch." />
+        <fuse id="42" current="5A" name="Supplemental restraint system (SRS)." />
+        <fuse id="43" current="5A" name="Unloader relay." />
+        <fuse id="44" current="5A" name="Multifunction steering wheel (MFL). Multi-information display (MID). Integrated radio information system (IRIS)." />
+        <fuse id="45" current="7.5A" name="Sun blind switch." />
+    </location>
+
+    <location name="Luggage compartment">
+        <image src="images/bmw/e39/1996_1998/luggage_diagram.png" />
+
+        <fuse id="46" current="15A" name="Park heating relay." />
+        <fuse id="47" current="15A" name="Independent heating. Independent heating receiver." />
+        <fuse id="48" current="5A" name="Electronic rear view mirror. Interior protection. Tilt sensor. Anti-theft horn (DWA)." />
+        <fuse id="49" current="30A" name="Rear defogger relay. Air suspension compressor relay." />
+        <fuse id="50" current="7.5A" name="Air suspension module." />
+        <fuse id="51" current="30A" name="Air suspension compressor relay." />
+        <fuse id="52" current="30A" name="Cigar lighter relay." />
+        <fuse id="53" current="5A" name="Antenna amplifier. Remote central locking. Fuel tank flap relay. Lift gate switch. Rear lid / window motor relay." />
+        <fuse id="54" current="15A" name="Fuel pump relay." />
+        <fuse id="55" current="20A" name="Rear intermittent wipe / wash module." />
+        <fuse id="56" current="30A" name="On-board monitor. Radio. Video. CD. Amplifier. Navigation. GPS." />
+        <fuse id="57" current="10A" name="Transceiver / charging electronics. Compensator." />
+        <fuse id="58" current="10A" name="Unloader relay." />
+        <fuse id="59" current="5A" name="Cigar lighter relay. Trailer connector." />
+        <fuse id="60" current="15A" name="Electronic shock absorber (EDC). EDC switch." />
+        <fuse id="61" current="5A" name="Park distance module (PDC)." />
+        <fuse id="62" current="" name="Not used." />
+        <fuse id="63" current="7.5A" name="Radio relay. Loud alarm relay. Transparency relay. Alarm control unit." />
+        <fuse id="64" current="30A" name="Radio. CD changer. Amplifier. On-board monitor. Video module. Navigation control module. GPS receiver." />
+        <fuse id="65" current="10A" name="Transceiver / charging electronics." />
+        <fuse id="66" current="10A" name="Unloader relay. Rear defogger relay." />
+    </location>
+</fuses>

@@ -1,5 +1,6 @@
 package com.rokkystudio.fuse;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,20 +10,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.InputStream;
+import com.rokkystudio.fuse.views.DiagramView;
+import com.rokkystudio.fuse.views.FuseLayout;
 
-public class FragmentFuses extends Fragment
+public class FragmentFuses extends Fragment implements DiagramView.OnDiagramClickListener
 {
     private static final String XML_FILENAME = "XML_FILENAME";
     private View mRootView = null;
     private FuseLayout mFuseLayout = null;
     private String mXmlFileName = "";
+    private DiagramView.OnDiagramClickListener mOnDiagramClickListener = null;
 
+    @NonNull
     public static FragmentFuses newInstance(String filename) {
         FragmentFuses fragment = new FragmentFuses();
-        Bundle args = new Bundle();
-        args.putString(XML_FILENAME, filename);
-        fragment.setArguments(args);
+        Bundle bundle = new Bundle();
+        bundle.putString(XML_FILENAME, filename);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -44,6 +48,24 @@ public class FragmentFuses extends Fragment
         mRootView = inflater.inflate(R.layout.fragment_fuses, container, false);
         mFuseLayout = mRootView.findViewById(R.id.FuseTable);
         mFuseLayout.loadXml(mXmlFileName);
+        mFuseLayout.setOnDiagramClickListener(this);
         return mRootView;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context)
+    {
+        super.onAttach(context);
+
+        try {
+            mOnDiagramClickListener = (DiagramView.OnDiagramClickListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnDiagramClickListener");
+        }
+    }
+
+    @Override
+    public void onDiagramClick(String filename) {
+        mOnDiagramClickListener.onDiagramClick(filename);
     }
 }
