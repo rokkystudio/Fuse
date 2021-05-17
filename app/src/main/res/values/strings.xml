@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">FUSE</string>
     <string name="language">en</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="MenuPrint">Print</string>
+    <string name="MenuSave">Save</string>
+    <string name="MenuNew">New</string>
+    <string name="MenuEdit">Edit</string>
+    <string name="MenuDelete">Delete</string>
+    <string name="MenuFavorite">Favorite</string>
 </resources>

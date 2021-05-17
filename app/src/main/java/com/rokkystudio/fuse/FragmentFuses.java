@@ -7,6 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -62,6 +65,20 @@ public class FragmentFuses extends Fragment implements DiagramView.OnDiagramClic
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() + " must implement OnDiagramClickListener");
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        menu.findItem(R.id.MenuFavoriteDisabled).setVisible(true);
+        menu.findItem(R.id.MenuPrint).setVisible(true);
+        menu.findItem(R.id.MenuNew).setVisible(true);
+        menu.findItem(R.id.MenuEdit).setVisible(true);
     }
 
     @Override

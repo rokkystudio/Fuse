@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/MenuFavorite"
+        android:icon="@drawable/menu_favorite"
+        android:title="@string/MenuFavorite"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/MenuFavoriteDisabled"
+        android:icon="@drawable/menu_favorite_disabled"
+        android:title="@string/MenuFavorite"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/MenuSave"
+        android:icon="@drawable/menu_save"
+        android:title="@string/MenuSave"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/MenuPrint"
+        android:icon="@drawable/menu_print"
+        android:title="@string/MenuPrint"
+        android:visible="false"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/MenuNew"
+        android:icon="@drawable/menu_new"
+        android:title="@string/MenuNew"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/MenuEdit"
+        android:icon="@drawable/menu_edit"
+        android:title="@string/MenuEdit"
+        android:visible="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/MenuDelete"
+        android:icon="@drawable/menu_delete"
+        android:title="@string/MenuDelete"
+        android:visible="false"
+        app:showAsAction="never" />
+</menu>
