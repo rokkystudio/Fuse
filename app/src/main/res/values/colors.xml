@@ -7,4 +7,34 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="fuse_1a">#FF111111</color>
+    <color name="fuse_2a">#FF666666</color>
+    <color name="fuse_3a">#FF8833AA</color>
+    <color name="fuse_5a">#FFFF9900</color>
+    <color name="fuse_7_5a">#FF995500</color>
+    <color name="fuse_10a">#FFCC2222</color>
+    <color name="fuse_15a">#FF006699</color>
+    <color name="fuse_20a">#FFCCCC00</color>
+    <color name="fuse_25a">#FFAAAAAA</color>
+    <color name="fuse_30a">#FF00AA00</color>
+    <color name="fuse_40a">#FFDD6600</color>
+    <color name="fuse_50a">#FFDD0055</color>
+    <color name="fuse_60a">#FF00CCDD</color>
+    <color name="fuse_70a">#FF992200</color>
+
+    <color name="bg_1a">#FF777777</color>
+    <color name="bg_2a">#FFAAAAAA</color>
+    <color name="bg_3a">#FFBBAAFF</color>
+    <color name="bg_5a">#FFFFEEAA</color>
+    <color name="bg_7_5a">#FFEECC88</color>
+    <color name="bg_10a">#FFFFCCCC</color>
+    <color name="bg_15a">#FFBBEEFF</color>
+    <color name="bg_20a">#FFFFFFCC</color>
+    <color name="bg_25a">#FFFFFFFF</color>
+    <color name="bg_30a">#FFDDFFDD</color>
+    <color name="bg_40a">#FFFFEE99</color>
+    <color name="bg_50a">#FFFF77DD</color>
+    <color name="bg_60a">#FFAACCFF</color>
+    <color name="bg_70a">#FFFFCC55</color>
 </resources>

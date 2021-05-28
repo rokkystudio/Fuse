@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.rokkystudio.fuse.views.DiagramView;
+import com.rokkystudio.fuse.menu.MenuFragment;
 
 public class MainActivity extends AppCompatActivity implements DiagramView.OnDiagramClickListener
 {
@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements DiagramView.OnDia
         if (savedInstanceState != null) return;
 
         getSupportFragmentManager().beginTransaction()
-            .add(R.id.MainFrame, FragmentFuses.newInstance("bmw/e39_1996_1998.xml"))
+            .add(R.id.MainFrame, MenuFragment.newInstance("menu.xml"))
             .commit();
     }
 

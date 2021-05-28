@@ -9,8 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rokkystudio.fuse.views.DiagramView;
-
 public class FragmentDiagram extends Fragment
 {
     private static final String DIAGRAM_FILENAME = "DIAGRAM_FILENAME";

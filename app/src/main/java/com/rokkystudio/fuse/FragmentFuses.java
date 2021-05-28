@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse;
+    package com.rokkystudio.fuse;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.rokkystudio.fuse.views.DiagramView;
-import com.rokkystudio.fuse.views.FuseLayout;
+import com.rokkystudio.fuse.xml.FuseLayout;
 
-public class FragmentFuses extends Fragment implements DiagramView.OnDiagramClickListener
+    public class FragmentFuses extends Fragment implements DiagramView.OnDiagramClickListener
 {
     private static final String XML_FILENAME = "XML_FILENAME";
     private View mRootView = null;

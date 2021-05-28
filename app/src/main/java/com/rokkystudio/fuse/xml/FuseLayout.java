@@ -1,12 +1,11 @@
-package com.rokkystudio.fuse.views;
+package com.rokkystudio.fuse.xml;
 
 import android.content.Context;
-import android.util.AttributeSet;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -14,6 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.rokkystudio.fuse.CollapsedLayout;
+import com.rokkystudio.fuse.DiagramView;
 import com.rokkystudio.fuse.R;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -32,8 +33,8 @@ import static org.xmlpull.v1.XmlPullParser.START_TAG;
 public class FuseLayout extends ScrollView implements
     View.OnClickListener, DiagramView.OnDiagramClickListener
 {
-    private LayoutInflater mLayoutInflater;
-    private LinearLayout mRootLayout;
+    private final LayoutInflater mLayoutInflater;
+    private final LinearLayout mRootLayout;
 
     private ViewGroup mCurrentLocation = null;
 
@@ -41,15 +42,6 @@ public class FuseLayout extends ScrollView implements
 
     public FuseLayout(Context context) {
         super(context);
-        init(context);
-    }
-
-    public FuseLayout(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init(context);
-    }
-
-    private void init(Context context) {
         mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(context);
         LayoutParams params = new LayoutParams(MATCH_PARENT, WRAP_CONTENT);
@@ -102,8 +94,9 @@ public class FuseLayout extends ScrollView implements
     {
         ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_item, mRootLayout, false);
         ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(id);
-        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImage(current));
+        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImageId(current));
         ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(name);
+        viewGroup.setBackgroundColor(getBackgroundColor(current));
 
         if (mCurrentLocation != null) {
             mCurrentLocation.addView(viewGroup);
@@ -113,7 +106,7 @@ public class FuseLayout extends ScrollView implements
     }
 
     public void addSeparator() {
-        View view = mLayoutInflater.inflate(R.layout.fuse_separator, mRootLayout, false);
+        View view = mLayoutInflater.inflate(R.layout.separator, mRootLayout, false);
 
         if (mCurrentLocation != null) {
             mCurrentLocation.addView(view);
@@ -171,7 +164,42 @@ public class FuseLayout extends ScrollView implements
         addSeparator();
     }
 
-    private int getFuseImage(String current)
+    private int getBackgroundColor(String current)
+    {
+        switch (current) {
+            case "1A":
+                return getResources().getColor(R.color.bg_1a);
+            case "2A":
+                return getResources().getColor(R.color.bg_2a);
+            case "3A":
+                return getResources().getColor(R.color.bg_3a);
+            case "5A":
+                return getResources().getColor(R.color.bg_5a);
+            case "7.5A":
+                return getResources().getColor(R.color.bg_7_5a);
+            case "10A":
+                return getResources().getColor(R.color.bg_10a);
+            case "15A":
+                return getResources().getColor(R.color.bg_15a);
+            case "20A":
+                return getResources().getColor(R.color.bg_20a);
+            case "25A":
+                return getResources().getColor(R.color.bg_25a);
+            case "30A":
+                return getResources().getColor(R.color.bg_30a);
+            case "40A":
+                return getResources().getColor(R.color.bg_40a);
+            case "50A":
+                return getResources().getColor(R.color.bg_50a);
+            case "60A":
+                return getResources().getColor(R.color.bg_60a);
+            case "70A":
+                return getResources().getColor(R.color.bg_70a);
+        }
+        return Color.WHITE;
+    }
+
+    private int getFuseImageId(String current)
     {
         switch (current) {
             case "1A":
@@ -198,6 +226,10 @@ public class FuseLayout extends ScrollView implements
                 return R.drawable.fuse_40a;
             case "50A":
                 return R.drawable.fuse_50a;
+            case "60A":
+                return R.drawable.fuse_60a;
+            case "70A":
+                return R.drawable.fuse_70a;
         }
         return 0;
     }
@@ -205,73 +237,18 @@ public class FuseLayout extends ScrollView implements
     @Override
     public void onClick(View view)
     {
-        ImageView arrow = view.findViewById(R.id.CollapseArrow);
-        if (arrow.getTag() == null) arrow.setTag(false);
+        ViewParent parent = view.getParent();
+        if (!(parent instanceof CollapsedLayout)) return;
+        CollapsedLayout wrapper = (CollapsedLayout) parent;
 
-        ViewGroup wrapper = (ViewGroup) view.getParent();
-        if (wrapper == null) return;
-        if (wrapper.getId() != R.id.LocationWrapper) return;
-
-        if ((boolean) arrow.getTag()) {
-            // Развернуть
-            arrow.setImageResource(R.drawable.arrow_up);
-            arrow.setTag(false);
-            expandLocation(wrapper);
-        } else {
-            // Свернуть
+        ImageView arrow = wrapper.findViewById(R.id.CollapseArrow);
+        if (wrapper.isExpanded()) {
             arrow.setImageResource(R.drawable.arrow_down);
-            arrow.setTag(true);
-            collapseLocation(wrapper);
+            wrapper.collapse();
+        } else {
+            arrow.setImageResource(R.drawable.arrow_up);
+            wrapper.expand();
         }
-    }
-
-    private void expandLocation(ViewGroup wrapper)
-    {
-        int targetHeight = (int) wrapper.getTag();
-        wrapper.getLayoutParams().height = wrapper.findViewById(R.id.LocationHeader).getHeight();
-        Animation animation = new Animation()
-        {
-            @Override
-            protected void applyTransformation(float interpolatedTime, Transformation transformation) {
-                wrapper.getLayoutParams().height = interpolatedTime == 1 ? LayoutParams.WRAP_CONTENT : (int)(targetHeight * interpolatedTime);
-                wrapper.requestLayout();
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        animation.setDuration(500);
-        wrapper.startAnimation(animation);
-    }
-
-    private void collapseLocation(ViewGroup wrapper)
-    {
-        if (wrapper.getTag() == null) {
-            wrapper.setTag(wrapper.getHeight());
-        }
-
-        int totalHeight = (int) wrapper.getTag();
-        int targetHeight = wrapper.findViewById(R.id.LocationHeader).getHeight();
-
-        Animation animation = new Animation()
-        {
-            @Override
-            protected void applyTransformation(float interpolatedTime, Transformation transformation) {
-                wrapper.getLayoutParams().height = interpolatedTime == 1 ? targetHeight : (int) (totalHeight - (totalHeight - targetHeight) * interpolatedTime);
-                wrapper.requestLayout();
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        animation.setDuration(500);
-        wrapper.startAnimation(animation);
     }
 
     public void setOnDiagramClickListener(DiagramView.OnDiagramClickListener listener) {

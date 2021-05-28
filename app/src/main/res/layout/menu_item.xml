@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.rokkystudio.fuse.CollapsedLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/MenuItem"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/HeaderLayout"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/ItemIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="@dimen/table_padding"
+        android:src="@drawable/arrow_right" />
+
+    <TextView
+        android:id="@+id/ItemName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:paddingStart="@dimen/table_padding"
+        android:paddingEnd="@dimen/table_padding"
+        android:textSize="@dimen/text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/WrapperLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:background="@drawable/cloud"
+        android:visibility="gone">
+    </LinearLayout>
+</com.rokkystudio.fuse.CollapsedLayout>

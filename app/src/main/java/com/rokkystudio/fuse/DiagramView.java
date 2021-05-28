@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse.views;
+package com.rokkystudio.fuse;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
