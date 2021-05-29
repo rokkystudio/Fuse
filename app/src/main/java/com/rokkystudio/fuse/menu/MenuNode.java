@@ -5,11 +5,14 @@ import java.util.List;
 
 public class MenuNode
 {
-    private String mName;
-    private String mLink;
-    private List<MenuNode> mChilds = new ArrayList<>();
-    private MenuNode mParent = null;
+    private String mName = null;
+    private String mLink = null;
+    private String mTag = null;
+
+    private final List<MenuNode> mChilds = new ArrayList<>();
+
     private boolean mExpanded = false;
+    private MenuNode mParent = null;
 
     public MenuNode() {}
 
@@ -21,12 +24,20 @@ public class MenuNode
         mName = name; mLink = link;
     }
 
+    public MenuNode(String name, String link, String tag) {
+        mName = name; mLink = link; mTag = tag;
+    }
+
     public void setName(String name) {
         mName = name;
     }
 
     public String getName() {
         return mName;
+    }
+
+    public boolean hasName() {
+        return mName != null && !mName.isEmpty();
     }
 
     public void setLink(String link) {
@@ -69,4 +80,13 @@ public class MenuNode
     public boolean isExpanded() {
         return mExpanded;
     }
+
+    public void setTagName(String tag) {
+        mTag = tag;
+    }
+
+    public String getTagName() {
+        return mTag;
+    }
+
 }

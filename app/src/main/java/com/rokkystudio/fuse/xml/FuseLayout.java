@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.rokkystudio.fuse.CollapsedLayout;
-import com.rokkystudio.fuse.DiagramView;
+import com.rokkystudio.fuse.views.CollapsedLayout;
+import com.rokkystudio.fuse.diagram.DiagramView;
 import com.rokkystudio.fuse.R;
 
 import org.xmlpull.v1.XmlPullParser;

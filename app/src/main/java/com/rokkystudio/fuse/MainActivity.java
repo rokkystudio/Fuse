@@ -4,9 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.rokkystudio.fuse.diagram.DiagramFragment;
+import com.rokkystudio.fuse.diagram.DiagramView;
 import com.rokkystudio.fuse.menu.MenuFragment;
+import com.rokkystudio.fuse.menu.MenuLayout;
 
-public class MainActivity extends AppCompatActivity implements DiagramView.OnDiagramClickListener
+public class MainActivity extends AppCompatActivity implements
+    DiagramView.OnDiagramClickListener, MenuLayout.OnMenuClickListener
 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +29,26 @@ public class MainActivity extends AppCompatActivity implements DiagramView.OnDia
     public void onDiagramClick(String filename) {
         getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.enter, R.anim.exit)
-            .replace(R.id.MainFrame, FragmentDiagram.newInstance(filename))
-            .addToBackStack(FragmentDiagram.class.getName())
+            .replace(R.id.MainFrame, DiagramFragment.newInstance(filename))
+            .addToBackStack(DiagramFragment.class.getName())
+            .commit();
+    }
+
+    @Override
+    public void onMenuClick(String name, String link) {
+        getSupportFragmentManager().beginTransaction()
+            .setCustomAnimations(R.anim.enter, R.anim.exit)
+            .replace(R.id.MainFrame, MenuFragment.newInstance(link))
+            .addToBackStack(DiagramFragment.class.getName())
+            .commit();
+    }
+
+    @Override
+    public void onItemClick(String name, String link) {
+        getSupportFragmentManager().beginTransaction()
+            .setCustomAnimations(R.anim.enter, R.anim.exit)
+            .replace(R.id.MainFrame, FuseFragment.newInstance(link))
+            .addToBackStack(DiagramFragment.class.getName())
             .commit();
     }
 }

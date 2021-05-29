@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu name="BMW">
+<root name="BMW">
     <folder name="1 Series">
         <!-- item name="E81 E82 E87 E88 E89" date="09/2004 - 10/2013" link="e81_82_87_88_89_old.xml" /-->
     </folder>
@@ -64,4 +64,4 @@
     <folder name="Z8 Series">
         <!--item name="E52" date="03/2000 - 07/2003" link="e52.xml" /-->
     </folder>
-</menu>
+</root>

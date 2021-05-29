@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse;
+package com.rokkystudio.fuse.diagram;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse;
+package com.rokkystudio.fuse.diagram;
 
 import android.os.Bundle;
 
@@ -9,16 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FragmentDiagram extends Fragment
+public class DiagramFragment extends Fragment
 {
     private static final String DIAGRAM_FILENAME = "DIAGRAM_FILENAME";
     private String mDiagramFilename = null;
     private DiagramView mDiagramView = null;
 
-    private FragmentDiagram() {}
+    private DiagramFragment() {}
 
-    public static FragmentDiagram newInstance(String filename) {
-        FragmentDiagram fragment = new FragmentDiagram();
+    public static DiagramFragment newInstance(String filename) {
+        DiagramFragment fragment = new DiagramFragment();
         Bundle args = new Bundle();
         args.putString(DIAGRAM_FILENAME, filename);
         fragment.setArguments(args);

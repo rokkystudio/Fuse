@@ -12,9 +12,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rokkystudio.fuse.diagram.DiagramView;
 import com.rokkystudio.fuse.xml.FuseLayout;
 
-    public class FragmentFuses extends Fragment implements DiagramView.OnDiagramClickListener
+    public class FuseFragment extends Fragment implements DiagramView.OnDiagramClickListener
 {
     private static final String XML_FILENAME = "XML_FILENAME";
     private View mRootView = null;
@@ -23,8 +24,8 @@ import com.rokkystudio.fuse.xml.FuseLayout;
     private DiagramView.OnDiagramClickListener mOnDiagramClickListener = null;
 
     @NonNull
-    public static FragmentFuses newInstance(String filename) {
-        FragmentFuses fragment = new FragmentFuses();
+    public static FuseFragment newInstance(String filename) {
+        FuseFragment fragment = new FuseFragment();
         Bundle bundle = new Bundle();
         bundle.putString(XML_FILENAME, filename);
         fragment.setArguments(bundle);

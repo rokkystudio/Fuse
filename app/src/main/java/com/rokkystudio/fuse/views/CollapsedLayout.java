@@ -1,7 +1,6 @@
-package com.rokkystudio.fuse;
+package com.rokkystudio.fuse.views;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,6 +12,8 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+
+import com.rokkystudio.fuse.R;
 
 /**
  *  Внутри CollapsedLayout должены находится 2 группы с ID "HeaderLayout" и ID "WrapperLayout".
