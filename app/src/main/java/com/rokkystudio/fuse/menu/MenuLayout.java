@@ -19,7 +19,7 @@ import static com.rokkystudio.fuse.menu.MenuXml.XML_ITEM;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_MENU;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_ROOT;
 
-public class MenuLayout extends ScrollView implements View.OnClickListener
+public class MenuLayout extends ScrollView implements CollapsedLayout.OnHeaderClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
@@ -60,7 +60,7 @@ public class MenuLayout extends ScrollView implements View.OnClickListener
 
         CollapsedLayout layout = (CollapsedLayout) mLayoutInflater.inflate(R.layout.menu_item, this, false);
         mCurrentLayout.addView(layout);
-        layout.setOnClickListener(this);
+        layout.setOnHeaderClickListener(this);
 
         ((TextView) layout.findViewById(R.id.ItemName)).setText(node.getName());
 
@@ -99,19 +99,22 @@ public class MenuLayout extends ScrollView implements View.OnClickListener
     }
 
     private void item(MenuNode node) {
-        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.menu_item, this, false);
+        CollapsedLayout layout = (CollapsedLayout) mLayoutInflater.inflate(R.layout.menu_item, this, false);
         mCurrentLayout.addView(layout);
         layout.setTag(node);
-        layout.setOnClickListener(this);
+        layout.setOnHeaderClickListener(this);
         ((TextView) layout.findViewById(R.id.ItemName)).setText(node.getName());
         ImageView menuIcon = layout.findViewById(R.id.ItemIcon);
         menuIcon.setImageResource(R.drawable.arrow_right);
     }
 
+
     @Override
-    public void onClick(View view)
+    public void onHeaderClick(CollapsedLayout layout)
     {
-        MenuNode node = (MenuNode) view.getTag();
+        // TODO NODE NULL!!!
+
+        MenuNode node = (MenuNode) layout.getTag();
         if (node == null) return;
 
         if (XML_MENU.equals(node.getTagName())) {
@@ -129,7 +132,6 @@ public class MenuLayout extends ScrollView implements View.OnClickListener
         }
 
         if (XML_FOLDER.equals(node.getTagName())) {
-            CollapsedLayout layout = (CollapsedLayout) view;
             if (node.isExpanded()) {
                 node.setExpanded(false);
                 layout.collapse();

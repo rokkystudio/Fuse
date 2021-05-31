@@ -22,7 +22,7 @@ import com.rokkystudio.fuse.R;
 
 public class CollapsedLayout extends LinearLayout implements View.OnClickListener, View.OnTouchListener
 {
-    private OnClickListener mOnClickListener = null;
+    private OnHeaderClickListener mOnHeaderClickListener = null;
     private int mOriginHeight = 0;
     private boolean mExpanded = true;
 
@@ -140,8 +140,8 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
     @Override
     public void onClick(View view)
     {
-        if (mOnClickListener != null) {
-            mOnClickListener.onClick(this);
+        if (mOnHeaderClickListener != null) {
+            mOnHeaderClickListener.onHeaderClick(this);
         }
 
         if (isExpanded()) {
@@ -151,9 +151,8 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
         }
     }
 
-    @Override
-    public void setOnClickListener(OnClickListener listener) {
-        mOnClickListener = listener;
+    public void setOnHeaderClickListener(OnHeaderClickListener listener) {
+        mOnHeaderClickListener = listener;
     }
 
     @Override
@@ -173,7 +172,7 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
         return false;
     }
 
-    public interface HeaderClickListener {
+    public interface OnHeaderClickListener {
         void onHeaderClick(CollapsedLayout layout);
     }
 }
