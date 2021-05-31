@@ -25,6 +25,7 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
     private OnHeaderClickListener mOnHeaderClickListener = null;
     private int mOriginHeight = 0;
     private boolean mExpanded = true;
+    private Object mNode = null;
 
     public CollapsedLayout(Context context) {
         super(context);
@@ -137,17 +138,18 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
         return mExpanded;
     }
 
+    public void setNode(Object node) {
+        mNode = node;
+    }
+
+    public Object getNode() {
+        return mNode;
+    }
+
     @Override
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         if (mOnHeaderClickListener != null) {
             mOnHeaderClickListener.onHeaderClick(this);
-        }
-
-        if (isExpanded()) {
-            collapse();
-        } else {
-            expand();
         }
     }
 

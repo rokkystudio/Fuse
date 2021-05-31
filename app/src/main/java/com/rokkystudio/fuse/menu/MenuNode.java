@@ -1,5 +1,7 @@
 package com.rokkystudio.fuse.menu;
 
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,6 +10,7 @@ public class MenuNode
     private String mName = null;
     private String mLink = null;
     private String mTag = null;
+    private View mView = null;
 
     private final List<MenuNode> mChilds = new ArrayList<>();
 
@@ -15,14 +18,6 @@ public class MenuNode
     private MenuNode mParent = null;
 
     public MenuNode() {}
-
-    public MenuNode(String name) {
-        mName = name;
-    }
-
-    public MenuNode(String name, String link) {
-        mName = name; mLink = link;
-    }
 
     public MenuNode(String name, String link, String tag) {
         mName = name; mLink = link; mTag = tag;
@@ -46,6 +41,22 @@ public class MenuNode
 
     public String getLink() {
         return mLink;
+    }
+
+    public void setTag(String tag) {
+        mTag = tag;
+    }
+
+    public String getTag() {
+        return mTag;
+    }
+
+    public void setView(View view) {
+        mView = view;
+    }
+
+    public View getView() {
+        return mView;
     }
 
     public boolean hasChilds() {
@@ -73,20 +84,15 @@ public class MenuNode
         return mParent == null;
     }
 
-    public void setExpanded(boolean expanded) {
-        mExpanded = expanded;
+    public void expand() {
+        mExpanded = true;
+    }
+
+    public void collapse() {
+        mExpanded = false;
     }
 
     public boolean isExpanded() {
         return mExpanded;
     }
-
-    public void setTagName(String tag) {
-        mTag = tag;
-    }
-
-    public String getTagName() {
-        return mTag;
-    }
-
 }
