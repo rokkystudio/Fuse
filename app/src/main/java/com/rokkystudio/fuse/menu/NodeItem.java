@@ -5,21 +5,21 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuNode
+public class NodeItem
 {
     private String mName = null;
     private String mLink = null;
     private String mTag = null;
-    private View mView = null;
+    private NodeView mView = null;
 
-    private final List<MenuNode> mChilds = new ArrayList<>();
+    private final List<NodeItem> mChilds = new ArrayList<>();
 
     private boolean mExpanded = false;
-    private MenuNode mParent = null;
+    private NodeItem mParent = null;
 
-    public MenuNode() {}
+    public NodeItem() {}
 
-    public MenuNode(String name, String link, String tag) {
+    public NodeItem(String name, String link, String tag) {
         mName = name; mLink = link; mTag = tag;
     }
 
@@ -51,11 +51,11 @@ public class MenuNode
         return mTag;
     }
 
-    public void setView(View view) {
+    public void setView(NodeView view) {
         mView = view;
     }
 
-    public View getView() {
+    public NodeView getView() {
         return mView;
     }
 
@@ -63,20 +63,20 @@ public class MenuNode
         return !mChilds.isEmpty();
     }
 
-    public List<MenuNode> getChilds() {
+    public List<NodeItem> getChilds() {
         return mChilds;
     }
 
-    public void addChild(MenuNode child) {
+    public void addChild(NodeItem child) {
         child.setParent(this);
         mChilds.add(child);
     }
 
-    public void setParent(MenuNode parent) {
+    public void setParent(NodeItem parent) {
         mParent = parent;
     }
 
-    public MenuNode getParent() {
+    public NodeItem getParent() {
         return mParent;
     }
 

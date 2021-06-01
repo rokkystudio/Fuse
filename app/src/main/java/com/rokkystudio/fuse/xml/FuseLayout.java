@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.rokkystudio.fuse.views.CollapsedLayout;
+import com.rokkystudio.fuse.menu.NodeView;
 import com.rokkystudio.fuse.diagram.DiagramView;
 import com.rokkystudio.fuse.R;
 
@@ -106,7 +106,7 @@ public class FuseLayout extends ScrollView implements
     }
 
     public void addSeparator() {
-        View view = mLayoutInflater.inflate(R.layout.separator, mRootLayout, false);
+        View view = mLayoutInflater.inflate(R.layout.line, mRootLayout, false);
 
         if (mCurrentLocation != null) {
             mCurrentLocation.addView(view);
@@ -238,8 +238,8 @@ public class FuseLayout extends ScrollView implements
     public void onClick(View view)
     {
         ViewParent parent = view.getParent();
-        if (!(parent instanceof CollapsedLayout)) return;
-        CollapsedLayout wrapper = (CollapsedLayout) parent;
+        if (!(parent instanceof NodeView)) return;
+        NodeView wrapper = (NodeView) parent;
 
         ImageView arrow = wrapper.findViewById(R.id.CollapseArrow);
         if (wrapper.isExpanded()) {

@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse.views;
+package com.rokkystudio.fuse.menu;
 
 import android.content.Context;
 import android.os.Build;
@@ -15,32 +15,27 @@ import androidx.annotation.RequiresApi;
 
 import com.rokkystudio.fuse.R;
 
-/**
- *  Внутри CollapsedLayout должены находится 2 группы с ID "HeaderLayout" и ID "WrapperLayout".
- *  При нажатии на заголовок происходит сворачивание и разворачивание содержимого обвертки.
- */
-
-public class CollapsedLayout extends LinearLayout implements View.OnClickListener, View.OnTouchListener
+public class NodeView extends LinearLayout implements View.OnClickListener, View.OnTouchListener
 {
     private OnHeaderClickListener mOnHeaderClickListener = null;
     private int mOriginHeight = 0;
     private boolean mExpanded = true;
-    private Object mNode = null;
+    private NodeItem mNode = null;
 
-    public CollapsedLayout(Context context) {
+    public NodeView(Context context) {
         super(context);
     }
 
-    public CollapsedLayout(Context context, @Nullable AttributeSet attrs) {
+    public NodeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CollapsedLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public NodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CollapsedLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public NodeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
@@ -57,6 +52,8 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
     {
         ViewGroup wrapper = findViewById(R.id.WrapperLayout);
         if (wrapper == null) return;
+        if (mNode == null) return;
+        wrapper.removeAllViews();
 
         if (isExpanded()) return;
         mExpanded = true;
@@ -138,12 +135,20 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
         return mExpanded;
     }
 
-    public void setNode(Object node) {
+    public void setNode(NodeItem node) {
         mNode = node;
     }
 
-    public Object getNode() {
+    public NodeItem getNode() {
+        super.removeAllViews();
         return mNode;
+    }
+
+    @Override
+    public void removeAllViews() {
+        // Удаляем представления только внутри обвертки
+        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+        if (wrapper != null) wrapper.removeAllViews();
     }
 
     @Override
@@ -175,6 +180,6 @@ public class CollapsedLayout extends LinearLayout implements View.OnClickListene
     }
 
     public interface OnHeaderClickListener {
-        void onHeaderClick(CollapsedLayout layout);
+        void onHeaderClick(NodeView layout);
     }
 }

@@ -8,7 +8,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.rokkystudio.fuse.views.CollapsedLayout;
+import androidx.annotation.NonNull;
+
 import com.rokkystudio.fuse.R;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -16,14 +17,13 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_FOLDER;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_ITEM;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_MENU;
-import static com.rokkystudio.fuse.menu.MenuXml.XML_ROOT;
 
-public class MenuLayout extends ScrollView implements CollapsedLayout.OnHeaderClickListener
+public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
     private ViewGroup mCurrentLayout;
-    private MenuNode mRootNode = null;
+    private NodeItem mRootNode = null;
 
     private OnMenuClickListener mMenuClickListener = null;
 
@@ -31,14 +31,13 @@ public class MenuLayout extends ScrollView implements CollapsedLayout.OnHeaderCl
         super(context);
         mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(getContext());
-        LayoutParams params = new LayoutParams(MATCH_PARENT, WRAP_CONTENT);
-        mRootLayout.setLayoutParams(params);
+        mRootLayout.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
         mRootLayout.setOrientation(LinearLayout.VERTICAL);
         mCurrentLayout = mRootLayout;
         addView(mRootLayout);
     }
 
-    public void setMenu(MenuNode menu)
+    public void setMenu(NodeItem menu)
     {
         if (mRootNode != null) {
             mRootLayout.removeAllViews();
@@ -46,80 +45,73 @@ public class MenuLayout extends ScrollView implements CollapsedLayout.OnHeaderCl
         }
 
         mRootNode = menu;
-        folder(mRootNode);
+        addNode(mRootNode);
     }
 
-    private void separator() {
-        mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.separator, this, false));
+    private void addLine() {
+        mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.line, this, false));
     }
 
-    private void folder(MenuNode node)
+    private void addNode(NodeItem node)
     {
         if (node == null) return;
 
-        CollapsedLayout layout = (CollapsedLayout) mLayoutInflater.inflate(R.layout.menu_item, this, false);
-        layout.setOnHeaderClickListener(this);
-        layout.setNode(node);
-        node.setView(layout);
-        mCurrentLayout.addView(layout);
+        NodeView nodeView = (NodeView) mLayoutInflater.inflate(R.layout.menu_item, this, false);
+        nodeView.setOnHeaderClickListener(this);
+        nodeView.setNode(node);
+        node.setView(nodeView);
+        mCurrentLayout.addView(nodeView);
 
-        ((TextView) layout.findViewById(R.id.ItemName)).setText(node.getName());
-        ImageView menuIcon = layout.findViewById(R.id.ItemIcon);
-        menuIcon.setImageResource(R.drawable.arrow_down);
+        ((TextView) nodeView.findViewById(R.id.ItemName)).setText(node.getName());
+        ImageView menuIcon = nodeView.findViewById(R.id.ItemIcon);
 
-        if (node.isRoot() || node.isExpanded())
-        {
+        if (!node.hasChilds()) {
+            menuIcon.setImageResource(R.drawable.arrow_right);
+        } else if (node.isRoot() || node.isExpanded()) {
             menuIcon.setImageResource(R.drawable.arrow_up);
-            layout.setExpanded(true);
+            nodeView.setExpanded(true);
 
             // Скрываем корневой элемент без имени
             if (node.isRoot() && !node.hasName()) {
-                layout.findViewById(R.id.HeaderLayout).setVisibility(GONE);
-                layout.findViewById(R.id.WrapperLayout).setBackground(null);
+                nodeView.findViewById(R.id.HeaderLayout).setVisibility(GONE);
+                nodeView.findViewById(R.id.WrapperLayout).setBackground(null);
             }
 
-            // Сохраняем текущий макет как родительский
-            ViewGroup parentLayout = mCurrentLayout;
-            // Меняем текущий макет для добавления дочерних элементов
-            mCurrentLayout = layout.findViewById(R.id.WrapperLayout);
+            attachChilds(node);
 
-            boolean first = true;
-            for (MenuNode child : node.getChilds())
-            {
-                if (!first) separator();
-                first = false;
-
-                String tagName = child.getTag();
-                if (XML_ROOT.equals(tagName) || XML_FOLDER.equals(tagName)) {
-                    folder(child);
-                } else if (XML_MENU.equals(tagName) || XML_ITEM.equals(tagName)) {
-                    item(child);
-                }
-            }
-
-            // Возвращаем назад предыдущий макет
-            mCurrentLayout = parentLayout;
+        } else {
+            menuIcon.setImageResource(R.drawable.arrow_down);
         }
     }
 
-    private void item(MenuNode node)
+    public void attachChilds(NodeItem nodeItem)
     {
-        CollapsedLayout layout = (CollapsedLayout) mLayoutInflater.inflate(R.layout.menu_item, this, false);
-        layout.setOnHeaderClickListener(this);
-        layout.setNode(node);
-        node.setView(layout);
-        mCurrentLayout.addView(layout);
+        NodeView nodeView = nodeItem.getView();
+        if (nodeView == null) return;
 
-        ((TextView) layout.findViewById(R.id.ItemName)).setText(node.getName());
-        ImageView menuIcon = layout.findViewById(R.id.ItemIcon);
-        menuIcon.setImageResource(R.drawable.arrow_right);
+        // Сохраняем текущий макет как родительский
+        ViewGroup parentLayout = mCurrentLayout;
+        // Меняем текущий макет для добавления дочерних элементов
+        // TODO NULL POINTER
+        mCurrentLayout = nodeView.findViewById(R.id.WrapperLayout);
+
+        boolean first = true;
+        for (NodeItem child : nodeItem.getChilds())
+        {
+            if (!first) addLine();
+            first = false;
+
+            addNode(child);
+        }
+
+        // Возвращаем назад предыдущий макет
+        mCurrentLayout = parentLayout;
     }
 
-
     @Override
-    public void onHeaderClick(CollapsedLayout layout)
+    public void onHeaderClick(@NonNull NodeView layout)
     {
-        MenuNode node = (MenuNode) layout.getTag();
+        NodeItem node = layout.getNode();
         if (node == null) return;
 
         if (XML_MENU.equals(node.getTag())) {
@@ -137,30 +129,43 @@ public class MenuLayout extends ScrollView implements CollapsedLayout.OnHeaderCl
         }
 
         if (XML_FOLDER.equals(node.getTag())) {
-            if (node.isExpanded()) {
-                collapseToNode(node);
-                layout.collapse();
+            if (node.isExpanded())
+            {
+                node.collapse();
+                NodeView nodeView = node.getView();
+                if (nodeView != null) {
+                    nodeView.removeAllViews();
+                }
             } else {
-                expandToNode(node);
-                layout.expand();
+                node.expand();
+                attachChilds(node);
             }
         }
     }
 
-    private void expandToNode(MenuNode node) {
+    public void expand(@NonNull NodeItem nodeItem) {
+        nodeItem.expand();
+        NodeView nodeView = nodeItem.getView();
+        if (nodeView == null) return;
+        attachChilds(nodeItem);
+        nodeView.expand();
+    }
+
+    /*
+    private void expandToNode(@NonNull NodeItem node) {
         node.expand();
         if (node.getParent() != null) {
             expandToNode(node.getParent());
         }
     }
 
-    private void collapseToNode(MenuNode node) {
+    private void collapseToNode(@NonNull NodeItem node) {
         node.collapse();
-        for (MenuNode child : node.getChilds()) {
+        for (NodeItem child : node.getChilds()) {
             collapseToNode(child);
         }
     }
-
+    */
 
     public void setOnMenuClickListener(OnMenuClickListener listener) {
         mMenuClickListener = listener;
