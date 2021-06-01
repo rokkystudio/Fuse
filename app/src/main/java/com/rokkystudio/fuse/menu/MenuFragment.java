@@ -38,7 +38,10 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         if (getArguments() == null) return;
         String path = getArguments().getString(XML_PATH);
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
-        model.setMenu(MenuXml.parse(getContext(), path));
+        Context context = getContext();
+        if (context != null) {
+            model.setMenu(MenuXml.parse(context, path));
+        }
     }
 
     @Override

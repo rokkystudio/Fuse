@@ -19,7 +19,7 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 {
     private OnHeaderClickListener mOnHeaderClickListener = null;
     private int mOriginHeight = 0;
-    private boolean mExpanded = true;
+    private boolean mExpanded = false;
     private NodeItem mNode = null;
 
     public NodeView(Context context) {
@@ -140,7 +140,6 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
     }
 
     public NodeItem getNode() {
-        super.removeAllViews();
         return mNode;
     }
 

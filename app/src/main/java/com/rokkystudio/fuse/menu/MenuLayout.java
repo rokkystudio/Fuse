@@ -45,39 +45,38 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         }
 
         mRootNode = menu;
-        addNode(mRootNode);
+        attachNode(mRootNode);
     }
 
     private void addLine() {
         mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.line, this, false));
     }
 
-    private void addNode(NodeItem node)
+    private void attachNode(NodeItem nodeItem)
     {
-        if (node == null) return;
-
+        if (nodeItem == null) return;
         NodeView nodeView = (NodeView) mLayoutInflater.inflate(R.layout.menu_item, this, false);
         nodeView.setOnHeaderClickListener(this);
-        nodeView.setNode(node);
-        node.setView(nodeView);
+        nodeView.setNode(nodeItem);
+        nodeItem.setView(nodeView);
         mCurrentLayout.addView(nodeView);
 
-        ((TextView) nodeView.findViewById(R.id.ItemName)).setText(node.getName());
+        ((TextView) nodeView.findViewById(R.id.ItemName)).setText(nodeItem.getName());
         ImageView menuIcon = nodeView.findViewById(R.id.ItemIcon);
 
-        if (!node.hasChilds()) {
+        if (!nodeItem.hasChilds()) {
             menuIcon.setImageResource(R.drawable.arrow_right);
-        } else if (node.isRoot() || node.isExpanded()) {
+        } else if (nodeItem.isRoot() || nodeItem.isExpanded()) {
             menuIcon.setImageResource(R.drawable.arrow_up);
             nodeView.setExpanded(true);
 
             // Скрываем корневой элемент без имени
-            if (node.isRoot() && !node.hasName()) {
+            if (nodeItem.isRoot() && !nodeItem.hasName()) {
                 nodeView.findViewById(R.id.HeaderLayout).setVisibility(GONE);
                 nodeView.findViewById(R.id.WrapperLayout).setBackground(null);
             }
 
-            attachChilds(node);
+            attachChilds(nodeItem);
 
         } else {
             menuIcon.setImageResource(R.drawable.arrow_down);
@@ -92,7 +91,6 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         // Сохраняем текущий макет как родительский
         ViewGroup parentLayout = mCurrentLayout;
         // Меняем текущий макет для добавления дочерних элементов
-        // TODO NULL POINTER
         mCurrentLayout = nodeView.findViewById(R.id.WrapperLayout);
 
         boolean first = true;
@@ -101,7 +99,7 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
             if (!first) addLine();
             first = false;
 
-            addNode(child);
+            attachNode(child);
         }
 
         // Возвращаем назад предыдущий макет
@@ -109,36 +107,32 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
     }
 
     @Override
-    public void onHeaderClick(@NonNull NodeView layout)
+    public void onHeaderClick(@NonNull NodeView nodeView)
     {
-        NodeItem node = layout.getNode();
-        if (node == null) return;
+        NodeItem nodeItem = nodeView.getNode();
+        if (nodeItem == null) return;
 
-        if (XML_MENU.equals(node.getTag())) {
+        if (XML_MENU.equals(nodeItem.getTag())) {
             if (mMenuClickListener != null) {
-                mMenuClickListener.onMenuClick(node.getName(), node.getLink());
+                mMenuClickListener.onMenuClick(nodeItem.getName(), nodeItem.getLink());
             }
             return;
         }
 
-        if (XML_ITEM.equals(node.getTag())) {
+        if (XML_ITEM.equals(nodeItem.getTag())) {
             if (mMenuClickListener != null) {
-                mMenuClickListener.onItemClick(node.getName(), node.getLink());
+                mMenuClickListener.onItemClick(nodeItem.getName(), nodeItem.getLink());
             }
             return;
         }
 
-        if (XML_FOLDER.equals(node.getTag())) {
-            if (node.isExpanded())
+        if (XML_FOLDER.equals(nodeItem.getTag())) {
+            if (nodeItem.isExpanded())
             {
-                node.collapse();
-                NodeView nodeView = node.getView();
-                if (nodeView != null) {
-                    nodeView.removeAllViews();
-                }
+                nodeItem.collapse();
+                nodeView.removeAllViews();
             } else {
-                node.expand();
-                attachChilds(node);
+                expand(nodeItem);
             }
         }
     }
