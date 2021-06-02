@@ -52,10 +52,9 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.line, this, false));
     }
 
-    private void attachNode(NodeItem nodeItem)
+    private void attachNode(@NonNull NodeItem nodeItem)
     {
-        if (nodeItem == null) return;
-        NodeView nodeView = (NodeView) mLayoutInflater.inflate(R.layout.menu_item, this, false);
+        NodeView nodeView = new NodeView(getContext());
         nodeView.setOnHeaderClickListener(this);
         nodeView.setNode(nodeItem);
         nodeItem.setView(nodeView);
@@ -129,7 +128,7 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         if (XML_FOLDER.equals(nodeItem.getTag())) {
             if (nodeItem.isExpanded())
             {
-                nodeItem.collapse();
+                nodeItem.setExpanded(false);
                 nodeView.removeAllViews();
             } else {
                 expand(nodeItem);
@@ -138,7 +137,7 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
     }
 
     public void expand(@NonNull NodeItem nodeItem) {
-        nodeItem.expand();
+        nodeItem.setExpanded(true);
         NodeView nodeView = nodeItem.getView();
         if (nodeView == null) return;
         attachChilds(nodeItem);

@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
@@ -19,24 +20,17 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 {
     private OnHeaderClickListener mOnHeaderClickListener = null;
     private int mOriginHeight = 0;
-    private boolean mExpanded = false;
-    private NodeItem mNode = null;
+    private NodeItem mNode = new NodeItem();
+
+    private final ViewGroup mHeaderLayout;
+    private final ViewGroup mWrapperLayout;
 
     public NodeView(Context context) {
         super(context);
-    }
-
-    public NodeView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public NodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public NodeView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        inflate(getContext(), R.layout.menu_item, this);
+        mHeaderLayout = findViewById(R.id.HeaderLayout);
+        mWrapperLayout = findViewById(R.id.WrapperLayout);
+        if (mHeaderLayout == null) throw new Excep
     }
 
     protected void onAttachedToWindow() {
@@ -53,10 +47,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         ViewGroup wrapper = findViewById(R.id.WrapperLayout);
         if (wrapper == null) return;
         if (mNode == null) return;
-        wrapper.removeAllViews();
-
-        if (isExpanded()) return;
-        mExpanded = true;
+        if (mNode.isExpanded()) return;
+        mNode.setExpanded(true);
         wrapper.setVisibility(VISIBLE);
 
         Animation animation = new Animation()
@@ -82,8 +74,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         ViewGroup wrapper = findViewById(R.id.WrapperLayout);
         if (wrapper == null) return;
 
-        if (!isExpanded()) return;
-        mExpanded = false;
+        if (!mNode.isExpanded()) return;
+        mNode.setExpanded(false);
 
         if (mOriginHeight == 0) {
             mOriginHeight = wrapper.getHeight();
@@ -114,7 +106,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
     public void setExpanded(boolean expanded)
     {
-        mExpanded = expanded;
+        mNode.setExpanded(expanded);
+
         ViewGroup wrapper = findViewById(R.id.WrapperLayout);
         if (wrapper == null) return;
 
@@ -131,11 +124,7 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         }
     }
 
-    public boolean isExpanded() {
-        return mExpanded;
-    }
-
-    public void setNode(NodeItem node) {
+    public void setNode(@NonNull NodeItem node) {
         mNode = node;
     }
 

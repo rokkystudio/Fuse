@@ -242,7 +242,7 @@ public class FuseLayout extends ScrollView implements
         NodeView wrapper = (NodeView) parent;
 
         ImageView arrow = wrapper.findViewById(R.id.CollapseArrow);
-        if (wrapper.isExpanded()) {
+        if (wrapper.getNode().isExpanded()) {
             arrow.setImageResource(R.drawable.arrow_down);
             wrapper.collapse();
         } else {

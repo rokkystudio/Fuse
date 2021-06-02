@@ -84,12 +84,8 @@ public class NodeItem
         return mParent == null;
     }
 
-    public void expand() {
-        mExpanded = true;
-    }
-
-    public void collapse() {
-        mExpanded = false;
+    public void setExpanded(boolean expanded) {
+        mExpanded = expanded;
     }
 
     public boolean isExpanded() {

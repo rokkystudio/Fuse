@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.rokkystudio.fuse.menu.NodeView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/MenuItem"
     android:orientation="vertical"
@@ -39,4 +39,4 @@
         android:background="@drawable/cloud"
         android:visibility="gone">
     </LinearLayout>
-</com.rokkystudio.fuse.menu.NodeView>
+</LinearLayout>
