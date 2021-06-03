@@ -22,15 +22,9 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
     private int mOriginHeight = 0;
     private NodeItem mNode = new NodeItem();
 
-    private final ViewGroup mHeaderLayout;
-    private final ViewGroup mWrapperLayout;
-
     public NodeView(Context context) {
         super(context);
         inflate(getContext(), R.layout.menu_item, this);
-        mHeaderLayout = findViewById(R.id.HeaderLayout);
-        mWrapperLayout = findViewById(R.id.WrapperLayout);
-        if (mHeaderLayout == null) throw new Excep
     }
 
     protected void onAttachedToWindow() {
@@ -44,9 +38,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
     public void expand()
     {
-        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+        ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-        if (mNode == null) return;
         if (mNode.isExpanded()) return;
         mNode.setExpanded(true);
         wrapper.setVisibility(VISIBLE);
@@ -71,9 +64,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
     public void collapse()
     {
-        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+        ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-
         if (!mNode.isExpanded()) return;
         mNode.setExpanded(false);
 
@@ -106,10 +98,9 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
     public void setExpanded(boolean expanded)
     {
-        mNode.setExpanded(expanded);
-
-        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+        ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
+        mNode.setExpanded(expanded);
 
         if (expanded) {
             wrapper.setVisibility(VISIBLE);
@@ -132,11 +123,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         return mNode;
     }
 
-    @Override
-    public void removeAllViews() {
-        // Удаляем представления только внутри обвертки
-        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
-        if (wrapper != null) wrapper.removeAllViews();
+    public ViewGroup getWrapperLayout() {
+        return findViewById(R.id.WrapperLayout);
     }
 
     @Override

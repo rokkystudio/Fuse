@@ -20,6 +20,8 @@ import static com.rokkystudio.fuse.menu.MenuXml.XML_MENU;
 
 public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickListener
 {
+    // TODO WHY HIDE ITEM ON COLLAPSE
+
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
     private ViewGroup mCurrentLayout;
@@ -86,11 +88,14 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
     {
         NodeView nodeView = nodeItem.getView();
         if (nodeView == null) return;
+        ViewGroup wrapper = nodeView.getWrapperLayout();
+        if (wrapper == null) return;
+        wrapper.removeAllViews();
 
         // Сохраняем текущий макет как родительский
         ViewGroup parentLayout = mCurrentLayout;
         // Меняем текущий макет для добавления дочерних элементов
-        mCurrentLayout = nodeView.findViewById(R.id.WrapperLayout);
+        mCurrentLayout = wrapper;
 
         boolean first = true;
         for (NodeItem child : nodeItem.getChilds())
@@ -105,11 +110,24 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         mCurrentLayout = parentLayout;
     }
 
+    public void detachChilds(NodeItem nodeItem)
+    {
+        NodeView nodeView = nodeItem.getView();
+        if (nodeView == null) return;
+        ViewGroup wrapper = nodeView.getWrapperLayout();
+        if (wrapper == null) return;
+        wrapper.removeAllViews();
+
+        for (NodeItem child : nodeItem.getChilds()) {
+            child.setView(null);
+            detachChilds(child);
+        }
+    }
+
     @Override
     public void onHeaderClick(@NonNull NodeView nodeView)
     {
         NodeItem nodeItem = nodeView.getNode();
-        if (nodeItem == null) return;
 
         if (XML_MENU.equals(nodeItem.getTag())) {
             if (mMenuClickListener != null) {
@@ -128,20 +146,13 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         if (XML_FOLDER.equals(nodeItem.getTag())) {
             if (nodeItem.isExpanded())
             {
-                nodeItem.setExpanded(false);
-                nodeView.removeAllViews();
+                nodeView.collapse();
+                detachChilds(nodeItem);
             } else {
-                expand(nodeItem);
+                attachChilds(nodeItem);
+                nodeView.expand();
             }
         }
-    }
-
-    public void expand(@NonNull NodeItem nodeItem) {
-        nodeItem.setExpanded(true);
-        NodeView nodeView = nodeItem.getView();
-        if (nodeView == null) return;
-        attachChilds(nodeItem);
-        nodeView.expand();
     }
 
     /*
