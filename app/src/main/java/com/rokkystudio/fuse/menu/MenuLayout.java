@@ -56,13 +56,9 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
 
     private void attachNode(@NonNull NodeItem nodeItem)
     {
-        NodeView nodeView = new NodeView(getContext());
+        NodeView nodeView = nodeItem.getView(getContext());
         nodeView.setOnHeaderClickListener(this);
-        nodeView.setNode(nodeItem);
-        nodeItem.setView(nodeView);
         mCurrentLayout.addView(nodeView);
-
-        ((TextView) nodeView.findViewById(R.id.ItemName)).setText(nodeItem.getName());
         ImageView menuIcon = nodeView.findViewById(R.id.ItemIcon);
 
         if (!nodeItem.hasChilds()) {
@@ -110,20 +106,6 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         mCurrentLayout = parentLayout;
     }
 
-    public void detachChilds(NodeItem nodeItem)
-    {
-        NodeView nodeView = nodeItem.getView();
-        if (nodeView == null) return;
-        ViewGroup wrapper = nodeView.getWrapperLayout();
-        if (wrapper == null) return;
-        wrapper.removeAllViews();
-
-        for (NodeItem child : nodeItem.getChilds()) {
-            child.setView(null);
-            detachChilds(child);
-        }
-    }
-
     @Override
     public void onHeaderClick(@NonNull NodeView nodeView)
     {
@@ -144,10 +126,8 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         }
 
         if (XML_FOLDER.equals(nodeItem.getTag())) {
-            if (nodeItem.isExpanded())
-            {
+            if (nodeItem.isExpanded()) {
                 nodeView.collapse();
-                detachChilds(nodeItem);
             } else {
                 attachChilds(nodeItem);
                 nodeView.expand();

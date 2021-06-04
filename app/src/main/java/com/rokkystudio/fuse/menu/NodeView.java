@@ -1,6 +1,9 @@
 package com.rokkystudio.fuse.menu;
 
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -9,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,12 +48,22 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         mNode.setExpanded(true);
         wrapper.setVisibility(VISIBLE);
 
+        wrapper.measure(
+            MeasureSpec.makeMeasureSpec(getWidth(), View.MeasureSpec.AT_MOST),
+            MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        );
+
+        final int wrapperHeight = wrapper.getMeasuredHeight();
+        /*
         Animation animation = new Animation()
         {
             @Override
-            protected void applyTransformation(float interpolatedTime, Transformation transformation) {
-                wrapper.getLayoutParams().height = (int) (mOriginHeight * interpolatedTime);
-                requestLayout();
+            protected void applyTransformation(float time, Transformation trans) {
+                //wrapper.getLayoutParams().height = 200; //(int) (wrapperHeight * time);
+                if (time == 1) {
+                    // wrapper.getLayoutParams().height = WRAP_CONTENT;
+                }
+                wrapper.requestLayout();
             }
 
             @Override
@@ -58,8 +72,9 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
             }
         };
 
-        animation.setDuration(500);
+        animation.setDuration(5000);
         startAnimation(animation);
+         */
     }
 
     public void collapse()
@@ -76,13 +91,14 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         Animation animation = new Animation()
         {
             @Override
-            protected void applyTransformation(float interpolatedTime, Transformation transformation) {
-                if (interpolatedTime == 1) {
+            protected void applyTransformation(float time, Transformation trans) {
+                if (time == 1) {
                     wrapper.setVisibility(GONE);
+                    detachChilds(mNode);
                     return;
                 }
 
-                wrapper.getLayoutParams().height = (int) (mOriginHeight * (1 - interpolatedTime));
+                wrapper.getLayoutParams().height = (int) (mOriginHeight * (1 - time));
                 wrapper.requestLayout();
             }
 
@@ -94,6 +110,20 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
         animation.setDuration(500);
         startAnimation(animation);
+    }
+
+    public void detachChilds()
+    {
+        NodeItem nodeItem = getNode();
+        if (nodeItem == null) return;
+        ViewGroup wrapper = getWrapperLayout();
+        if (wrapper == null) return;
+        wrapper.removeAllViews();
+
+        for (NodeItem child : nodeItem.getChilds()) {
+            child.setView(null);
+            child.detachChilds();
+        }
     }
 
     public void setExpanded(boolean expanded)
@@ -116,6 +146,7 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
     }
 
     public void setNode(@NonNull NodeItem node) {
+        ((TextView) findViewById(R.id.ItemName)).setText(node.getName());
         mNode = node;
     }
 
@@ -123,8 +154,9 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         return mNode;
     }
 
-    public ViewGroup getWrapperLayout() {
-        return findViewById(R.id.WrapperLayout);
+    public void addChild(ViewGroup childView) {
+        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+        if (wrapper != null) wrapper.addView(childView);
     }
 
     @Override
@@ -147,9 +179,8 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
                 view.setBackgroundColor(0x770077AA);
                 break;
             case MotionEvent.ACTION_UP:
-                view.setBackground(null);
             case MotionEvent.ACTION_CANCEL:
-                view.setBackground(null);
+                view.setBackgroundColor(Color.TRANSPARENT);
                 break;
         }
         return false;

@@ -1,6 +1,6 @@
 package com.rokkystudio.fuse.menu;
 
-import android.view.View;
+import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ public class NodeItem
     private String mName = null;
     private String mLink = null;
     private String mTag = null;
-    private NodeView mView = null;
+    private NodeView mNodeView = null;
 
     private final List<NodeItem> mChilds = new ArrayList<>();
 
@@ -52,11 +52,22 @@ public class NodeItem
     }
 
     public void setView(NodeView view) {
-        mView = view;
+        mNodeView = view;
     }
 
-    public NodeView getView() {
-        return mView;
+    public NodeView getView(Context context)
+    {
+        if (mNodeView != null) return mNodeView;
+        mNodeView = new NodeView(context);
+        mNodeView.setNode(this);
+
+        if (mExpanded) {
+            for (NodeItem childItem : mChilds) {
+                NodeView childView = childItem.getView(context);
+                mNodeView.addChild(childView);
+            }
+        }
+        return mNodeView;
     }
 
     public boolean hasChilds() {
