@@ -54,30 +54,10 @@ public class MenuLayout extends ScrollView implements NodeView.OnHeaderClickList
         mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.line, this, false));
     }
 
-    private void attachNode(@NonNull NodeItem nodeItem)
-    {
+    private void attachNode(@NonNull NodeItem nodeItem) {
         NodeView nodeView = nodeItem.getView(getContext());
         nodeView.setOnHeaderClickListener(this);
         mCurrentLayout.addView(nodeView);
-        ImageView menuIcon = nodeView.findViewById(R.id.ItemIcon);
-
-        if (!nodeItem.hasChilds()) {
-            menuIcon.setImageResource(R.drawable.arrow_right);
-        } else if (nodeItem.isRoot() || nodeItem.isExpanded()) {
-            menuIcon.setImageResource(R.drawable.arrow_up);
-            nodeView.setExpanded(true);
-
-            // Скрываем корневой элемент без имени
-            if (nodeItem.isRoot() && !nodeItem.hasName()) {
-                nodeView.findViewById(R.id.HeaderLayout).setVisibility(GONE);
-                nodeView.findViewById(R.id.WrapperLayout).setBackground(null);
-            }
-
-            attachChilds(nodeItem);
-
-        } else {
-            menuIcon.setImageResource(R.drawable.arrow_down);
-        }
     }
 
     public void attachChilds(NodeItem nodeItem)

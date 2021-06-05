@@ -13,6 +13,7 @@ public class NodeItem
     private NodeView mNodeView = null;
 
     private final List<NodeItem> mChilds = new ArrayList<>();
+    private OnNodeClickListener mOnNodeClickListener = null;
 
     private boolean mExpanded = false;
     private NodeItem mParent = null;
@@ -101,5 +102,17 @@ public class NodeItem
 
     public boolean isExpanded() {
         return mExpanded;
+    }
+
+    public void setOnNodeClickListener(OnNodeClickListener listener) {
+        mOnNodeClickListener = listener;
+    }
+
+    public OnNodeClickListener getOnNodeClickListener() {
+        return mOnNodeClickListener;
+    }
+
+    public interface OnNodeClickListener {
+        void onNodeClick(NodeItem nodeItem);
     }
 }

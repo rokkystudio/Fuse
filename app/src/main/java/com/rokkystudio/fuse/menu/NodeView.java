@@ -4,27 +4,22 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
-import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 
 import com.rokkystudio.fuse.R;
 
 public class NodeView extends LinearLayout implements View.OnClickListener, View.OnTouchListener
 {
-    private OnHeaderClickListener mOnHeaderClickListener = null;
-    private int mOriginHeight = 0;
-    private NodeItem mNode = new NodeItem();
+    private NodeItem mNodeItem = new NodeItem();
 
     public NodeView(Context context) {
         super(context);
@@ -42,63 +37,30 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
     public void expand()
     {
+        if (!mNodeItem.hasChilds()) return;
+        mNodeItem.setExpanded(true);
+
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-        if (mNode.isExpanded()) return;
-        mNode.setExpanded(true);
         wrapper.setVisibility(VISIBLE);
+        wrapper.removeAllViews();
+        setIcon(R.drawable.arrow_up);
 
-        wrapper.measure(
-            MeasureSpec.makeMeasureSpec(getWidth(), View.MeasureSpec.AT_MOST),
-            MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
-        );
+        // Инициализация представлений дочерних элементов
+        attachChilds(mNodeItem);
 
-        final int wrapperHeight = wrapper.getMeasuredHeight();
-        /*
-        Animation animation = new Animation()
-        {
-            @Override
-            protected void applyTransformation(float time, Transformation trans) {
-                //wrapper.getLayoutParams().height = 200; //(int) (wrapperHeight * time);
-                if (time == 1) {
-                    // wrapper.getLayoutParams().height = WRAP_CONTENT;
-                }
-                wrapper.requestLayout();
-            }
-
-            @Override
-            public boolean willChangeBounds() {
-                return true;
-            }
-        };
-
-        animation.setDuration(5000);
-        startAnimation(animation);
-         */
-    }
-
-    public void collapse()
-    {
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        if (!mNode.isExpanded()) return;
-        mNode.setExpanded(false);
-
-        if (mOriginHeight == 0) {
-            mOriginHeight = wrapper.getHeight();
-        }
+        // Измерение высоты, занимаемой дочерними элементами
+        final int wrapperHeight = getWrapperHeight();
+        wrapper.getLayoutParams().height = 0;
 
         Animation animation = new Animation()
         {
             @Override
-            protected void applyTransformation(float time, Transformation trans) {
+            protected void applyTransformation(float time, Transformation t) {
+                wrapper.getLayoutParams().height = (int) (wrapperHeight * time);
                 if (time == 1) {
-                    wrapper.setVisibility(GONE);
-                    detachChilds(mNode);
-                    return;
+                    wrapper.getLayoutParams().height = WRAP_CONTENT;
                 }
-
-                wrapper.getLayoutParams().height = (int) (mOriginHeight * (1 - time));
                 wrapper.requestLayout();
             }
 
@@ -110,6 +72,58 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
         animation.setDuration(500);
         startAnimation(animation);
+    }
+
+    public void collapse()
+    {
+        if (!mNodeItem.hasChilds()) return;
+        mNodeItem.setExpanded(false);
+
+        ViewGroup wrapper = getWrapperLayout();
+        if (wrapper == null) return;
+        setIcon(R.drawable.arrow_down);
+
+        // Измерение высоты, занимаемой дочерними элементами
+        final int wrapperHeight = getWrapperHeight();
+
+        Animation animation = new Animation()
+        {
+            @Override
+            protected void applyTransformation(float time, Transformation trans) {
+                if (time == 1)
+                {
+
+                    for (NodeItem child : mNodeItem.getChilds()) {
+                        wrapper.addView(child.getView(getContext()));
+                    }
+
+                    wrapper.getLayoutParams().height = 0;
+                    wrapper.setVisibility(GONE);
+                    wrapper.removeAllViews();
+                    return;
+                }
+
+                wrapper.getLayoutParams().height = (int) (wrapperHeight * (1 - time));
+                wrapper.requestLayout();
+            }
+
+            @Override
+            public boolean willChangeBounds() {
+                return true;
+            }
+        };
+
+        animation.setDuration(500);
+        startAnimation(animation);
+    }
+
+    private void attachChilds(NodeItem nodeItem)
+    {
+        NodeView nodeView = nodeItem.getView(getContext());
+
+        for (NodeItem child : nodeItem.getChilds()) {
+            nodeView.addChild(child.getView(getContext()));
+        }
     }
 
     public void detachChilds()
@@ -130,7 +144,7 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
     {
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-        mNode.setExpanded(expanded);
+        mNodeItem.setExpanded(expanded);
 
         if (expanded) {
             wrapper.setVisibility(VISIBLE);
@@ -145,29 +159,69 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         }
     }
 
-    public void setNode(@NonNull NodeItem node) {
-        ((TextView) findViewById(R.id.ItemName)).setText(node.getName());
-        mNode = node;
+    public void setNode(@NonNull NodeItem nodeItem)
+    {
+        // Имя элемента
+        TextView itemName = ((TextView) findViewById(R.id.ItemName));
+        if (itemName != null) itemName.setText(nodeItem.getName());
+
+        // Скрываем корневой элемент без имени
+        if (nodeItem.isRoot() && !nodeItem.hasName()) {
+            ViewGroup header = findViewById(R.id.HeaderLayout);
+            if (header != null) header.setVisibility(GONE);
+            ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+            if (wrapper != null) wrapper.setBackgroundResource(0);
+        }
+
+        // Корневой элемент всегда развернут
+        if (nodeItem.isRoot()) nodeItem.setExpanded(true);
+
+        // Стрелочка элемента
+        if (!nodeItem.hasChilds()) {
+            setIcon(R.drawable.arrow_right);
+        } else if (nodeItem.isExpanded()) {
+            setIcon(R.drawable.arrow_up);
+        } else {
+            setIcon(R.drawable.arrow_down);
+        }
+
+        mNodeItem = nodeItem;
     }
 
     public NodeItem getNode() {
-        return mNode;
+        return mNodeItem;
     }
 
     public void addChild(ViewGroup childView) {
-        ViewGroup wrapper = findViewById(R.id.WrapperLayout);
-        if (wrapper != null) wrapper.addView(childView);
+        if (getWrapperLayout() != null) {
+            getWrapperLayout().addView(childView);
+        }
+    }
+
+    private ViewGroup getWrapperLayout() {
+        return findViewById(R.id.WrapperLayout);
+    }
+
+    private int getWrapperHeight() {
+        ViewGroup wrapper = getWrapperLayout();
+        if (wrapper == null) return 0;
+        wrapper.measure(
+            MeasureSpec.makeMeasureSpec(getWidth(), View.MeasureSpec.AT_MOST),
+            MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
+        );
+        return wrapper.getMeasuredHeight();
+    }
+
+    public void setIcon(int resId) {
+        ImageView itemIcon = ((ImageView) findViewById(R.id.ItemIcon));
+        if (itemIcon != null) itemIcon.setImageResource(resId);
     }
 
     @Override
     public void onClick(View view) {
-        if (mOnHeaderClickListener != null) {
-            mOnHeaderClickListener.onHeaderClick(this);
+        if (mNodeItem.getOnNodeClickListener() != null) {
+            mNodeItem.getOnNodeClickListener().onNodeClick(mNodeItem);
         }
-    }
-
-    public void setOnHeaderClickListener(OnHeaderClickListener listener) {
-        mOnHeaderClickListener = listener;
     }
 
     @Override
@@ -184,9 +238,5 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
                 break;
         }
         return false;
-    }
-
-    public interface OnHeaderClickListener {
-        void onHeaderClick(NodeView layout);
     }
 }
