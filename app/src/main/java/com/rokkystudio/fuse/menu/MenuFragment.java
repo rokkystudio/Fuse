@@ -49,7 +49,7 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         MenuLayout layout = new MenuLayout(getContext());
         layout.setOnMenuClickListener(this);
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
-        model.getMenu().observe(getViewLifecycleOwner(), layout::setMenu);
+        model.getMenu().observe(getViewLifecycleOwner(), layout::setRootNode);
         return layout;
     }
 

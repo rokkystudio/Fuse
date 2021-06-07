@@ -106,6 +106,10 @@ public class NodeItem
 
     public void setOnNodeClickListener(OnNodeClickListener listener) {
         mOnNodeClickListener = listener;
+
+        for (NodeItem child : mChilds) {
+            child.setOnNodeClickListener(listener);
+        }
     }
 
     public OnNodeClickListener getOnNodeClickListener() {

@@ -17,7 +17,8 @@ import androidx.annotation.NonNull;
 
 import com.rokkystudio.fuse.R;
 
-public class NodeView extends LinearLayout implements View.OnClickListener, View.OnTouchListener
+public class NodeView extends LinearLayout implements
+    View.OnClickListener, View.OnTouchListener
 {
     private NodeItem mNodeItem = new NodeItem();
 
@@ -45,9 +46,6 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
         wrapper.setVisibility(VISIBLE);
         wrapper.removeAllViews();
         setIcon(R.drawable.arrow_up);
-
-        // Инициализация представлений дочерних элементов
-        attachChilds(mNodeItem);
 
         // Измерение высоты, занимаемой дочерними элементами
         final int wrapperHeight = getWrapperHeight();
@@ -115,48 +113,6 @@ public class NodeView extends LinearLayout implements View.OnClickListener, View
 
         animation.setDuration(500);
         startAnimation(animation);
-    }
-
-    private void attachChilds(NodeItem nodeItem)
-    {
-        NodeView nodeView = nodeItem.getView(getContext());
-
-        for (NodeItem child : nodeItem.getChilds()) {
-            nodeView.addChild(child.getView(getContext()));
-        }
-    }
-
-    public void detachChilds()
-    {
-        NodeItem nodeItem = getNode();
-        if (nodeItem == null) return;
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        wrapper.removeAllViews();
-
-        for (NodeItem child : nodeItem.getChilds()) {
-            child.setView(null);
-            child.detachChilds();
-        }
-    }
-
-    public void setExpanded(boolean expanded)
-    {
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        mNodeItem.setExpanded(expanded);
-
-        if (expanded) {
-            wrapper.setVisibility(VISIBLE);
-            if (mOriginHeight != 0) {
-                wrapper.getLayoutParams().height = mOriginHeight;
-            }
-        } else {
-            wrapper.setVisibility(GONE);
-            if (mOriginHeight == 0) {
-                mOriginHeight = wrapper.getHeight();
-            }
-        }
     }
 
     public void setNode(@NonNull NodeItem nodeItem)
