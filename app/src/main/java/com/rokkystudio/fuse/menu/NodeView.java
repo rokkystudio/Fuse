@@ -25,10 +25,6 @@ public class NodeView extends LinearLayout implements
     public NodeView(Context context) {
         super(context);
         inflate(getContext(), R.layout.menu_item, this);
-    }
-
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
         ViewGroup header = findViewById(R.id.HeaderLayout);
         if (header != null) {
             header.setOnClickListener(this);
@@ -149,8 +145,11 @@ public class NodeView extends LinearLayout implements
     }
 
     public void addChild(ViewGroup childView) {
-        if (getWrapperLayout() != null) {
-            getWrapperLayout().addView(childView);
+        ViewGroup wrapper = getWrapperLayout();
+        if (wrapper == null) return;
+        getWrapperLayout().addView(childView);
+        if (mNodeItem.isExpanded()) {
+            wrapper.setVisibility(VISIBLE);
         }
     }
 

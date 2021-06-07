@@ -33,11 +33,17 @@ public class MenuLayout extends ScrollView implements NodeItem.OnNodeClickListen
         addView(mRootLayout);
     }
 
-    public void setRootNode(@NonNull NodeItem nodeItem) {
-        mRootNode = nodeItem;
+    public void setMenu(NodeItem menu)
+    {
+        if (mRootNode != null) {
+            mRootNode.setOnNodeClickListener(null);
+        }
+        mRootNode = menu;
         mRootLayout.removeAllViews();
-        mRootLayout.addView(nodeItem.getView(getContext()));
-        nodeItem.setOnNodeClickListener(this);
+        if (menu != null) {
+            mRootLayout.addView(menu.getView(getContext()));
+            menu.setOnNodeClickListener(this);
+        }
     }
 
     // TODO ADD LINE

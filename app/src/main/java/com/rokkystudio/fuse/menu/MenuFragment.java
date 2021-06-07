@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,6 +20,7 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
 {
     private static final String XML_PATH = "XML_PATH";
     private MenuLayout.OnMenuClickListener mOnMenuClickListener = null;
+    private MenuLayout mMenuLayout = null;
     private MenuFragment() {}
 
     public static MenuFragment newInstance(String xmlPath) {
@@ -40,17 +42,42 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
         Context context = getContext();
         if (context != null) {
-            model.setMenu(MenuXml.parse(context, path));
+            NodeItem menu = MenuXml.parse(context, path);
+            if (menu != null) model.setMenu(menu);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        MenuLayout layout = new MenuLayout(getContext());
-        layout.setOnMenuClickListener(this);
-        MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
-        model.getMenu().observe(getViewLifecycleOwner(), layout::setRootNode);
-        return layout;
+        mMenuLayout = new MenuLayout(getContext());
+        mMenuLayout.setOnMenuClickListener(this);
+        MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
+        menuModel.getMenu().observe(getViewLifecycleOwner(), mMenuLayout::setMenu);
+        menuModel.getScroll().observe(getViewLifecycleOwner(), mMenuLayout::scrollTo);
+        mMenuLayout.setScrollY();
+        return mMenuLayout;
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mMenuLayout != null) {
+            MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
+            menuModel.setScroll(mMenuLayout.getScrollY());
+            mMenuLayout.setMenu(null);
+        }
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        bundle.putInt("SCROLL", mMenuLayout.getScrollY());
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        mRelativeLayoutMain.scrollTo(0, savedInstanceState.getInt(SystemGlobal.SCROLL_Y));
     }
 
     @Override

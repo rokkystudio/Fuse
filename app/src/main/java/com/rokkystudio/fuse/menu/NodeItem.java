@@ -64,7 +64,7 @@ public class NodeItem
 
         if (mExpanded) {
             for (NodeItem childItem : mChilds) {
-                NodeView childView = childItem.getView(context);
+                 NodeView childView = childItem.getView(context);
                 mNodeView.addChild(childView);
             }
         }
@@ -82,6 +82,8 @@ public class NodeItem
     public void addChild(NodeItem child) {
         child.setParent(this);
         mChilds.add(child);
+
+        // TODO IF HAS VIEW THEN ADD VIEW
     }
 
     public void setParent(NodeItem parent) {
