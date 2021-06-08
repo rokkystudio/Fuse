@@ -43,6 +43,11 @@ public class NodeView extends LinearLayout implements
         wrapper.removeAllViews();
         setIcon(R.drawable.arrow_up);
 
+        for (NodeItem childItem : mNodeItem.getChilds()) {
+            NodeView childView = childItem.getView(getContext());
+            addChildView(childView);
+        }
+
         // Измерение высоты, занимаемой дочерними элементами
         final int wrapperHeight = getWrapperHeight();
         wrapper.getLayoutParams().height = 0;
@@ -84,16 +89,9 @@ public class NodeView extends LinearLayout implements
         {
             @Override
             protected void applyTransformation(float time, Transformation trans) {
-                if (time == 1)
-                {
-
-                    for (NodeItem child : mNodeItem.getChilds()) {
-                        wrapper.addView(child.getView(getContext()));
-                    }
-
+                if (time == 1) {
                     wrapper.getLayoutParams().height = 0;
-                    wrapper.setVisibility(GONE);
-                    wrapper.removeAllViews();
+                    removeChildViews();
                     return;
                 }
 

@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root name="BMW">
+    <folder name="Test 1">
+        <folder name="Test 11">
+            <item name="Test 111" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 112" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 113" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 114" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 115" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 116" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 117" date="09/1998 - 10/2003" link="e39_new.xml" />
+        </folder>
+        <folder name="Test 12">
+            <item name="Test 121" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 122" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 123" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 124" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 125" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 126" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 127" date="09/1998 - 10/2003" link="e39_new.xml" />
+        </folder>
+        <folder name="Test 13">
+            <item name="Test 131" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 132" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 133" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 134" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 135" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 136" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 137" date="09/1998 - 10/2003" link="e39_new.xml" />
+        </folder>
+        <folder name="Test 14">
+            <item name="Test 141" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 142" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 143" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 144" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 145" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 146" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <item name="Test 147" date="09/1998 - 10/2003" link="e39_new.xml" />
+        </folder>
+        <folder name="Test 15">
+            <folder name="Test 150">
+                <item name="Test 151" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 152" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 153" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 154" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 155" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 156" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <menu name="Test 157" date="09/1998 - 10/2003" link="mini/menu.xml" />
+            </folder>
+        </folder>
+    </folder>
+
     <folder name="1 Series">
         <!-- item name="E81 E82 E87 E88 E89" date="09/2004 - 10/2013" link="e81_82_87_88_89_old.xml" /-->
     </folder>
