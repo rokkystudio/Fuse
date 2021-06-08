@@ -65,10 +65,22 @@ public class NodeItem
         if (mExpanded) {
             for (NodeItem childItem : mChilds) {
                  NodeView childView = childItem.getView(context);
-                mNodeView.addChild(childView);
+                mNodeView.addChildView(childView);
             }
         }
         return mNodeView;
+    }
+
+    public void removeViews()
+    {
+        if (mNodeView != null) {
+            mNodeView.removeChildViews();
+            mNodeView = null;
+        }
+
+        for (NodeItem child : mChilds) {
+            child.removeViews();
+        }
     }
 
     public boolean hasChilds() {

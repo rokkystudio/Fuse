@@ -1,6 +1,7 @@
 package com.rokkystudio.fuse.menu;
 
 import android.content.Context;
+import android.graphics.Point;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,7 +11,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -48,13 +48,18 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         mMenuLayout = new MenuLayout(getContext());
         mMenuLayout.setOnMenuClickListener(this);
+
         MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
-        menuModel.getMenu().observe(getViewLifecycleOwner(), mMenuLayout::setMenu);
-        menuModel.getScroll().observe(getViewLifecycleOwner(), mMenuLayout::scrollTo);
-        mMenuLayout.setScrollY();
+        menuModel.getMenu().observe(getViewLifecycleOwner(), mMenuLayout::attachMenu);
+
+        final Point scroll = menuModel.getScroll().getValue();
+        if (scroll != null) {
+            mMenuLayout.post(() -> mMenuLayout.scrollTo(scroll.x, scroll.y));
+        }
         return mMenuLayout;
     }
 
@@ -62,22 +67,10 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
     public void onDestroyView() {
         if (mMenuLayout != null) {
             MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
-            menuModel.setScroll(mMenuLayout.getScrollY());
-            mMenuLayout.setMenu(null);
+            menuModel.setScroll(new Point(mMenuLayout.getScrollX(), mMenuLayout.getScrollY()));
+            mMenuLayout.detachMenu();
         }
         super.onDestroyView();
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle bundle) {
-        super.onSaveInstanceState(bundle);
-        bundle.putInt("SCROLL", mMenuLayout.getScrollY());
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mRelativeLayoutMain.scrollTo(0, savedInstanceState.getInt(SystemGlobal.SCROLL_Y));
     }
 
     @Override

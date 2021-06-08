@@ -114,7 +114,7 @@ public class NodeView extends LinearLayout implements
     public void setNode(@NonNull NodeItem nodeItem)
     {
         // Имя элемента
-        TextView itemName = ((TextView) findViewById(R.id.ItemName));
+        TextView itemName = findViewById(R.id.ItemName);
         if (itemName != null) itemName.setText(nodeItem.getName());
 
         // Скрываем корневой элемент без имени
@@ -144,13 +144,20 @@ public class NodeView extends LinearLayout implements
         return mNodeItem;
     }
 
-    public void addChild(ViewGroup childView) {
+    public void addChildView(ViewGroup childView) {
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-        getWrapperLayout().addView(childView);
+        wrapper.addView(childView);
         if (mNodeItem.isExpanded()) {
             wrapper.setVisibility(VISIBLE);
         }
+    }
+
+    public void removeChildViews() {
+        ViewGroup wrapper = getWrapperLayout();
+        if (wrapper == null) return;
+        wrapper.removeAllViews();
+        wrapper.setVisibility(GONE);
     }
 
     private ViewGroup getWrapperLayout() {
@@ -168,7 +175,7 @@ public class NodeView extends LinearLayout implements
     }
 
     public void setIcon(int resId) {
-        ImageView itemIcon = ((ImageView) findViewById(R.id.ItemIcon));
+        ImageView itemIcon = findViewById(R.id.ItemIcon);
         if (itemIcon != null) itemIcon.setImageResource(resId);
     }
 

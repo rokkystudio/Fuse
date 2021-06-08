@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/fragment_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/fuses_fragment.xml" value="0.18802083333333333" />
         <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/menu_item.xml" value="0.140625" />
-        <entry key="..\:/DEV/Projects/Fuse/app/src/main/res/layout/menu_item.xml" value="0.11503623188405797" />
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/menu_layout.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>

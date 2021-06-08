@@ -47,7 +47,7 @@ import com.rokkystudio.fuse.xml.FuseLayout;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (mRootView != null) return mRootView;
-        mRootView = inflater.inflate(R.layout.fragment_fuses, container, false);
+        mRootView = inflater.inflate(R.layout.fuses_fragment, container, false);
         mFuseLayout = mRootView.findViewById(R.id.FuseTable);
         mFuseLayout.loadXml(mXmlFileName);
         mFuseLayout.setOnDiagramClickListener(this);
