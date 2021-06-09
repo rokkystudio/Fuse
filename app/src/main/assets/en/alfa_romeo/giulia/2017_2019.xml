@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo Giulia 2017-2019">
+<root name="Alfa Romeo Giulia 2017-2019">
     <location name="Fuse box under passenger side footboard">
         <image name="Fuse box location" src="alfa_romeo/giulia/footboard_location.jpg" />
         <image name="Fuse box diagram" src="alfa_romeo/giulia/footboard_diagram.jpg" />
@@ -25,4 +25,4 @@
         <fuse id="F22" current="20A" name="KL15/a 12V Power outlet (R053)." />
     </location>
 
-</fuses>
+</root>

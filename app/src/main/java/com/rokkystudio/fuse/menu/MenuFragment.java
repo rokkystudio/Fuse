@@ -16,17 +16,16 @@ import android.view.ViewGroup;
 
 import com.rokkystudio.fuse.R;
 
-public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickListener
+public class MenuFragment extends Fragment
 {
-    private static final String XML_PATH = "XML_PATH";
-    private MenuLayout.OnMenuClickListener mOnMenuClickListener = null;
+    private static final String FILENAME = "FILENAME";
     private MenuLayout mMenuLayout = null;
     private MenuFragment() {}
 
     public static MenuFragment newInstance(String xmlPath) {
         MenuFragment fragment = new MenuFragment();
         Bundle args = new Bundle();
-        args.putString(XML_PATH, xmlPath);
+        args.putString(FILENAME, xmlPath);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,7 +37,7 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         setHasOptionsMenu(true);
 
         if (getArguments() == null) return;
-        String path = getArguments().getString(XML_PATH);
+        String path = getArguments().getString(FILENAME);
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
         Context context = getContext();
         if (context != null) {
@@ -51,7 +50,7 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         mMenuLayout = new MenuLayout(getContext());
-        mMenuLayout.setOnMenuClickListener(this);
+        mMenuLayout.setOnMenuClickListener((MenuLayout.OnMenuClickListener) getContext());
 
         MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
         menuModel.getMenu().observe(getViewLifecycleOwner(), mMenuLayout::attachMenu);
@@ -68,6 +67,7 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         if (mMenuLayout != null) {
             MenuModel menuModel = new ViewModelProvider(this).get(MenuModel.class);
             menuModel.setScroll(new Point(mMenuLayout.getScrollX(), mMenuLayout.getScrollY()));
+            mMenuLayout.setOnMenuClickListener(null);
             mMenuLayout.detachMenu();
         }
         super.onDestroyView();
@@ -85,36 +85,5 @@ public class MenuFragment extends Fragment implements MenuLayout.OnMenuClickList
         menu.findItem(R.id.MenuPrint).setVisible(false);
         menu.findItem(R.id.MenuNew).setVisible(true);
         menu.findItem(R.id.MenuEdit).setVisible(false);
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-
-        try {
-            mOnMenuClickListener = (MenuLayout.OnMenuClickListener) context;
-        } catch (ClassCastException e) {
-            throw new ClassCastException("Activity must implement OnMenuClickListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mOnMenuClickListener = null;
-    }
-
-    @Override
-    public void onMenuClick(String name, String link) {
-        if (mOnMenuClickListener != null) {
-            mOnMenuClickListener.onMenuClick(name, link);
-        }
-    }
-
-    @Override
-    public void onItemClick(String name, String link) {
-        if (mOnMenuClickListener != null) {
-            mOnMenuClickListener.onItemClick(name, link);
-        }
     }
 }

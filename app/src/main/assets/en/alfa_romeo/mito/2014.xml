@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo MiTo 2014">
+<root name="Alfa Romeo MiTo 2014">
     <location name="Engine compartment">
         <image name="Fuse box diagram" src="alfa_romeo/mito/2014/engine_diagram.jpg" />
 
@@ -47,4 +47,4 @@
         <fuse id="F3" current="15A" name="Luggage compartment power socket." />
         <fuse id="F6" current="15A" name="Front seat heater." />
     </location>
-</fuses>
+</root>

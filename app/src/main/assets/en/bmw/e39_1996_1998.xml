@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E39 (1996-1998)">
+<root name="BMW E39 (1996-1998)">
     <location name="Glove box">
         <image src="images/bmw/e39/1996_1998/glovebox_diagram.png" />
 
@@ -75,4 +75,4 @@
         <fuse id="65" current="10A" name="Transceiver / charging electronics." />
         <fuse id="66" current="10A" name="Unloader relay. Rear defogger relay." />
     </location>
-</fuses>
+</root>

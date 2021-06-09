@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E30 (1984) 318i">
+<root name="BMW E30 (1984) 318i">
     <location name="Power distribution box">
         <fuse id="1" current="7.5A" name="Headlights." />
         <fuse id="2" current="7.5A" name="Headlights." />
@@ -32,4 +32,4 @@
         <fuse id="29" current="7.5A" name="Fog lights." />
         <fuse id="30" current="7.5A" name="Fog lights." />
     </location>
-</fuses>
+</root>

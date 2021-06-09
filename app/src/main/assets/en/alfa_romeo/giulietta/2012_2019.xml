@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo Giulietta 2012-2019">
+<root name="Alfa Romeo Giulietta 2012-2019">
     <location name="Engine compartment">
         <image name="Fuse box location" src="alfa_romeo/giulietta/2012_2019/engine_location.jpg" />
         <image name="Fuse box diagram" src="alfa_romeo/giulietta/2012_2019/engine_diagram.jpg" />
@@ -85,4 +85,4 @@
         <fuse id="F5" current="15A" name="Front seat heating." />
         <fuse id="F6" current="20A" name="Bose amplifier. Subwoofer." />
     </location>
-</fuses>
+</root>

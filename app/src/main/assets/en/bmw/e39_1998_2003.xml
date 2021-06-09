@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E39 (1998-2003)">
+<root name="BMW E39 (1998-2003)">
     <location name="Glove box">
         <fuse id="1" current="30A" type="medium" name="Wiper relay." />
         <fuse id="2" current="30A" type="medium" name="Headlight washer." />
@@ -75,4 +75,4 @@
         <fuse id="66" current="40A" type="medium" name="Rear defogger relay." />
         <fuse id="67" current="40A" type="medium" name="Rear lid module." />
     </location>
-</fuses>
+</root>

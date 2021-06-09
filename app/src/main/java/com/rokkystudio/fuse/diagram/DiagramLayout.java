@@ -1,7 +1,10 @@
-package com.rokkystudio.fuse.xml;
+package com.rokkystudio.fuse.diagram;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +15,11 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.rokkystudio.fuse.menu.NodeView;
-import com.rokkystudio.fuse.diagram.DiagramView;
+import com.rokkystudio.fuse.viewer.ViewerModel;
+import com.rokkystudio.fuse.viewer.ViewerView;
 import com.rokkystudio.fuse.R;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -30,17 +35,16 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
-public class FuseLayout extends ScrollView implements
-    View.OnClickListener, DiagramView.OnDiagramClickListener
+public class DiagramLayout extends ScrollView implements View.OnClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
 
     private ViewGroup mCurrentLocation = null;
 
-    private DiagramView.OnDiagramClickListener mOnDiagramClickListener = null;
+    private OnImageClickListener mOnImageClickListener = null;
 
-    public FuseLayout(Context context) {
+    public DiagramLayout(Context context) {
         super(context);
         mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(context);
@@ -49,17 +53,7 @@ public class FuseLayout extends ScrollView implements
         addView(mRootLayout);
     }
 
-    public void loadXml(String name) {
-        try {
-            InputStream stream = getContext().getAssets().open(getResources().getString(R.string.language) + "/" + name);
-            XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
-            parser.setInput(new InputStreamReader(stream));
-            parseXML(parser);
-        } catch (IOException | XmlPullParserException e) {
-            e.printStackTrace();
-        }
-        invalidate();
-    }
+
 
     public void addTitle(String title) {
         ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
@@ -77,15 +71,25 @@ public class FuseLayout extends ScrollView implements
 
     public void addImage(String filename)
     {
-        DiagramView diagram = new DiagramView(getContext());
-        diagram.setFixed(true);
-        diagram.setImageFromAsset(filename);
-        diagram.setOnDiagramClickListener(this);
+        ImageView image = new ImageView(getContext());
+        image.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
 
-        if (mCurrentLocation != null) {
-            mCurrentLocation.addView(diagram);
-        } else {
-            mRootLayout.addView(diagram);
+        if (getContext() == null) return;
+        AssetManager assetManager = getContext().getAssets();
+        try {
+            InputStream inputStream = assetManager.open(filename);
+            Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
+            image.setImageDrawable(drawable);
+            image.setOnClickListener(this);
+            image.setTag(filename);
+
+            if (mCurrentLocation != null) {
+                mCurrentLocation.addView(image);
+            } else {
+                mRootLayout.addView(image);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -236,6 +240,12 @@ public class FuseLayout extends ScrollView implements
     @Override
     public void onClick(View view)
     {
+        if (view instanceof ImageView) {
+            String filename = (String) view.getTag();
+            mOnImageClickListener.OnImageClick(filename);
+            return;
+        }
+
         ViewParent parent = view.getParent();
         if (!(parent instanceof NodeView)) return;
         NodeView wrapper = (NodeView) parent;
@@ -250,14 +260,11 @@ public class FuseLayout extends ScrollView implements
         }
     }
 
-    public void setOnDiagramClickListener(DiagramView.OnDiagramClickListener listener) {
-        mOnDiagramClickListener = listener;
+    public void setOnImageClickListener(OnImageClickListener listener) {
+        mOnImageClickListener = listener;
     }
 
-    @Override
-    public void onDiagramClick(String filename) {
-        if (mOnDiagramClickListener != null) {
-            mOnDiagramClickListener.onDiagramClick(filename);
-        }
+    public interface OnImageClickListener {
+        void OnImageClick(String filename);
     }
 }

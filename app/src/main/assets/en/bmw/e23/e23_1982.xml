@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E23 (1982) 733i">
+<root name="BMW E23 (1982) 733i">
     <location name="Power distribution box" src="e23_1982.png">
         <fuse id="1" current="16A" name="Fuel delivery. Evaporative control. Idle speed control." />
         <fuse id="2" current="8A" name="Headlights. Right low beam." />
@@ -31,4 +31,4 @@
     <location name="Auxiliary fan fuses (2)">
         <fuse current="25A" name="Auxiliary fan." />
     </location>
-</fuses>
+</root>

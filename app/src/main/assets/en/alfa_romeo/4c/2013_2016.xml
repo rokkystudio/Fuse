@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo 4C 2013-2016">
+<root name="Alfa Romeo 4C 2013-2016">
     <location name="Engine compartment">
         <image name="Fuse box location" src="alfa_romeo/4c/2013_2016/engine_location.jpg" />
         <image name="Fuse box diagram" src="alfa_romeo/4c/2013_2016/engine_diagram.jpg" />
@@ -19,4 +19,4 @@
         <fuse id="F47" current="20A" name="+30 Driver side electric windows." />
         <fuse id="F48" current="20A" name="+30 Passenger side electric windows." />
     </location>
-</fuses>
+</root>

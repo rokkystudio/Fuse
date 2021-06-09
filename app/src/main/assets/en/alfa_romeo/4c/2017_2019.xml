@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo 4C 2017-2019">
+<root name="Alfa Romeo 4C 2017-2019">
     <location name="Engine compartment">
         <image name="Fuse box location" src="alfa_romeo/4c/2017_2019/engine_location.jpg" />
 
@@ -44,4 +44,4 @@
         <fuse id="F31 (13)" current="5A" name="Climate control. Body controller." />
         <fuse id="F47 (14)" current="20A" name="Driver power window." />
     </location>
-</fuses>
+</root>

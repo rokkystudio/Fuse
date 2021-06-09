@@ -1,14 +1,12 @@
-package com.rokkystudio.fuse.diagram;
+package com.rokkystudio.fuse.viewer;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -20,13 +18,10 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Scroller;
 
-import java.io.IOException;
-import java.io.InputStream;
+import androidx.annotation.NonNull;
 
-public class DiagramView extends View
+public class ViewerView extends View
 {
-    private OnDiagramClickListener mOnDiagramClickListener = null;
-    private String mDiagramFilename = null;
     private Drawable mDrawable = null;
 
     private static final float SUPER_MIN_MULTIPLIER = 0.75f;
@@ -73,17 +68,17 @@ public class DiagramView extends View
     private final Matrix mMatrix = new Matrix();
     private final Matrix mPrevMatrix = new Matrix();
 
-    public DiagramView(Context context) {
+    public ViewerView(Context context) {
         super(context);
         init(context);
     }
 
-    public DiagramView(Context context, AttributeSet attrs) {
+    public ViewerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public DiagramView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ViewerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
@@ -103,21 +98,8 @@ public class DiagramView extends View
         mFixed = fixed;
     }
 
-    public void setImageFromAsset(String filename)
-    {
-        mDiagramFilename = filename;
-        AssetManager assetManager = getContext().getAssets();
-        try {
-            InputStream inputStream = assetManager.open(filename);
-            mDrawable = BitmapDrawable.createFromStream(inputStream, null);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return;
-        }
-
-        float width = mDrawable.getMinimumWidth();
-        float height = mDrawable.getMinimumHeight();
-
+    public void setDrawable(@NonNull Drawable drawable) {
+        mDrawable = drawable;
         requestLayout();
         postInvalidate();
     }
@@ -246,7 +228,7 @@ public class DiagramView extends View
         invalidate();
     }
 
-    public void setZoom(DiagramView img) {
+    public void setZoom(ViewerView img) {
         PointF center = img.getScrollPosition();
         setZoom(img.getCurrentZoom(), center.x, center.y);
     }
@@ -480,11 +462,7 @@ public class DiagramView extends View
     private class GestureListener extends GestureDetector.SimpleOnGestureListener
     {
         @Override
-        public boolean onSingleTapConfirmed(MotionEvent e)
-        {
-            if (mOnDiagramClickListener != null) {
-                mOnDiagramClickListener.onDiagramClick(mDiagramFilename);
-            }
+        public boolean onSingleTapConfirmed(MotionEvent e) {
             return performClick();
         }
 
@@ -971,13 +949,5 @@ public class DiagramView extends View
 
         // Fit content within view
         fitImageToView();
-    }
-
-    public void setOnDiagramClickListener(OnDiagramClickListener listener) {
-        mOnDiagramClickListener = listener;
-    }
-
-    public interface OnDiagramClickListener {
-        void onDiagramClick(String filename);
     }
 }

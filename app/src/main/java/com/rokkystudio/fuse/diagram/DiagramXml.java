@@ -1,10 +1,15 @@
-package com.rokkystudio.fuse.menu;
+package com.rokkystudio.fuse.diagram;
+
+import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
+import static org.xmlpull.v1.XmlPullParser.END_TAG;
+import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 
 import com.rokkystudio.fuse.R;
+import com.rokkystudio.fuse.menu.NodeItem;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -14,21 +19,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.END_TAG;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
-
-public class MenuXml
+public class DiagramXml
 {
-    // TODO Item date param
-
     public static final String XML_ROOT = "root";
-    public static final String XML_MENU = "menu";
-    public static final String XML_FOLDER = "folder";
-    public static final String XML_ITEM = "item";
+    public static final String XML_LOCATION = "location";
+    public static final String XML_IMAGE = "image";
+    public static final String XML_FUSE = "fuse";
 
+    public static final String XML_ID = "id";
+    public static final String XML_CURRENT = "current";
     public static final String XML_NAME = "name";
-    public static final String XML_LINK = "link";
+    public static final String XML_SRC = "src";
 
     public static NodeItem parse(@NonNull Context context, @NonNull String asset) {
         try {
@@ -65,12 +66,11 @@ public class MenuXml
         {
             if (eventType == START_TAG)
             {
-                String name = parser.getAttributeValue(null, XML_NAME);
-                String link = parser.getAttributeValue(null, XML_LINK);
                 NodeItem node = new NodeItem(name, link, parser.getName());
 
                 if (XML_ROOT.equals(parser.getName())) {
-                    current.setName(name);
+                    String name = parser.getAttributeValue(null, XML_NAME);
+                    current.getChilds()
                 }
 
                 else if (XML_MENU.equals(parser.getName())) {

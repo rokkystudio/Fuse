@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E28 (1988) 535I / M5">
+<root name="BMW E28 (1988) 535I / M5">
     <location name="Power distribution box">
         <fuse id="1" current="16A" name="Fuel delivery." />
         <fuse id="2" current="8A" name="Headlights. Right low beam." />
@@ -23,4 +23,4 @@
     <location name="Power window circuit breaker">
         <fuse current="25A" name="Power windows." />
     </location>
-</fuses>
+</root>

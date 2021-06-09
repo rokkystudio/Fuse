@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="Alfa Romeo Giulietta 2010-2012">
+<root name="Alfa Romeo Giulietta 2010-2012">
     <location name="Engine compartment">
         <image name="Fuse box diagram" src="alfa_romeo/giulietta/2010_2012/engine_diagram.jpg" />
 
@@ -50,4 +50,4 @@
         <fuse id="F61" current="15A" name="Front seat heater." />
         <fuse id="F60" current="15A" name="Lumbar adjustments." />
     </location>
-</fuses>
+</root>

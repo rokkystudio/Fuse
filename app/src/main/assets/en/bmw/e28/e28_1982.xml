@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E28 (1982) 528e">
+<root name="BMW E28 (1982) 528e">
     <location name="Power distribution box">
         <fuse id="1" current="16A" name="Fuel delivery. Evaporative control. Idle speed control." />
         <fuse id="2" current="8A" name="Active check control. Headlights. Right low beam." />
@@ -27,4 +27,4 @@
     <location name="Inline radio">
         <fuse current="1A" name="Radio." />
     </location>
-</fuses>
+</root>

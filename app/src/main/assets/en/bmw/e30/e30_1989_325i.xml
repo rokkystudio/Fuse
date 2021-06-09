@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fuses name="BMW E30 (1989) 325i / 325is">
+<root name="BMW E30 (1989) 325i / 325is">
     <location name="Power distribution box">
         <fuse id="1" current="7.5A" type="medium" name="Headlights." />
         <fuse id="2" current="7.5A" type="medium" name="Headlights." />
@@ -36,4 +36,4 @@
     <location name="Power window circuit breaker">
         <fuse id="~" current="25A" type="medium" name="Power windows." />
     </location>
-</fuses>
+</root>
