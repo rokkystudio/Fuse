@@ -2,13 +2,15 @@
 <root name="BMW">
     <folder name="Test 1">
         <folder name="Test 11">
-            <item name="Test 111" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 112" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 113" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 114" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 115" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 116" date="09/1998 - 10/2003" link="e39_new.xml" />
-            <item name="Test 117" date="09/1998 - 10/2003" link="e39_new.xml" />
+            <folder name="Test 11">
+                <item name="Test 111" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 112" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 113" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 114" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 115" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 116" date="09/1998 - 10/2003" link="e39_new.xml" />
+                <item name="Test 117" date="09/1998 - 10/2003" link="e39_new.xml" />
+            </folder>
         </folder>
         <folder name="Test 12">
             <item name="Test 121" date="09/1998 - 10/2003" link="e39_new.xml" />

@@ -44,8 +44,7 @@ public class FuseLayout extends ScrollView implements
         super(context);
         mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(context);
-        LayoutParams params = new LayoutParams(MATCH_PARENT, WRAP_CONTENT);
-        mRootLayout.setLayoutParams(params);
+        mRootLayout.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
         mRootLayout.setOrientation(LinearLayout.VERTICAL);
         addView(mRootLayout);
     }

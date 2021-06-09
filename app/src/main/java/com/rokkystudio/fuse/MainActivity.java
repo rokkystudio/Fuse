@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.rokkystudio.fuse.diagram.DiagramFragment;
+import com.rokkystudio.fuse.diagram.ImageFragment;
 import com.rokkystudio.fuse.diagram.DiagramView;
 import com.rokkystudio.fuse.menu.MenuFragment;
 import com.rokkystudio.fuse.menu.MenuLayout;
@@ -29,8 +29,8 @@ public class MainActivity extends AppCompatActivity implements
     public void onDiagramClick(String filename) {
         getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.enter, R.anim.exit)
-            .replace(R.id.MainFrame, DiagramFragment.newInstance(filename))
-            .addToBackStack(DiagramFragment.class.getName())
+            .replace(R.id.MainFrame, ImageFragment.newInstance(filename))
+            .addToBackStack(ImageFragment.class.getName())
             .commit();
     }
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.enter, R.anim.exit)
             .replace(R.id.MainFrame, MenuFragment.newInstance(link))
-            .addToBackStack(DiagramFragment.class.getName())
+            .addToBackStack(ImageFragment.class.getName())
             .commit();
     }
 
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements
         getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.enter, R.anim.exit)
             .replace(R.id.MainFrame, FuseFragment.newInstance(link))
-            .addToBackStack(DiagramFragment.class.getName())
+            .addToBackStack(ImageFragment.class.getName())
             .commit();
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,21 +14,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rokkystudio.fuse.diagram.DiagramView;
+import com.rokkystudio.fuse.menu.MenuModel;
+import com.rokkystudio.fuse.menu.MenuXml;
+import com.rokkystudio.fuse.menu.NodeItem;
 import com.rokkystudio.fuse.xml.FuseLayout;
 
     public class FuseFragment extends Fragment implements DiagramView.OnDiagramClickListener
 {
-    private static final String XML_FILENAME = "XML_FILENAME";
-    private View mRootView = null;
+    private static final String XML_PATH = "XML_PATH";
     private FuseLayout mFuseLayout = null;
-    private String mXmlFileName = "";
     private DiagramView.OnDiagramClickListener mOnDiagramClickListener = null;
 
     @NonNull
-    public static FuseFragment newInstance(String filename) {
+    public static FuseFragment newInstance(String xmlPath) {
         FuseFragment fragment = new FuseFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(XML_FILENAME, filename);
+        bundle.putString(XML_PATH, xmlPath);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -36,19 +38,22 @@ import com.rokkystudio.fuse.xml.FuseLayout;
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
         setHasOptionsMenu(true);
 
-        if (getArguments() != null) {
-            mXmlFileName = getArguments().getString(XML_FILENAME);
+        if (getArguments() == null) return;
+        String path = getArguments().getString(XML_PATH);
+
+        MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
+        Context context = getContext();
+        if (context != null) {
+            NodeItem menu = MenuXml.parse(context, path);
+            if (menu != null) model.setMenu(menu);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (mRootView != null) return mRootView;
-        mRootView = inflater.inflate(R.layout.fuses_fragment, container, false);
-        mFuseLayout = mRootView.findViewById(R.id.FuseTable);
+        mFuseLayout = new FuseLayout(getContext());
         mFuseLayout.loadXml(mXmlFileName);
         mFuseLayout.setOnDiagramClickListener(this);
         return mRootView;

@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/drawable/border.xml" value="0.11614583333333334" />
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/fragment_menu.xml" value="0.18802083333333333" />
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/fuses_fragment.xml" value="0.18802083333333333" />
         <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/menu_item.xml" value="0.140625" />
-        <entry key="..\:/DEV/Projects/Fuse/app/src/main/res/layout/menu_item.xml" value="0.11503623188405797" />
-        <entry key="..\:/DEV/Projects/Fuse/app/src/main/res/layout/menu_layout.xml" value="0.10643115942028986" />
+        <entry key="..\:/ANDROID/Projects/FUSE/app/src/main/res/layout/menu_layout.xml" value="0.18802083333333333" />
       </map>
     </option>
   </component>
@@ -53,7 +55,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

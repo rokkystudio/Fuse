@@ -9,16 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class DiagramFragment extends Fragment
+public class ImageFragment extends Fragment
 {
     private static final String DIAGRAM_FILENAME = "DIAGRAM_FILENAME";
     private String mDiagramFilename = null;
     private DiagramView mDiagramView = null;
 
-    private DiagramFragment() {}
+    private ImageFragment() {}
 
-    public static DiagramFragment newInstance(String filename) {
-        DiagramFragment fragment = new DiagramFragment();
+    public static ImageFragment newInstance(String filename) {
+        ImageFragment fragment = new ImageFragment();
         Bundle args = new Bundle();
         args.putString(DIAGRAM_FILENAME, filename);
         fragment.setArguments(args);
