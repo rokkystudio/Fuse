@@ -1,7 +1,6 @@
-package com.rokkystudio.fuse.diagram;
+package com.rokkystudio.fuse.fuse;
 
 import android.content.Context;
-import android.graphics.Point;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,16 +16,16 @@ import android.view.ViewGroup;
 import com.rokkystudio.fuse.R;
 import com.rokkystudio.fuse.menu.MenuModel;
 import com.rokkystudio.fuse.menu.MenuXml;
-import com.rokkystudio.fuse.menu.NodeItem;
+import com.rokkystudio.fuse.menu.MenuItem;
 
-public class DiagramFragment extends Fragment
+public class FuseFragment extends Fragment
 {
     private static final String FILENAME = "FILENAME";
-    private DiagramLayout mDiagramLayout = null;
+    private FuseLayout mDiagramLayout = null;
 
     @NonNull
-    public static DiagramFragment newInstance(String xmlPath) {
-        DiagramFragment fragment = new DiagramFragment();
+    public static FuseFragment newInstance(String xmlPath) {
+        FuseFragment fragment = new FuseFragment();
         Bundle bundle = new Bundle();
         bundle.putString(FILENAME, xmlPath);
         fragment.setArguments(bundle);
@@ -45,16 +44,16 @@ public class DiagramFragment extends Fragment
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
         Context context = getContext();
         if (context != null) {
-            NodeItem menu = MenuXml.parse(context, path);
+            MenuItem menu = MenuXml.parse(context, path);
             if (menu != null) model.setMenu(menu);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mDiagramLayout = new DiagramLayout(getContext());
+        mDiagramLayout = new FuseLayout(getContext());
         mDiagramLayout.loadXml(mXmlFileName);
-        mDiagramLayout.setOnImageClickListener((DiagramLayout.OnImageClickListener) getContext());
+        mDiagramLayout.setOnImageClickListener((FuseLayout.OnImageClickListener) getContext());
         return mDiagramLayout;
     }
 

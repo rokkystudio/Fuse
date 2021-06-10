@@ -1,9 +1,9 @@
-package com.rokkystudio.fuse.diagram;
+package com.rokkystudio.fuse.fuse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiagramNode
+public class FuseItem
 {
     private String mId;
     private String mCurrent;
@@ -11,11 +11,13 @@ public class DiagramNode
     private String mTag;
     private String mSrc;
 
-    private DiagramNode mParent = null;
+    private FuseItem mParent = null;
 
-    private final List<DiagramNode> mChilds = new ArrayList<>();
+    private final List<FuseItem> mChilds = new ArrayList<>();
 
-    public DiagramNode(String name) {
+    public FuseItem() {}
+
+    public FuseItem(String name) {
         mName = name;
     }
 
@@ -59,12 +61,16 @@ public class DiagramNode
         return mCurrent;
     }
 
-    public void setParent(DiagramNode parent) {
+    public void setParent(FuseItem parent) {
         mParent = parent;
     }
 
-    public DiagramNode getParent() {
+    public FuseItem getParent() {
         return mParent;
+    }
+
+    public void addChild(FuseItem item) {
+        mChilds.add(item);
     }
 
     public boolean hasChilds() {

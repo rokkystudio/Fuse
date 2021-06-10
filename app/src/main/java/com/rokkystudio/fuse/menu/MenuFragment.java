@@ -41,7 +41,7 @@ public class MenuFragment extends Fragment
         MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
         Context context = getContext();
         if (context != null) {
-            NodeItem menu = MenuXml.parse(context, path);
+            MenuItem menu = MenuXml.parse(context, path);
             if (menu != null) model.setMenu(menu);
         }
     }

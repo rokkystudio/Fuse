@@ -17,11 +17,11 @@ import static com.rokkystudio.fuse.menu.MenuXml.XML_FOLDER;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_ITEM;
 import static com.rokkystudio.fuse.menu.MenuXml.XML_MENU;
 
-public class MenuLayout extends ScrollView implements NodeItem.OnNodeClickListener
+public class MenuLayout extends ScrollView implements MenuItem.OnItemClickListener
 {
     private TextView mNoDataText = null;
     private ViewGroup mMenuWrapper = null;
-    private NodeItem mRootItem = null;
+    private MenuItem mRootItem = null;
 
     private OnMenuClickListener mMenuClickListener = null;
 
@@ -54,7 +54,7 @@ public class MenuLayout extends ScrollView implements NodeItem.OnNodeClickListen
         mNoDataText = findViewById(R.id.NoDataText);
     }
 
-    public void attachMenu(NodeItem menu)
+    public void attachMenu(MenuItem menu)
     {
         if (menu == null) return;
         detachMenu();
@@ -62,12 +62,12 @@ public class MenuLayout extends ScrollView implements NodeItem.OnNodeClickListen
         mNoDataText.setVisibility(GONE);
         mMenuWrapper.setVisibility(VISIBLE);
         mMenuWrapper.addView(menu.getView(getContext()));
-        menu.setOnNodeClickListener(this);
+        menu.setOnItemClickListener(this);
     }
 
     public void detachMenu() {
         if (mRootItem != null) {
-            mRootItem.setOnNodeClickListener(null);
+            mRootItem.setOnItemClickListener(null);
             mRootItem.removeViews();
         }
         mMenuWrapper.removeAllViews();
@@ -86,27 +86,27 @@ public class MenuLayout extends ScrollView implements NodeItem.OnNodeClickListen
     }
 
     @Override
-    public void onNodeClick(NodeItem nodeItem)
+    public void onItemClick(MenuItem item)
     {
-        if (XML_MENU.equals(nodeItem.getTag())) {
+        if (XML_MENU.equals(item.getTag())) {
             if (mMenuClickListener != null) {
-                mMenuClickListener.onMenuClick(nodeItem.getName(), nodeItem.getLink());
+                mMenuClickListener.onMenuClick(item.getName(), item.getLink());
             }
             return;
         }
 
-        if (XML_ITEM.equals(nodeItem.getTag())) {
+        if (XML_ITEM.equals(item.getTag())) {
             if (mMenuClickListener != null) {
-                mMenuClickListener.onItemClick(nodeItem.getName(), nodeItem.getLink());
+                mMenuClickListener.onItemClick(item.getName(), item.getLink());
             }
             return;
         }
 
-        if (XML_FOLDER.equals(nodeItem.getTag())) {
-            if (nodeItem.isExpanded()) {
-                nodeItem.getView(getContext()).collapse();
+        if (XML_FOLDER.equals(item.getTag())) {
+            if (item.isExpanded()) {
+                item.getView(getContext()).collapse();
             } else {
-                nodeItem.getView(getContext()).expand();
+                item.getView(getContext()).expand();
             }
         }
     }

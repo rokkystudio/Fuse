@@ -5,22 +5,22 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NodeItem
+public class MenuItem
 {
     private String mName = null;
     private String mLink = null;
     private String mTag = null;
-    private NodeView mNodeView = null;
+    private MenuView mMenuView = null;
 
-    private final List<NodeItem> mChilds = new ArrayList<>();
-    private OnNodeClickListener mOnNodeClickListener = null;
+    private final List<MenuItem> mChilds = new ArrayList<>();
+    private OnItemClickListener mOnItemClickListener = null;
 
     private boolean mExpanded = false;
-    private NodeItem mParent = null;
+    private MenuItem mParent = null;
 
-    public NodeItem() {}
+    public MenuItem() {}
 
-    public NodeItem(String name, String link, String tag) {
+    public MenuItem(String name, String link, String tag) {
         mName = name; mLink = link; mTag = tag;
     }
 
@@ -52,33 +52,33 @@ public class NodeItem
         return mTag;
     }
 
-    public void setView(NodeView view) {
-        mNodeView = view;
+    public void setView(MenuView view) {
+        mMenuView = view;
     }
 
-    public NodeView getView(Context context)
+    public MenuView getView(Context context)
     {
-        if (mNodeView != null) return mNodeView;
-        mNodeView = new NodeView(context);
-        mNodeView.setNode(this);
+        if (mMenuView != null) return mMenuView;
+        mMenuView = new MenuView(context);
+        mMenuView.setMenuItem(this);
 
         if (mExpanded) {
-            for (NodeItem childItem : mChilds) {
-                 NodeView childView = childItem.getView(context);
-                mNodeView.addChildView(childView);
+            for (MenuItem childItem : mChilds) {
+                 MenuView childView = childItem.getView(context);
+                mMenuView.addChildView(childView);
             }
         }
-        return mNodeView;
+        return mMenuView;
     }
 
     public void removeViews()
     {
-        if (mNodeView != null) {
-            mNodeView.removeChildViews();
-            mNodeView = null;
+        if (mMenuView != null) {
+            mMenuView.removeChildViews();
+            mMenuView = null;
         }
 
-        for (NodeItem child : mChilds) {
+        for (MenuItem child : mChilds) {
             child.removeViews();
         }
     }
@@ -87,22 +87,22 @@ public class NodeItem
         return !mChilds.isEmpty();
     }
 
-    public List<NodeItem> getChilds() {
+    public List<MenuItem> getChilds() {
         return mChilds;
     }
 
-    public void addChild(NodeItem child) {
+    public void addChild(MenuItem child) {
         child.setParent(this);
         mChilds.add(child);
 
         // TODO IF HAS VIEW THEN ADD VIEW
     }
 
-    public void setParent(NodeItem parent) {
+    public void setParent(MenuItem parent) {
         mParent = parent;
     }
 
-    public NodeItem getParent() {
+    public MenuItem getParent() {
         return mParent;
     }
 
@@ -118,19 +118,19 @@ public class NodeItem
         return mExpanded;
     }
 
-    public void setOnNodeClickListener(OnNodeClickListener listener) {
-        mOnNodeClickListener = listener;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mOnItemClickListener = listener;
 
-        for (NodeItem child : mChilds) {
-            child.setOnNodeClickListener(listener);
+        for (MenuItem child : mChilds) {
+            child.setOnItemClickListener(listener);
         }
     }
 
-    public OnNodeClickListener getOnNodeClickListener() {
-        return mOnNodeClickListener;
+    public OnItemClickListener getOnItemClickListener() {
+        return mOnItemClickListener;
     }
 
-    public interface OnNodeClickListener {
-        void onNodeClick(NodeItem nodeItem);
+    public interface OnItemClickListener {
+        void onItemClick(MenuItem item);
     }
 }

@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse.diagram;
+package com.rokkystudio.fuse.fuse;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -15,27 +15,22 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 
-import com.rokkystudio.fuse.menu.NodeView;
-import com.rokkystudio.fuse.viewer.ViewerModel;
-import com.rokkystudio.fuse.viewer.ViewerView;
+import com.rokkystudio.fuse.menu.MenuView;
 import com.rokkystudio.fuse.R;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
-public class DiagramLayout extends ScrollView implements View.OnClickListener
+public class FuseLayout extends ScrollView implements View.OnClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
@@ -44,7 +39,7 @@ public class DiagramLayout extends ScrollView implements View.OnClickListener
 
     private OnImageClickListener mOnImageClickListener = null;
 
-    public DiagramLayout(Context context) {
+    public FuseLayout(Context context) {
         super(context);
         mLayoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mRootLayout = new LinearLayout(context);
@@ -247,11 +242,11 @@ public class DiagramLayout extends ScrollView implements View.OnClickListener
         }
 
         ViewParent parent = view.getParent();
-        if (!(parent instanceof NodeView)) return;
-        NodeView wrapper = (NodeView) parent;
+        if (!(parent instanceof MenuView)) return;
+        MenuView wrapper = (MenuView) parent;
 
         ImageView arrow = wrapper.findViewById(R.id.CollapseArrow);
-        if (wrapper.getNode().isExpanded()) {
+        if (wrapper.getMenuItem().isExpanded()) {
             arrow.setImageResource(R.drawable.arrow_down);
             wrapper.collapse();
         } else {

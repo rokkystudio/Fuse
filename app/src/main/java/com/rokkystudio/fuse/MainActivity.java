@@ -4,14 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.rokkystudio.fuse.diagram.DiagramFragment;
-import com.rokkystudio.fuse.diagram.DiagramLayout;
+import com.rokkystudio.fuse.fuse.FuseFragment;
+import com.rokkystudio.fuse.fuse.FuseLayout;
 import com.rokkystudio.fuse.viewer.ViewerFragment;
 import com.rokkystudio.fuse.menu.MenuFragment;
 import com.rokkystudio.fuse.menu.MenuLayout;
 
 public class MainActivity extends AppCompatActivity implements
-        DiagramLayout.OnImageClickListener, MenuLayout.OnMenuClickListener
+        FuseLayout.OnImageClickListener, MenuLayout.OnMenuClickListener
 {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onItemClick(String name, String link) {
         getSupportFragmentManager().beginTransaction()
             .setCustomAnimations(R.anim.enter, R.anim.exit)
-            .replace(R.id.MainFrame, DiagramFragment.newInstance(link))
+            .replace(R.id.MainFrame, FuseFragment.newInstance(link))
             .addToBackStack(ViewerFragment.class.getName())
             .commit();
     }

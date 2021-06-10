@@ -17,12 +17,12 @@ import androidx.annotation.NonNull;
 
 import com.rokkystudio.fuse.R;
 
-public class NodeView extends LinearLayout implements
+public class MenuView extends LinearLayout implements
     View.OnClickListener, View.OnTouchListener
 {
-    private NodeItem mNodeItem = new NodeItem();
+    private MenuItem mMenuItem = new MenuItem();
 
-    public NodeView(Context context) {
+    public MenuView(Context context) {
         super(context);
         inflate(getContext(), R.layout.menu_item, this);
         ViewGroup header = findViewById(R.id.HeaderLayout);
@@ -34,8 +34,8 @@ public class NodeView extends LinearLayout implements
 
     public void expand()
     {
-        if (!mNodeItem.hasChilds()) return;
-        mNodeItem.setExpanded(true);
+        if (!mMenuItem.hasChilds()) return;
+        mMenuItem.setExpanded(true);
 
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
@@ -43,8 +43,8 @@ public class NodeView extends LinearLayout implements
         wrapper.removeAllViews();
         setIcon(R.drawable.arrow_up);
 
-        for (NodeItem childItem : mNodeItem.getChilds()) {
-            NodeView childView = childItem.getView(getContext());
+        for (MenuItem childItem : mMenuItem.getChilds()) {
+            MenuView childView = childItem.getView(getContext());
             addChildView(childView);
         }
 
@@ -75,8 +75,8 @@ public class NodeView extends LinearLayout implements
 
     public void collapse()
     {
-        if (!mNodeItem.hasChilds()) return;
-        mNodeItem.setExpanded(false);
+        if (!mMenuItem.hasChilds()) return;
+        mMenuItem.setExpanded(false);
 
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
@@ -109,14 +109,14 @@ public class NodeView extends LinearLayout implements
         startAnimation(animation);
     }
 
-    public void setNode(@NonNull NodeItem nodeItem)
+    public void setMenuItem(@NonNull MenuItem menuItem)
     {
         // Имя элемента
         TextView itemName = findViewById(R.id.ItemName);
-        if (itemName != null) itemName.setText(nodeItem.getName());
+        if (itemName != null) itemName.setText(menuItem.getName());
 
         // Скрываем корневой элемент без имени
-        if (nodeItem.isRoot() && !nodeItem.hasName()) {
+        if (menuItem.isRoot() && !menuItem.hasName()) {
             ViewGroup header = findViewById(R.id.HeaderLayout);
             if (header != null) header.setVisibility(GONE);
             ViewGroup wrapper = findViewById(R.id.WrapperLayout);
@@ -124,29 +124,29 @@ public class NodeView extends LinearLayout implements
         }
 
         // Корневой элемент всегда развернут
-        if (nodeItem.isRoot()) nodeItem.setExpanded(true);
+        if (menuItem.isRoot()) menuItem.setExpanded(true);
 
         // Стрелочка элемента
-        if (!nodeItem.hasChilds()) {
+        if (!menuItem.hasChilds()) {
             setIcon(R.drawable.arrow_right);
-        } else if (nodeItem.isExpanded()) {
+        } else if (menuItem.isExpanded()) {
             setIcon(R.drawable.arrow_up);
         } else {
             setIcon(R.drawable.arrow_down);
         }
 
-        mNodeItem = nodeItem;
+        mMenuItem = menuItem;
     }
 
-    public NodeItem getNode() {
-        return mNodeItem;
+    public MenuItem getMenuItem() {
+        return mMenuItem;
     }
 
     public void addChildView(ViewGroup childView) {
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
         wrapper.addView(childView);
-        if (mNodeItem.isExpanded()) {
+        if (mMenuItem.isExpanded()) {
             wrapper.setVisibility(VISIBLE);
         }
     }
@@ -179,8 +179,8 @@ public class NodeView extends LinearLayout implements
 
     @Override
     public void onClick(View view) {
-        if (mNodeItem.getOnNodeClickListener() != null) {
-            mNodeItem.getOnNodeClickListener().onNodeClick(mNodeItem);
+        if (mMenuItem.getOnItemClickListener() != null) {
+            mMenuItem.getOnItemClickListener().onItemClick(mMenuItem);
         }
     }
 

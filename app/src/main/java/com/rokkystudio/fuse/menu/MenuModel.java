@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModel;
 
 public class MenuModel extends ViewModel
 {
-    private final MutableLiveData<NodeItem> mMenuData = new MutableLiveData<>();
+    private final MutableLiveData<MenuItem> mMenuData = new MutableLiveData<>();
     private final MutableLiveData<Point> mScroll = new MutableLiveData<>();
 
-    public void setMenu(NodeItem menu) {
+    public void setMenu(MenuItem menu) {
         mMenuData.setValue(menu);
     }
 
-    public MutableLiveData<NodeItem> getMenu() {
+    public MutableLiveData<MenuItem> getMenu() {
         return mMenuData;
     }
 

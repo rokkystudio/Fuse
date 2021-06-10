@@ -30,7 +30,7 @@ public class MenuXml
     public static final String XML_NAME = "name";
     public static final String XML_LINK = "link";
 
-    public static NodeItem parse(@NonNull Context context, @NonNull String asset) {
+    public static MenuItem parse(@NonNull Context context, @NonNull String asset) {
         try {
             String path = context.getResources().getString(R.string.language) + "/" + asset;
             return parse(context.getAssets().open(path));
@@ -41,7 +41,7 @@ public class MenuXml
         return null;
     }
 
-    public static NodeItem parse(@NonNull InputStream stream)
+    public static MenuItem parse(@NonNull InputStream stream)
     {
         try {
             XmlPullParser parser = XmlPullParserFactory.newInstance().newPullParser();
@@ -54,11 +54,11 @@ public class MenuXml
         return null;
     }
 
-    public static NodeItem parse(@NonNull XmlPullParser parser) throws
+    public static MenuItem parse(@NonNull XmlPullParser parser) throws
             IOException, XmlPullParserException
     {
-        NodeItem root = new NodeItem();
-        NodeItem current = root;
+        MenuItem root = new MenuItem();
+        MenuItem current = root;
         int eventType = parser.getEventType();
 
         while (eventType != END_DOCUMENT)
@@ -67,7 +67,7 @@ public class MenuXml
             {
                 String name = parser.getAttributeValue(null, XML_NAME);
                 String link = parser.getAttributeValue(null, XML_LINK);
-                NodeItem node = new NodeItem(name, link, parser.getName());
+                MenuItem node = new MenuItem(name, link, parser.getName());
 
                 if (XML_ROOT.equals(parser.getName())) {
                     current.setName(name);
