@@ -15,13 +15,11 @@ import android.view.ViewGroup;
 
 import com.rokkystudio.fuse.R;
 import com.rokkystudio.fuse.menu.MenuModel;
-import com.rokkystudio.fuse.menu.MenuXml;
-import com.rokkystudio.fuse.menu.MenuItem;
 
 public class FuseFragment extends Fragment
 {
     private static final String FILENAME = "FILENAME";
-    private FuseLayout mDiagramLayout = null;
+    private FuseLayout mFuseLayout = null;
 
     @NonNull
     public static FuseFragment newInstance(String xmlPath) {
@@ -41,26 +39,27 @@ public class FuseFragment extends Fragment
         if (getArguments() == null) return;
         String path = getArguments().getString(FILENAME);
 
-        MenuModel model = new ViewModelProvider(this).get(MenuModel.class);
+        FuseModel model = new ViewModelProvider(this).get(FuseModel.class);
         Context context = getContext();
         if (context != null) {
-            MenuItem menu = MenuXml.parse(context, path);
-            if (menu != null) model.setMenu(menu);
+            FuseItem data = FuseXml.parse(context, path);
+            if (data != null) model.setFuseData(data);
         }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mDiagramLayout = new FuseLayout(getContext());
-        mDiagramLayout.loadXml(mXmlFileName);
-        mDiagramLayout.setOnImageClickListener((FuseLayout.OnImageClickListener) getContext());
-        return mDiagramLayout;
+        mFuseLayout = new FuseLayout(getContext());
+        FuseModel fuseModel = new ViewModelProvider(this).get(FuseModel.class);
+        fuseModel.getFuseData().observe(getViewLifecycleOwner(), mFuseLayout::setFuseData);
+        mFuseLayout.setOnImageClickListener((FuseLayout.OnImageClickListener) getContext());
+        return mFuseLayout;
     }
 
     @Override
     public void onDestroyView() {
-        if (mDiagramLayout != null) {
-            mDiagramLayout.setOnImageClickListener(null);
+        if (mFuseLayout != null) {
+            mFuseLayout.setOnImageClickListener(null);
         }
         super.onDestroyView();
     }

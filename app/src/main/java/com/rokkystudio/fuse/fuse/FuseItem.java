@@ -73,6 +73,10 @@ public class FuseItem
         mChilds.add(item);
     }
 
+    public List<FuseItem> getChilds() {
+        return mChilds;
+    }
+
     public boolean hasChilds() {
         return !mChilds.isEmpty();
     }

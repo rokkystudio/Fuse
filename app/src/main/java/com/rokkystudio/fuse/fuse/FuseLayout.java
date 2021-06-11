@@ -27,6 +27,10 @@ import java.io.InputStream;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+import static com.rokkystudio.fuse.fuse.FuseXml.XML_FUSE;
+import static com.rokkystudio.fuse.fuse.FuseXml.XML_IMAGE;
+import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
+import static com.rokkystudio.fuse.fuse.FuseXml.XML_ROOT;
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.START_TAG;
 
@@ -47,8 +51,6 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         mRootLayout.setOrientation(LinearLayout.VERTICAL);
         addView(mRootLayout);
     }
-
-
 
     public void addTitle(String title) {
         ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
@@ -113,53 +115,26 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         }
     }
 
-    private void parseXML(@NonNull XmlPullParser parser)
-        throws XmlPullParserException, IOException
+    public void setFuseData(FuseItem fuseData)
     {
-        int eventType = parser.getEventType();
-        while (eventType != END_DOCUMENT)
+        // Root Item
+        addTitle(fuseData.getName());
+        for (FuseItem fuseItem : fuseData.getChilds())
         {
-            if (eventType == START_TAG)
+            switch (fuseItem.getTag())
             {
-                switch (parser.getName())
-                {
-                    case "fuses":
-                        fuses(parser);
-                        break;
-                    case "location":
-                        location(parser);
-                        break;
-                    case "image":
-                        image(parser);
-                        break;
-                    case "fuse":
-                        fuse(parser);
-                        break;
-                }
+                case XML_LOCATION:
+                    addLocation(fuseItem.getName());
+                    break;
+                case XML_IMAGE:
+                    addImage(fuseItem.getSrc());
+                    break;
+                case XML_FUSE:
+                    addFuse(fuseItem.getId(), fuseItem.getCurrent(), fuseItem.getName());
+                    addSeparator();
+                    break;
             }
-
-            eventType = parser.next();
         }
-    }
-
-    private void fuses(XmlPullParser parser) {
-        addTitle(parser.getAttributeValue(null, "name"));
-    }
-
-    private void location(XmlPullParser parser) {
-        addLocation(parser.getAttributeValue(null, "name"));
-    }
-
-    private void image(XmlPullParser parser) {
-        addImage(parser.getAttributeValue(null, "src"));
-    }
-
-    private void fuse(XmlPullParser parser) {
-        String id = parser.getAttributeValue(null, "id");
-        String current = parser.getAttributeValue(null, "current");
-        String name = parser.getAttributeValue(null, "name");
-        addFuse(id, current, name);
-        addSeparator();
     }
 
     private int getBackgroundColor(String current)
