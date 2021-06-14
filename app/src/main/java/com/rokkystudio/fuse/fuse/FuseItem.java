@@ -1,5 +1,7 @@
 package com.rokkystudio.fuse.fuse;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +63,7 @@ public class FuseItem
         return mCurrent;
     }
 
-    public void setParent(FuseItem parent) {
+    public void setParent(@NonNull FuseItem parent) {
         mParent = parent;
     }
 
@@ -69,7 +71,8 @@ public class FuseItem
         return mParent;
     }
 
-    public void addChild(FuseItem item) {
+    public void addChild(@NonNull FuseItem item) {
+        item.setParent(this);
         mChilds.add(item);
     }
 

@@ -14,7 +14,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rokkystudio.fuse.R;
-import com.rokkystudio.fuse.menu.MenuModel;
 
 public class FuseFragment extends Fragment
 {
@@ -51,7 +50,7 @@ public class FuseFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mFuseLayout = new FuseLayout(getContext());
         FuseModel fuseModel = new ViewModelProvider(this).get(FuseModel.class);
-        fuseModel.getFuseData().observe(getViewLifecycleOwner(), mFuseLayout::setFuseData);
+        fuseModel.getFuseData().observe(getViewLifecycleOwner(), mFuseLayout::setData);
         mFuseLayout.setOnImageClickListener((FuseLayout.OnImageClickListener) getContext());
         return mFuseLayout;
     }

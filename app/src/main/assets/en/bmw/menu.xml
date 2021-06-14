@@ -14,8 +14,8 @@
     <folder name="5 Series">
         <!--item name="E60 E61" date="07/2003 - 05/2010" link="e60_61.xml" /-->
 
-        <item name="E39 Basis" date="12/1995 - 09/1998" link="e39_old.xml" />
-        <item name="E39 Restyling" date="09/1998 - 10/2003" link="e39_new.xml" />
+        <item name="E39 Basis" date="12/1995 - 09/1998" link="bmw/e39/1996_1998.xml" />
+        <item name="E39 Restyling" date="09/1998 - 10/2003" link="bmw/e39/1998_2003.xml" />
 
         <!--item name="E34" date="04/1987 - 06/1996" link="e34.xml" /-->
         <!--item name="E28" date="11/1980 - 12/1987" link="e28.xml" /-->
@@ -33,11 +33,11 @@
         <!--item name="E38 Basis" date="03/1994 - 09/1998" link="e38_old.xml" /-->
         <!--item name="E32" date="11/1985 - 04/1994" link="e32.xml" /-->
         <folder name="E23" date="10/1976 - 06/1986" >
-            <item name="E23 (1982) 733i" link="e23_1982.xml" />
-            <item name="E23 (1983) 733i" link="e23_1983.xml" />
-            <item name="E23 (1984) 733i" link="e23_1984.xml" />
-            <item name="E23 (1985) 735i" link="e23_1985.xml" />
-            <item name="E23 (1986) 735i" link="e23_1986.xml" />
+            <item name="E23 (1982) 733i" link="bmw/e23/1982.xml" />
+            <item name="E23 (1983) 733i" link="bmw/e23/1983.xml" />
+            <item name="E23 (1984) 733i" link="bmw/e23/1984.xml" />
+            <item name="E23 (1985) 735i" link="bmw/e23/1985.xml" />
+            <item name="E23 (1986) 735i" link="bmw/e23/1986.xml" />
         </folder>
     </folder>
 

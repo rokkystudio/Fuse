@@ -80,7 +80,7 @@ public class MenuView extends LinearLayout implements
 
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
-        setIcon(R.drawable.arrow_down);
+        setIcon(R.drawable.arrow_right);
 
         // Измерение высоты, занимаемой дочерними элементами
         final int wrapperHeight = getWrapperHeight();
@@ -132,7 +132,7 @@ public class MenuView extends LinearLayout implements
         } else if (menuItem.isExpanded()) {
             setIcon(R.drawable.arrow_up);
         } else {
-            setIcon(R.drawable.arrow_down);
+            setIcon(R.drawable.arrow_right);
         }
 
         mMenuItem = menuItem;

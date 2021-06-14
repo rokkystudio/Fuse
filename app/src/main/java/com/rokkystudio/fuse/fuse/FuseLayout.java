@@ -14,13 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-
 import com.rokkystudio.fuse.menu.MenuView;
 import com.rokkystudio.fuse.R;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,9 +25,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static com.rokkystudio.fuse.fuse.FuseXml.XML_FUSE;
 import static com.rokkystudio.fuse.fuse.FuseXml.XML_IMAGE;
 import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_ROOT;
-import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
-import static org.xmlpull.v1.XmlPullParser.START_TAG;
+
+import androidx.annotation.NonNull;
 
 public class FuseLayout extends ScrollView implements View.OnClickListener
 {
@@ -52,21 +46,28 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         addView(mRootLayout);
     }
 
-    public void addTitle(String title) {
-        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
-        ((TextView) viewGroup.findViewById(R.id.FuseTitle)).setText(title);
-        mRootLayout.addView(viewGroup);
+    public void addLocation(FuseItem data)
+    {
+        ViewGroup location = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
+        ((TextView) location.findViewById(R.id.FuseLocation)).setText(data.getName());
+        location.findViewById(R.id.LocationHeader).setOnClickListener(this);
+        mRootLayout.addView(location);
+        mCurrentLocation = location;
+
+        for (FuseItem child : data.getChilds())
+        {
+            if (XML_IMAGE.equals(child.getTag())) {
+                addImage(child);
+            } else if (XML_FUSE.equals(child.getTag())) {
+                addFuse(child);
+                addSeparator();
+            }
+        }
+
+        mCurrentLocation = mRootLayout;
     }
 
-    public void addLocation(String location) {
-        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
-        ((TextView) viewGroup.findViewById(R.id.FuseLocation)).setText(location);
-        mRootLayout.addView(viewGroup);
-        mCurrentLocation = viewGroup;
-        viewGroup.findViewById(R.id.LocationHeader).setOnClickListener(this);
-    }
-
-    public void addImage(String filename)
+    public void addImage(FuseItem data)
     {
         ImageView image = new ImageView(getContext());
         image.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
@@ -74,11 +75,11 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         if (getContext() == null) return;
         AssetManager assetManager = getContext().getAssets();
         try {
-            InputStream inputStream = assetManager.open(filename);
+            InputStream inputStream = assetManager.open(data.getSrc());
             Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
             image.setImageDrawable(drawable);
             image.setOnClickListener(this);
-            image.setTag(filename);
+            image.setTag(data.getSrc());
 
             if (mCurrentLocation != null) {
                 mCurrentLocation.addView(image);
@@ -90,13 +91,13 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         }
     }
 
-    public void addFuse(String id, String current, String name)
+    public void addFuse(FuseItem data)
     {
         ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_item, mRootLayout, false);
-        ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(id);
-        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImageId(current));
-        ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(name);
-        viewGroup.setBackgroundColor(getBackgroundColor(current));
+        ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(data.getId());
+        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImageId(data.getCurrent()));
+        ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(data.getName());
+        viewGroup.setBackgroundColor(getBackgroundColor(data.getCurrent()));
 
         if (mCurrentLocation != null) {
             mCurrentLocation.addView(viewGroup);
@@ -115,24 +116,16 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         }
     }
 
-    public void setFuseData(FuseItem fuseData)
+    public void setData(@NonNull FuseItem data)
     {
-        // Root Item
-        addTitle(fuseData.getName());
-        for (FuseItem fuseItem : fuseData.getChilds())
-        {
-            switch (fuseItem.getTag())
-            {
-                case XML_LOCATION:
-                    addLocation(fuseItem.getName());
-                    break;
-                case XML_IMAGE:
-                    addImage(fuseItem.getSrc());
-                    break;
-                case XML_FUSE:
-                    addFuse(fuseItem.getId(), fuseItem.getCurrent(), fuseItem.getName());
-                    addSeparator();
-                    break;
+        // Add root element
+        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
+        ((TextView) viewGroup.findViewById(R.id.FuseTitle)).setText(data.getName());
+        mRootLayout.addView(viewGroup);
+
+        for (FuseItem child : data.getChilds()) {
+            if (XML_LOCATION.equals(child.getName())) {
+                addLocation(child);
             }
         }
     }
