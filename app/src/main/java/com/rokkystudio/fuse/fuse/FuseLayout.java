@@ -48,11 +48,11 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
 
     public void addLocation(FuseItem data)
     {
-        ViewGroup location = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
-        ((TextView) location.findViewById(R.id.FuseLocation)).setText(data.getName());
-        location.findViewById(R.id.LocationHeader).setOnClickListener(this);
-        mRootLayout.addView(location);
-        mCurrentLocation = location;
+        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
+        ((TextView) layout.findViewById(R.id.FuseLocation)).setText(data.getName());
+        layout.findViewById(R.id.LocationHeader).setOnClickListener(this);
+        mRootLayout.addView(layout);
+        mCurrentLocation = layout;
 
         for (FuseItem child : data.getChilds())
         {
@@ -119,12 +119,12 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
     public void setData(@NonNull FuseItem data)
     {
         // Add root element
-        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
-        ((TextView) viewGroup.findViewById(R.id.FuseTitle)).setText(data.getName());
-        mRootLayout.addView(viewGroup);
+        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
+        ((TextView) layout.findViewById(R.id.FuseTitle)).setText(data.getName());
+        mRootLayout.addView(layout);
 
         for (FuseItem child : data.getChilds()) {
-            if (XML_LOCATION.equals(child.getName())) {
+            if (XML_LOCATION.equals(child.getTag())) {
                 addLocation(child);
             }
         }

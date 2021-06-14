@@ -58,6 +58,7 @@ public class FuseXml
             IOException, XmlPullParserException
     {
         FuseItem root = new FuseItem();
+        root.setTag(XML_ROOT);
         FuseItem current = root;
         int eventType = parser.getEventType();
 
@@ -66,32 +67,27 @@ public class FuseXml
             if (eventType == START_TAG)
             {
                 FuseItem item = new FuseItem();
+                item.setTag(parser.getName());
 
                 if (XML_ROOT.equals(parser.getName())) {
-                    String name = parser.getAttributeValue(null, XML_NAME);
-                    root.setName(name);
-                    root.setTag(XML_ROOT);
+                    root.setName(parser.getAttributeValue(null, XML_NAME));
                 }
+
                 else if (XML_LOCATION.equals(parser.getName())) {
-                    String name = parser.getAttributeValue(null, XML_NAME);
-                    root.setName(name);
+                    item.setName(parser.getAttributeValue(null, XML_NAME));
                     current.addChild(item);
                     current = item;
                 }
 
                 else if (XML_IMAGE.equals(parser.getName())) {
-                    String src = parser.getAttributeValue(null, XML_SRC);
-                    item.setSrc(src);
+                    item.setSrc(parser.getAttributeValue(null, XML_SRC));
                     current.addChild(item);
                 }
 
                 else if (XML_FUSE.equals(parser.getName())) {
-                    String id = parser.getAttributeValue(null, XML_ID);
-                    String amper = parser.getAttributeValue(null, XML_CURRENT);
-                    String name = parser.getAttributeValue(null, XML_NAME);
-                    item.setId(id);
-                    item.setCurrent(amper);
-                    item.setName(name);
+                    item.setId(parser.getAttributeValue(null, XML_ID));
+                    item.setCurrent(parser.getAttributeValue(null, XML_CURRENT));
+                    item.setName(parser.getAttributeValue(null, XML_NAME));
                     current.addChild(item);
                 }
             }
