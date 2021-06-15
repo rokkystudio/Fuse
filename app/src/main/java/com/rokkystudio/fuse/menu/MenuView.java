@@ -24,7 +24,7 @@ public class MenuView extends LinearLayout implements
 
     public MenuView(Context context) {
         super(context);
-        inflate(getContext(), R.layout.menu_item, this);
+        inflate(getContext(), R.layout.menu_view, this);
         ViewGroup header = findViewById(R.id.HeaderLayout);
         if (header != null) {
             header.setOnClickListener(this);

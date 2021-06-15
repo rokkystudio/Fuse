@@ -46,7 +46,7 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         addView(mRootLayout);
     }
 
-    public void addLocation(FuseItem data)
+    private void addLocation(FuseItem data)
     {
         ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
         ((TextView) layout.findViewById(R.id.FuseLocation)).setText(data.getName());
@@ -67,10 +67,11 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         mCurrentLocation = mRootLayout;
     }
 
-    public void addImage(FuseItem data)
+    private void addImage(FuseItem data)
     {
         ImageView image = new ImageView(getContext());
         image.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        image.setAdjustViewBounds(true);
 
         if (getContext() == null) return;
         AssetManager assetManager = getContext().getAssets();
@@ -91,9 +92,9 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         }
     }
 
-    public void addFuse(FuseItem data)
+    private void addFuse(FuseItem data)
     {
-        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_item, mRootLayout, false);
+        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_view, mRootLayout, false);
         ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(data.getId());
         ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImageId(data.getCurrent()));
         ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(data.getName());
@@ -106,7 +107,7 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         }
     }
 
-    public void addSeparator() {
+    private void addSeparator() {
         View view = mLayoutInflater.inflate(R.layout.line, mRootLayout, false);
 
         if (mCurrentLocation != null) {
@@ -119,7 +120,7 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
     public void setData(@NonNull FuseItem data)
     {
         // Add root element
-        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_title, mRootLayout, false);
+        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_layout, mRootLayout, false);
         ((TextView) layout.findViewById(R.id.FuseTitle)).setText(data.getName());
         mRootLayout.addView(layout);
 
