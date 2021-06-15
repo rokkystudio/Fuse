@@ -65,7 +65,7 @@ public class MenuItem
         if (mExpanded) {
             for (MenuItem childItem : mChilds) {
                  MenuView childView = childItem.getView(context);
-                mMenuView.addChildView(childView);
+                mMenuView.addWrapperView(childView);
             }
         }
         return mMenuView;
@@ -74,7 +74,7 @@ public class MenuItem
     public void removeViews()
     {
         if (mMenuView != null) {
-            mMenuView.removeChildViews();
+            mMenuView.removeWrapperViews();
             mMenuView = null;
         }
 

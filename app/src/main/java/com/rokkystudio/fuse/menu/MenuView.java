@@ -45,7 +45,7 @@ public class MenuView extends LinearLayout implements
 
         for (MenuItem childItem : mMenuItem.getChilds()) {
             MenuView childView = childItem.getView(getContext());
-            addChildView(childView);
+            addWrapperView(childView);
         }
 
         // Измерение высоты, занимаемой дочерними элементами
@@ -91,7 +91,7 @@ public class MenuView extends LinearLayout implements
             protected void applyTransformation(float time, Transformation trans) {
                 if (time == 1) {
                     wrapper.getLayoutParams().height = 0;
-                    removeChildViews();
+                    removeWrapperViews();
                     return;
                 }
 
@@ -142,7 +142,7 @@ public class MenuView extends LinearLayout implements
         return mMenuItem;
     }
 
-    public void addChildView(ViewGroup childView) {
+    public void addWrapperView(ViewGroup childView) {
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
         wrapper.addView(childView);
@@ -151,7 +151,7 @@ public class MenuView extends LinearLayout implements
         }
     }
 
-    public void removeChildViews() {
+    public void removeWrapperViews() {
         ViewGroup wrapper = getWrapperLayout();
         if (wrapper == null) return;
         wrapper.removeAllViews();

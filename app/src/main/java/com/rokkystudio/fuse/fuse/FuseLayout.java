@@ -8,13 +8,12 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.rokkystudio.fuse.menu.MenuView;
+import com.rokkystudio.fuse.CollapsedLayout;
 import com.rokkystudio.fuse.R;
 
 import java.io.IOException;
@@ -28,7 +27,8 @@ import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
 
 import androidx.annotation.NonNull;
 
-public class FuseLayout extends ScrollView implements View.OnClickListener
+public class FuseLayout extends ScrollView implements
+    CollapsedLayout.OnHeaderClickListener, View.OnClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
@@ -48,11 +48,13 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
 
     private void addLocation(FuseItem data)
     {
-        ViewGroup layout = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_location, mRootLayout, false);
-        ((TextView) layout.findViewById(R.id.FuseLocation)).setText(data.getName());
-        layout.findViewById(R.id.LocationHeader).setOnClickListener(this);
+        CollapsedLayout layout = new CollapsedLayout(getContext());
+        layout.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        layout.setTitle(data.getName());
+        layout.setOnHeaderClickListener(this);
+        layout.setExpanded(true);
         mRootLayout.addView(layout);
-        mCurrentLocation = layout;
+        mCurrentLocation = layout.getWrapperLayout();
 
         for (FuseItem child : data.getChilds())
         {
@@ -201,31 +203,25 @@ public class FuseLayout extends ScrollView implements View.OnClickListener
         return 0;
     }
 
+    public void setOnImageClickListener(OnImageClickListener listener) {
+        mOnImageClickListener = listener;
+    }
+
     @Override
-    public void onClick(View view)
-    {
-        if (view instanceof ImageView) {
-            String filename = (String) view.getTag();
-            mOnImageClickListener.OnImageClick(filename);
-            return;
-        }
-
-        ViewParent parent = view.getParent();
-        if (!(parent instanceof MenuView)) return;
-        MenuView wrapper = (MenuView) parent;
-
-        ImageView arrow = wrapper.findViewById(R.id.CollapseArrow);
-        if (wrapper.getMenuItem().isExpanded()) {
-            arrow.setImageResource(R.drawable.arrow_down);
-            wrapper.collapse();
+    public void onHeaderClick(CollapsedLayout layout) {
+        if (layout.isExpanded()) {
+            layout.collapse();
         } else {
-            arrow.setImageResource(R.drawable.arrow_up);
-            wrapper.expand();
+            layout.expand();
         }
     }
 
-    public void setOnImageClickListener(OnImageClickListener listener) {
-        mOnImageClickListener = listener;
+    @Override
+    public void onClick(View view) {
+        if (view instanceof ImageView) {
+            String filename = (String) view.getTag();
+            mOnImageClickListener.OnImageClick(filename);
+        }
     }
 
     public interface OnImageClickListener {
