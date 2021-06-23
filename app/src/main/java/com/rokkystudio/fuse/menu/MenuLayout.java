@@ -76,11 +76,6 @@ public class MenuLayout extends ScrollView implements MenuItem.OnItemClickListen
         mRootItem = null;
     }
 
-    // TODO ADD LINE
-    private void addLine() {
-        // mCurrentLayout.addView(mLayoutInflater.inflate(R.layout.line, this, false));
-    }
-
     public void setOnMenuClickListener(OnMenuClickListener listener) {
         mMenuClickListener = listener;
     }

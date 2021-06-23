@@ -42,6 +42,7 @@ public class MenuView extends LinearLayout implements
         wrapper.setVisibility(VISIBLE);
         wrapper.removeAllViews();
         setIcon(R.drawable.arrow_up);
+        setBottomLineVisibility(false);
 
         for (MenuItem childItem : mMenuItem.getChilds()) {
             MenuView childView = childItem.getView(getContext());
@@ -92,6 +93,7 @@ public class MenuView extends LinearLayout implements
                 if (time == 1) {
                     wrapper.getLayoutParams().height = 0;
                     removeWrapperViews();
+                    setBottomLineVisibility(true);
                     return;
                 }
 
@@ -135,6 +137,10 @@ public class MenuView extends LinearLayout implements
             setIcon(R.drawable.arrow_right);
         }
 
+        if (menuItem.isRoot() || menuItem.isExpanded() || menuItem.isLast()) {
+            setBottomLineVisibility(false);
+        }
+
         mMenuItem = menuItem;
     }
 
@@ -175,6 +181,16 @@ public class MenuView extends LinearLayout implements
     public void setIcon(int resId) {
         ImageView itemIcon = findViewById(R.id.ItemIcon);
         if (itemIcon != null) itemIcon.setImageResource(resId);
+    }
+
+    public void setBottomLineVisibility(boolean visibility) {
+        View line = findViewById(R.id.MenuLine);
+        if (line == null) return;
+        if (visibility) {
+            line.setVisibility(VISIBLE);
+        } else {
+            line.setVisibility(GONE);
+        }
     }
 
     @Override

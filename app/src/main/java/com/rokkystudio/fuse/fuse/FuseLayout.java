@@ -110,6 +110,8 @@ public class FuseLayout extends ScrollView implements
     }
 
     private void addSeparator() {
+        // TODO ADD SEPARATOR
+        /*
         View view = mLayoutInflater.inflate(R.layout.line, mRootLayout, false);
 
         if (mCurrentLocation != null) {
@@ -117,6 +119,8 @@ public class FuseLayout extends ScrollView implements
         } else {
             mRootLayout.addView(view);
         }
+
+        */
     }
 
     public void setData(@NonNull FuseItem data)

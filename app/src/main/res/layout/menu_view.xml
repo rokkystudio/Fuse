@@ -30,6 +30,12 @@
         android:textSize="@dimen/text_size" />
     </LinearLayout>
 
+    <View
+        android:id="@+id/MenuLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFCCCCCC" />
+
     <LinearLayout
         android:id="@+id/WrapperLayout"
         android:orientation="vertical"
@@ -39,4 +45,5 @@
         android:background="@drawable/cloud"
         android:visibility="gone">
     </LinearLayout>
+
 </LinearLayout>

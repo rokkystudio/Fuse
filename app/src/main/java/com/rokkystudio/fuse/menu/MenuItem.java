@@ -95,7 +95,10 @@ public class MenuItem
         child.setParent(this);
         mChilds.add(child);
 
-        // TODO IF HAS VIEW THEN ADD VIEW
+        if (mMenuView != null && mExpanded) {
+            MenuView childView = child.getView(mMenuView.getContext());
+            mMenuView.addWrapperView(childView);
+        }
     }
 
     public void setParent(MenuItem parent) {
@@ -116,6 +119,12 @@ public class MenuItem
 
     public boolean isExpanded() {
         return mExpanded;
+    }
+
+    public boolean isLast() {
+        if (mParent == null) return true;
+        List<MenuItem> list = mParent.getChilds();
+        return list.get(list.size()-1).equals(this);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
