@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root name="BMW E23 (1982) 733i">
-    <location name="Power distribution box" src="e23_1982.png">
-        <fuse id="1" current="16A" name="Fuel delivery. Evaporative control. Idle speed control." />
-        <fuse id="2" current="8A" name="Headlights. Right low beam." />
-        <fuse id="3" current="8A" name="Headlights. Left low beam." />
-        <fuse id="4" current="25A" name="Cigar lighters." />
-        <fuse id="5" current="8A" name="Active check control. Auto-charging flashlight. Central locking. Gauges. Glove box light. Heated door lock. Ignition key / Seatbelt warning. Interior lights. Turn / Hazard warning lights. On-board computer. Radio / Power antenna. Trunk light." />
-        <fuse id="6" current="8A" name="Active check control. Backup lights. Transmission range lights. Brake lining warning. Cruise control. Dash lights. Gauges. Idle speed control. Interior lights. Power mirrors. Power windows. Seatbelt warning. Speedometer. Warning indicator." />
-        <fuse id="7" current="8A" name="Headlight. High beams." />
-        <fuse id="8" current="8A" name="Headlight. High beams." />
-        <fuse id="9" current="8A" name="Active check control. Dash lights. Front park, tail, underhood lights. Rear marker, license lights." />
-        <fuse id="10" current="8A" name="Active check control. Front park, tail lights." />
-        <fuse id="11" current="16A" name="Active check control. Horns. Turn, hazard warning. Wiper, washer." />
-        <fuse id="12" current="8A" name="Active check control. Radio / Power antenna. Stop lights. Cruise control. Warning indicators." />
-        <fuse id="13" current="25A" name="Rear defogger. Sunroof." />
-        <fuse id="14" current="25A" name="Automatic heater. Air conditioner. Auxiliary fan. Vacuum pump." />
-        <fuse id="15" current="8A" name="Right fog lights." />
-        <fuse id="16" current="8A" name="Left fog lights." />
-        <fuse id="17" current="25A" name="Auxiliary fan." />
+    <location name="Power distribution box" src="">
+        <image src="images/bmw/e23/1982.png" />
+        <fuse id="1" current="C16A" name="Fuel delivery. Evaporative control. Idle speed control." />
+        <fuse id="2" current="C8A" name="Headlights. Right low beam." />
+        <fuse id="3" current="C8A" name="Headlights. Left low beam." />
+        <fuse id="4" current="C25A" name="Cigar lighters." />
+        <fuse id="5" current="C8A" name="Active check control. Auto-charging flashlight. Central locking. Gauges. Glove box light. Heated door lock. Ignition key / Seatbelt warning. Interior lights. Turn / Hazard warning lights. On-board computer. Radio / Power antenna. Trunk light." />
+        <fuse id="6" current="C8A" name="Active check control. Backup lights. Transmission range lights. Brake lining warning. Cruise control. Dash lights. Gauges. Idle speed control. Interior lights. Power mirrors. Power windows. Seatbelt warning. Speedometer. Warning indicator." />
+        <fuse id="7" current="C8A" name="Headlight. High beams." />
+        <fuse id="8" current="C8A" name="Headlight. High beams." />
+        <fuse id="9" current="C8A" name="Active check control. Dash lights. Front park, tail, underhood lights. Rear marker, license lights." />
+        <fuse id="10" current="C8A" name="Active check control. Front park, tail lights." />
+        <fuse id="11" current="C16A" name="Active check control. Horns. Turn, hazard warning. Wiper, washer." />
+        <fuse id="12" current="C8A" name="Active check control. Radio / Power antenna. Stop lights. Cruise control. Warning indicators." />
+        <fuse id="13" current="C25A" name="Rear defogger. Sunroof." />
+        <fuse id="14" current="C25A" name="Automatic heater. Air conditioner. Auxiliary fan. Vacuum pump." />
+        <fuse id="15" current="C8A" name="Right fog lights." />
+        <fuse id="16" current="C8A" name="Left fog lights." />
+        <fuse id="17" current="C25A" name="Auxiliary fan." />
     </location>
 
     <location name="Power window circuit breaker">
+        <image src="images/bmw/e23/window_breaker.jpg" />
         <fuse current="25A" name="Power windows." />
     </location>
 
@@ -28,7 +30,43 @@
         <fuse current="1A" name="Radio." />
     </location>
 
-    <location name="Auxiliary fan fuses (2)">
+    <location name="Auxiliary fan fuses">
+        <image src="images/bmw/e23/auxiliary_fan.jpg" />
         <fuse current="25A" name="Auxiliary fan." />
+    </location>
+
+    <location name="Flasher (Turn / Hazard Warning)">
+        <image src="images/bmw/e23/flasher_1982.jpg" />
+        <label name="Detach and attach instrument panel trim at bottom left." />
+    </location>
+
+    <location name="Fan Relay">
+        <image src="images/bmw/e23/fan_relay.jpg" />
+        <label name="1) Relay For Extra Fan - Stage 1" />
+        <label name="2) Relay For Extra Fan - Stage 2" />
+    </location>
+
+    <location name="Starter Repeat Limit Relay">
+        <image src="images/bmw/e23/starter_relay.jpg" />
+    </location>
+
+    <location name="Window Control Relay">
+        <image src="images/bmw/e23/window_relay.jpg" />
+        <label name="Detach and attach instrument panel trim at bottom left." />
+    </location>
+
+    <location name="Relays For ABS On Hydraulic Unit">
+        <image src="images/bmw/e23/abs_relay_1.jpg" />
+        <label name="Unscrew bolt (1). Pull off cover." />
+        <image src="images/bmw/e23/abs_relay_2.jpg" />
+        <label name="Pull out motor relay (2) and/or valve relay (3)." />
+    </location>
+
+    <location name="Main Relay">
+        <image src="images/bmw/e23/main_relay_1982.jpg" />
+    </location>
+
+    <location name="Blower Relay. Compressor Relay.">
+        <image src="images/bmw/e23/blower_compressor.jpg" />
     </location>
 </root>

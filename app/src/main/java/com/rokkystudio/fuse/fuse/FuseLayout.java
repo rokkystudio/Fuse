@@ -50,6 +50,7 @@ public class FuseLayout extends ScrollView implements
     {
         CollapsedLayout layout = new CollapsedLayout(getContext());
         layout.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
+        layout.setBackgroundColor(0xFFAAAAAA);
         layout.setTitle(data.getName());
         layout.setOnHeaderClickListener(this);
         layout.setExpanded(true);
@@ -71,23 +72,23 @@ public class FuseLayout extends ScrollView implements
 
     private void addImage(FuseItem data)
     {
-        ImageView image = new ImageView(getContext());
-        image.setLayoutParams(new LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        image.setAdjustViewBounds(true);
-
         if (getContext() == null) return;
+        View view = inflate(getContext(), R.layout.fuse_image, null);
+        view.setOnClickListener(this);
+        view.setTag(data.getSrc());
+
         AssetManager assetManager = getContext().getAssets();
         try {
             InputStream inputStream = assetManager.open(data.getSrc());
             Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
-            image.setImageDrawable(drawable);
-            image.setOnClickListener(this);
-            image.setTag(data.getSrc());
+
+            ImageView image = view.findViewById(R.id.FuseImageView);
+            if (image != null) image.setImageDrawable(drawable);
 
             if (mCurrentLocation != null) {
-                mCurrentLocation.addView(image);
+                mCurrentLocation.addView(view);
             } else {
-                mRootLayout.addView(image);
+                mRootLayout.addView(view);
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -174,7 +175,9 @@ public class FuseLayout extends ScrollView implements
 
     private int getFuseImageId(String current)
     {
-        switch (current) {
+        switch (current)
+        {
+            // Standard fuses
             case "1A":
                 return R.drawable.fuse_1a;
             case "2A":
@@ -203,6 +206,20 @@ public class FuseLayout extends ScrollView implements
                 return R.drawable.fuse_60a;
             case "70A":
                 return R.drawable.fuse_70a;
+
+            // Cylinder fuses
+            case "C5A":
+                return R.drawable.fuse_c5a;
+            case "C8A":
+                return R.drawable.fuse_c8a;
+            case "C10A":
+                return R.drawable.fuse_c10a;
+            case "C16A":
+                return R.drawable.fuse_c16a;
+            case "C20A":
+                return R.drawable.fuse_c20a;
+            case "C25A":
+                return R.drawable.fuse_c25a;
         }
         return 0;
     }

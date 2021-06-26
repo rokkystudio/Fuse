@@ -21,8 +21,14 @@ public class MainActivity extends AppCompatActivity implements
         // При восстановлении активити (повороте экрана) ничего не делать
         if (savedInstanceState != null) return;
 
+        /*
         getSupportFragmentManager().beginTransaction()
             .add(R.id.MainFrame, MenuFragment.newInstance("menu.xml"))
+            .commit();
+        */
+
+        getSupportFragmentManager().beginTransaction()
+            .add(R.id.MainFrame, FuseFragment.newInstance("bmw/e23/1982.xml"))
             .commit();
     }
 
