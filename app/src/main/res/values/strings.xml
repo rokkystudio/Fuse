@@ -9,4 +9,6 @@
     <string name="MenuFavorite">Favorite</string>
 
     <string name="NoData">No Data</string>
+    <string name="EnlargeImage">Click to enlarge</string>
+
 </resources>

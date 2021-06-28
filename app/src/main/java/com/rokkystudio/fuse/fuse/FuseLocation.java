@@ -38,12 +38,4 @@ public class FuseLocation extends FrameLayout
     private void init() {
         inflate(getContext(), R.layout.fuse_location, this);
     }
-
-    private View getImageSliderView() {
-        return findViewById(R.id.FuseImageSlider);
-    }
-
-    public void addImage() {
-
-    }
 }

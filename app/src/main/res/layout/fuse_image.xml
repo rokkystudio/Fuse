@@ -2,28 +2,28 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/FuseImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="100dp"
         android:layout_marginBottom="8dp"
-        android:scaleType="center"
+        android:scaleType="centerCrop"
         android:src="@drawable/logo_foreground" />
 
     <TextView
         android:id="@+id/FuseImageText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
+        android:layout_height="100dp"
         android:gravity="center"
-        android:shadowColor="#FF777777"
-        android:shadowDx="5"
-        android:shadowDy="5"
-        android:shadowRadius="10"
-        android:text="Click to zoom"
-        android:textColor="#FFFFFFFF"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:background="#99000000"
+        android:paddingStart="15dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="3dp"
+        android:text="@string/EnlargeImage"
+        android:textColor="#AAFFFFFF"
+        android:textSize="32sp" />
+
 </RelativeLayout>

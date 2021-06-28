@@ -73,25 +73,16 @@ public class FuseLayout extends ScrollView implements
     private void addImage(FuseItem data)
     {
         if (getContext() == null) return;
-        View view = inflate(getContext(), R.layout.fuse_image, null);
-        view.setOnClickListener(this);
-        view.setTag(data.getSrc());
+        FuseImage image = new FuseImage(getContext());
 
-        AssetManager assetManager = getContext().getAssets();
-        try {
-            InputStream inputStream = assetManager.open(data.getSrc());
-            Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
+        image.setAsset(data.getSrc());
+        image.setOnClickListener(this);
+        image.setTag(data.getSrc());
 
-            ImageView image = view.findViewById(R.id.FuseImageView);
-            if (image != null) image.setImageDrawable(drawable);
-
-            if (mCurrentLocation != null) {
-                mCurrentLocation.addView(view);
-            } else {
-                mRootLayout.addView(view);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (mCurrentLocation != null) {
+            mCurrentLocation.addView(image);
+        } else {
+            mRootLayout.addView(image);
         }
     }
 
