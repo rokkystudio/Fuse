@@ -20,7 +20,8 @@ import java.io.InputStream;
 
 public class FuseImage extends FrameLayout implements View.OnClickListener
 {
-    private OnClickListener mOnClickListener = null;
+    private OnImageClickListener mOnImageClickListener = null;
+    private String mAsset = null;
 
     public FuseImage(@NonNull Context context) {
         super(context);
@@ -51,10 +52,10 @@ public class FuseImage extends FrameLayout implements View.OnClickListener
 
     public void setAsset(String asset)
     {
-        // TODO SET NODE WITH PARAM??
-
         Context context = getContext();
         if (context == null) return;
+        mAsset = asset;
+
         try {
             InputStream inputStream = context.getAssets().open(asset);
             Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
@@ -65,14 +66,18 @@ public class FuseImage extends FrameLayout implements View.OnClickListener
         }
     }
 
-    public void setOnImageClickListener(@Nullable OnClickListener listener) {
-        mOnClickListener = listener;
+    public void setOnImageClickListener(@Nullable OnImageClickListener listener) {
+        mOnImageClickListener = listener;
     }
 
     @Override
     public void onClick(View view) {
-        if (mOnClickListener != null) {
-            mOnClickListener.onClick(view);
+        if (mOnImageClickListener != null && mAsset != null) {
+            mOnImageClickListener.onImageClick(mAsset);
         }
+    }
+
+    public interface OnImageClickListener {
+        void onImageClick(String asset);
     }
 }

@@ -51,7 +51,7 @@ public class FuseFragment extends Fragment
         mFuseLayout = new FuseLayout(getContext());
         FuseModel fuseModel = new ViewModelProvider(this).get(FuseModel.class);
         fuseModel.getFuseData().observe(getViewLifecycleOwner(), mFuseLayout::setData);
-        mFuseLayout.setOnImageClickListener((FuseLayout.OnImageClickListener) getContext());
+        mFuseLayout.setOnImageClickListener((FuseImage.OnImageClickListener) getContext());
         return mFuseLayout;
     }
 

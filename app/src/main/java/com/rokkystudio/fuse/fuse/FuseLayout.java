@@ -1,12 +1,8 @@
 package com.rokkystudio.fuse.fuse;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,9 +11,6 @@ import android.widget.TextView;
 
 import com.rokkystudio.fuse.CollapsedLayout;
 import com.rokkystudio.fuse.R;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -28,14 +21,14 @@ import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
 import androidx.annotation.NonNull;
 
 public class FuseLayout extends ScrollView implements
-    CollapsedLayout.OnHeaderClickListener, View.OnClickListener
+    CollapsedLayout.OnHeaderClickListener, FuseImage.OnImageClickListener
 {
     private final LayoutInflater mLayoutInflater;
     private final LinearLayout mRootLayout;
 
     private ViewGroup mCurrentLocation = null;
 
-    private OnImageClickListener mOnImageClickListener = null;
+    private FuseImage.OnImageClickListener mOnImageClickListener = null;
 
     public FuseLayout(Context context) {
         super(context);
@@ -76,7 +69,7 @@ public class FuseLayout extends ScrollView implements
         FuseImage image = new FuseImage(getContext());
 
         image.setAsset(data.getSrc());
-        image.setOnClickListener(this);
+        image.setOnImageClickListener(this);
         image.setTag(data.getSrc());
 
         if (mCurrentLocation != null) {
@@ -215,7 +208,7 @@ public class FuseLayout extends ScrollView implements
         return 0;
     }
 
-    public void setOnImageClickListener(OnImageClickListener listener) {
+    public void setOnImageClickListener(FuseImage.OnImageClickListener listener) {
         mOnImageClickListener = listener;
     }
 
@@ -229,14 +222,9 @@ public class FuseLayout extends ScrollView implements
     }
 
     @Override
-    public void onClick(View view) {
-        if (view instanceof ImageView) {
-            String filename = (String) view.getTag();
-            mOnImageClickListener.OnImageClick(filename);
+    public void onImageClick(String asset) {
+        if (mOnImageClickListener != null) {
+            mOnImageClickListener.onImageClick(asset);
         }
-    }
-
-    public interface OnImageClickListener {
-        void OnImageClick(String filename);
     }
 }
