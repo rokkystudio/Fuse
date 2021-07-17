@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.rokkystudio.fuse.editor.EditorFragment;
 import com.rokkystudio.fuse.fuse.FuseFragment;
 import com.rokkystudio.fuse.fuse.FuseImage;
 import com.rokkystudio.fuse.viewer.ViewerFragment;
@@ -27,8 +28,14 @@ public class MainActivity extends AppCompatActivity implements
             .commit();
         */
 
+        /*
         getSupportFragmentManager().beginTransaction()
             .add(R.id.MainFrame, FuseFragment.newInstance("bmw/e23/1982.xml"))
+            .commit();
+        */
+
+        getSupportFragmentManager().beginTransaction()
+            .add(R.id.MainFrame, EditorFragment.newInstance("bmw/e23/1982.xml"))
             .commit();
     }
 

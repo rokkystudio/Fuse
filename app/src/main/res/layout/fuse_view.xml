@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/FuseID"
-        android:layout_width="40dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:textSize="@dimen/text_size"
-        android:textStyle="bold" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/FuseIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:padding="@dimen/table_padding"
-        android:src="@drawable/fuse_40a"
-    />
+        <TextView
+            android:id="@+id/FuseID"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/text_size"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/FuseName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_weight="1"
-        android:paddingStart="@dimen/table_padding"
-        android:paddingEnd="@dimen/table_padding"
-        android:textSize="@dimen/text_size" />
+        <ImageView
+            android:id="@+id/FuseIcon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="@dimen/table_padding"
+            android:src="@drawable/fuse_40a"
+        />
+
+        <TextView
+            android:id="@+id/FuseName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/table_padding"
+            android:paddingEnd="@dimen/table_padding"
+            android:textSize="@dimen/text_size" />
+
+    </LinearLayout>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/divider" />
 
 </LinearLayout>

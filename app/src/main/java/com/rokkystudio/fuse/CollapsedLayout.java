@@ -200,6 +200,13 @@ public class CollapsedLayout extends FrameLayout implements
         return wrapper.getMeasuredHeight();
     }
 
+    public void setHeaderColor(int color) {
+        ViewGroup header = getHeaderLayout();
+        if (header != null) {
+            header.setBackgroundColor(color);
+        }
+    }
+
     public void setIcon(int resId) {
         ImageView itemIcon = findViewById(R.id.HeaderIcon);
         if (itemIcon != null) itemIcon.setImageResource(resId);

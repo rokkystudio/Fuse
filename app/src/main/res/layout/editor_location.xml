@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/dark_panel"
+    android:layout_marginTop="@dimen/table_margin_top"
+    android:layout_marginBottom="@dimen/table_margin_bottom"
+    android:layout_marginStart="@dimen/table_padding_start"
+    android:layout_marginEnd="@dimen/table_margin_end" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/table_padding_top"
+        android:paddingBottom="@dimen/table_padding_bottom"
+        android:paddingStart="@dimen/table_padding_start"
+        android:paddingEnd="@dimen/table_padding_end" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EditorLocation"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/EditorLocationTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textSize="@dimen/location_size"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/EditorLocationContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+</LinearLayout>

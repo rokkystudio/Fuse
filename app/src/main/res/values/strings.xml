@@ -11,4 +11,8 @@
     <string name="NoData">No Data</string>
     <string name="EnlargeImage">Click to enlarge</string>
 
+    <string name="EditorTitle">Document title:</string>
+    <string name="EditorLocation">Location name:</string>
+
+
 </resources>
