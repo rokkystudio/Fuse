@@ -3,7 +3,7 @@ package com.rokkystudio.fuse.editor;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.rokkystudio.fuse.fuse.FuseItem;
+import com.rokkystudio.fuse.xml.FuseItem;
 
 public class EditorModel extends ViewModel
 {

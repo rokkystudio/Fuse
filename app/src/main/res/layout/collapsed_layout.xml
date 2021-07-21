@@ -10,7 +10,8 @@
         android:id="@+id/HeaderLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="0xFFAAAAAA">
 
         <ImageView
             android:id="@+id/HeaderIcon"
@@ -34,7 +35,7 @@
         android:background="@color/divider" />
 
     <LinearLayout
-        android:id="@+id/WrapperLayout"
+        android:id="@+id/ContainerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

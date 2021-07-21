@@ -1,10 +1,8 @@
 package com.rokkystudio.fuse.editor;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_FUSE;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_IMAGE;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_FUSE;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_IMAGE;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_LOCATION;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,16 +10,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.rokkystudio.fuse.CollapsedLayout;
 import com.rokkystudio.fuse.R;
-import com.rokkystudio.fuse.fuse.FuseItem;
-import com.rokkystudio.fuse.fuse.FuseXml;
+import com.rokkystudio.fuse.xml.FuseItem;
+import com.rokkystudio.fuse.xml.FuseXml;
 
 public class EditorFragment extends Fragment
 {
@@ -31,7 +27,8 @@ public class EditorFragment extends Fragment
     private ViewGroup mMainView = null;
     private EditText mTitleEdit = null;
 
-    private ViewGroup mCurrentLocation = null;
+    private ViewGroup mContainer = null;
+    private LayoutInflater mLayoutInflater = null;
 
     @NonNull
     public static EditorFragment newInstance(String filename) {
@@ -54,6 +51,7 @@ public class EditorFragment extends Fragment
         EditorModel model = new ViewModelProvider(this).get(EditorModel.class);
         Context context = getContext();
         if (context != null) {
+            mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             FuseItem data = FuseXml.parse(context, path);
             if (data != null) model.setFuseData(data);
         }
@@ -82,28 +80,22 @@ public class EditorFragment extends Fragment
         if (mMainView == null || mTitleEdit == null) return;
         mMainView.removeAllViews();
         mTitleEdit.setText(data.getName());
-        mCurrentLocation = mMainView;
+        mContainer = mMainView;
 
         for (FuseItem child : data.getChilds()) {
             if (XML_LOCATION.equals(child.getTag())) {
-                addLocation(child);
+                addGroup(child);
             }
         }
     }
 
-    private void addLocation(FuseItem data)
+    private void addGroup(FuseItem data)
     {
         if (getContext() == null) return;
-
-        CollapsedLayout layout = new CollapsedLayout(getContext());
-        layout.setLayoutParams(new FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        layout.setHeaderColor(0xFFAAAAAA);
-        layout.setTitle(data.getName());
-        layout.setOnHeaderClickListener(this);
-        layout.setExpanded(true);
-
-        mMainView.addView(layout);
-        mCurrentLocation = layout.getWrapperLayout();
+        EditorGroup group = new EditorGroup(getContext());
+        group.setTitle(data.getName());
+        mContainer.addView(group);
+        mContainer = group.getContainer();
 
         for (FuseItem child : data.getChilds())
         {
@@ -114,6 +106,6 @@ public class EditorFragment extends Fragment
             }
         }
 
-        mCurrentLocation = mMainView;
+        mContainer = mMainView;
     }
 }

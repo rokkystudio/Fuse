@@ -3,6 +3,8 @@ package com.rokkystudio.fuse.fuse;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.rokkystudio.fuse.xml.FuseItem;
+
 public class FuseModel extends ViewModel
 {
     private final MutableLiveData<FuseItem> mFuseData = new MutableLiveData<>();

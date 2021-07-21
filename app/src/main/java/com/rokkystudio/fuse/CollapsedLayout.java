@@ -23,8 +23,8 @@ public class CollapsedLayout extends FrameLayout implements
 {
     private OnHeaderTouchListener mOnHeaderTouchListener = null;
     private OnHeaderClickListener mOnHeaderClickListener = null;
-    private OnWrapperExpandedListener mOnWrapperExpandedListener = null;
-    private OnWrapperCollapsedListener mOnWrapperCollapsedListener = null;
+    private OnContainerExpandedListener mOnContainerExpandedListener = null;
+    private OnContainerCollapsedListener mOnContainerCollapsedListener = null;
 
     private int mDuration = 500; // ms
     private boolean mExpanded = false;
@@ -52,7 +52,7 @@ public class CollapsedLayout extends FrameLayout implements
 
     private void init() {
         inflate(getContext(), R.layout.collapsed_layout, this);
-        ViewGroup header = getHeaderLayout();
+        ViewGroup header = getHeader();
         if (header != null) {
             header.setOnClickListener(this);
             header.setOnTouchListener(this);
@@ -74,16 +74,16 @@ public class CollapsedLayout extends FrameLayout implements
         if (mExpanded == expanded) return;
         mExpanded = expanded;
 
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
+        ViewGroup container = getContainer();
+        if (container == null) return;
 
         if (expanded) {
-            wrapper.setVisibility(VISIBLE);
-            wrapper.getLayoutParams().height = WRAP_CONTENT;
+            container.setVisibility(VISIBLE);
+            container.getLayoutParams().height = WRAP_CONTENT;
             setIcon(R.drawable.arrow_up);
         } else {
-            wrapper.setVisibility(GONE);
-            wrapper.getLayoutParams().height = 0;
+            container.setVisibility(GONE);
+            container.getLayoutParams().height = 0;
             setIcon(R.drawable.arrow_right);
         }
     }
@@ -93,27 +93,27 @@ public class CollapsedLayout extends FrameLayout implements
         if (mExpanded) return;
         mExpanded = true;
 
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        wrapper.setVisibility(VISIBLE);
+        ViewGroup container = getContainer();
+        if (container == null) return;
+        container.setVisibility(VISIBLE);
         setIcon(R.drawable.arrow_up);
 
         // Измерение высоты, занимаемой дочерними элементами
-        final int wrapperHeight = getWrapperHeight();
-        wrapper.getLayoutParams().height = 0;
+        final int containerHeight = getContainerHeight();
+        container.getLayoutParams().height = 0;
 
         Animation animation = new Animation()
         {
             @Override
             protected void applyTransformation(float time, Transformation t) {
-                wrapper.getLayoutParams().height = (int) (wrapperHeight * time);
+                container.getLayoutParams().height = (int) (containerHeight * time);
                 if (time == 1) {
-                    wrapper.getLayoutParams().height = WRAP_CONTENT;
-                    if (mOnWrapperExpandedListener != null) {
-                        mOnWrapperExpandedListener.onWrapperExpanded(CollapsedLayout.this);
+                    container.getLayoutParams().height = WRAP_CONTENT;
+                    if (mOnContainerExpandedListener != null) {
+                        mOnContainerExpandedListener.onContainerExpanded(CollapsedLayout.this);
                     }
                 }
-                wrapper.requestLayout();
+                container.requestLayout();
             }
 
             @Override
@@ -131,28 +131,28 @@ public class CollapsedLayout extends FrameLayout implements
         if (!mExpanded) return;
         mExpanded = false;
 
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
+        ViewGroup container = getContainer();
+        if (container == null) return;
         setIcon(R.drawable.arrow_right);
 
         // Измерение высоты, занимаемой дочерними элементами
-        final int wrapperHeight = getWrapperHeight();
+        final int containerHeight = getContainerHeight();
 
         Animation animation = new Animation()
         {
             @Override
             protected void applyTransformation(float time, Transformation trans) {
                 if (time == 1) {
-                    wrapper.getLayoutParams().height = 0;
-                    wrapper.setVisibility(GONE);
-                    if (mOnWrapperCollapsedListener != null) {
-                        mOnWrapperCollapsedListener.onWrapperCollapsed(CollapsedLayout.this);
+                    container.getLayoutParams().height = 0;
+                    container.setVisibility(GONE);
+                    if (mOnContainerCollapsedListener != null) {
+                        mOnContainerCollapsedListener.onContainerCollapsed(CollapsedLayout.this);
                     }
                     return;
                 }
 
-                wrapper.getLayoutParams().height = (int) (wrapperHeight * (1 - time));
-                wrapper.requestLayout();
+                container.getLayoutParams().height = (int) (containerHeight * (1 - time));
+                container.requestLayout();
             }
 
             @Override
@@ -169,42 +169,35 @@ public class CollapsedLayout extends FrameLayout implements
         return mExpanded;
     }
 
-    public void addWrapperView(ViewGroup view) {
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        wrapper.addView(view);
+    public void addContainerView(ViewGroup view) {
+        ViewGroup container = getContainer();
+        if (container == null) return;
+        container.addView(view);
     }
 
-    public void removeWrapperViews() {
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return;
-        wrapper.removeAllViews();
-        wrapper.setVisibility(GONE);
+    public void clearContainer() {
+        ViewGroup container = getContainer();
+        if (container == null) return;
+        container.removeAllViews();
+        container.setVisibility(GONE);
     }
 
-    public ViewGroup getHeaderLayout() {
+    public ViewGroup getHeader() {
         return findViewById(R.id.HeaderLayout);
     }
 
-    public ViewGroup getWrapperLayout() {
-        return findViewById(R.id.WrapperLayout);
+    public ViewGroup getContainer() {
+        return findViewById(R.id.ContainerLayout);
     }
 
-    private int getWrapperHeight() {
-        ViewGroup wrapper = getWrapperLayout();
-        if (wrapper == null) return 0;
-        wrapper.measure(
+    private int getContainerHeight() {
+        ViewGroup container = getContainer();
+        if (container == null) return 0;
+        container.measure(
             MeasureSpec.makeMeasureSpec(getWidth(), View.MeasureSpec.AT_MOST),
             MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         );
-        return wrapper.getMeasuredHeight();
-    }
-
-    public void setHeaderColor(int color) {
-        ViewGroup header = getHeaderLayout();
-        if (header != null) {
-            header.setBackgroundColor(color);
-        }
+        return container.getMeasuredHeight();
     }
 
     public void setIcon(int resId) {
@@ -227,20 +220,8 @@ public class CollapsedLayout extends FrameLayout implements
         }
     }
 
-    public void setOnHeaderTouchListener(OnHeaderTouchListener listener) {
-        mOnHeaderTouchListener = listener;
-    }
-
     public void setOnHeaderClickListener(OnHeaderClickListener listener) {
         mOnHeaderClickListener = listener;
-    }
-
-    public void setOnWrapperExpandedListener(OnWrapperExpandedListener listener) {
-        mOnWrapperExpandedListener = listener;
-    }
-
-    public void setOnWrapperCollapsedListener(OnWrapperCollapsedListener listener) {
-        mOnWrapperCollapsedListener = listener;
     }
 
     public interface OnHeaderTouchListener {
@@ -251,11 +232,11 @@ public class CollapsedLayout extends FrameLayout implements
         void onHeaderClick(CollapsedLayout layout);
     }
 
-    public interface OnWrapperExpandedListener {
-        void onWrapperExpanded(CollapsedLayout layout);
+    public interface OnContainerExpandedListener {
+        void onContainerExpanded(CollapsedLayout layout);
     }
 
-    public interface OnWrapperCollapsedListener {
-        void onWrapperCollapsed(CollapsedLayout layout);
+    public interface OnContainerCollapsedListener {
+        void onContainerCollapsed(CollapsedLayout layout);
     }
 }

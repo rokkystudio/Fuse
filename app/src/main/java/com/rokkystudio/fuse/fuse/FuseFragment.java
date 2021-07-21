@@ -1,10 +1,8 @@
 package com.rokkystudio.fuse.fuse;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_FUSE;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_IMAGE;
-import static com.rokkystudio.fuse.fuse.FuseXml.XML_LOCATION;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_FUSE;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_IMAGE;
+import static com.rokkystudio.fuse.xml.FuseXml.XML_LOCATION;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -22,12 +20,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rokkystudio.fuse.CollapsedLayout;
 import com.rokkystudio.fuse.R;
+import com.rokkystudio.fuse.xml.FuseItem;
+import com.rokkystudio.fuse.xml.FuseXml;
 
 public class FuseFragment extends Fragment implements
     CollapsedLayout.OnHeaderClickListener
@@ -39,7 +38,7 @@ public class FuseFragment extends Fragment implements
     private ViewGroup mRootView = null;
     private ViewGroup mMainView = null;
     private TextView mTitleView = null;
-    private ViewGroup mCurrentLocation = null;
+    private ViewGroup mContainer = null;
 
     @NonNull
     public static FuseFragment newInstance(String filename) {
@@ -62,7 +61,6 @@ public class FuseFragment extends Fragment implements
         FuseModel model = new ViewModelProvider(this).get(FuseModel.class);
         Context context = getContext();
         if (context != null) {
-            mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             FuseItem data = FuseXml.parse(context, path);
             if (data != null) model.setFuseData(data);
         }
@@ -115,28 +113,25 @@ public class FuseFragment extends Fragment implements
         if (mMainView == null || mTitleView == null) return;
         mMainView.removeAllViews();
         mTitleView.setText(data.getName());
-        mCurrentLocation = mMainView;
+        mContainer = mMainView;
 
         for (FuseItem child : data.getChilds()) {
             if (XML_LOCATION.equals(child.getTag())) {
-                addLocation(child);
+                addGroup(child);
             }
         }
     }
 
-    private void addLocation(FuseItem data)
+    private void addGroup(FuseItem data)
     {
         if (getContext() == null) return;
+        FuseGroup group = new FuseGroup(getContext());
+        group.setTitle(data.getName());
+        group.setOnHeaderClickListener(this);
+        group.setExpanded(true);
 
-        CollapsedLayout layout = new CollapsedLayout(getContext());
-        layout.setLayoutParams(new FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
-        layout.setHeaderColor(0xFFAAAAAA);
-        layout.setTitle(data.getName());
-        layout.setOnHeaderClickListener(this);
-        layout.setExpanded(true);
-
-        mMainView.addView(layout);
-        mCurrentLocation = layout.getWrapperLayout();
+        mMainView.addView(group);
+        mContainer = group.getContainer();
 
         for (FuseItem child : data.getChilds())
         {
@@ -147,32 +142,32 @@ public class FuseFragment extends Fragment implements
             }
         }
 
-        mCurrentLocation = mMainView;
+        mContainer = mMainView;
     }
 
     private void addImage(FuseItem data)
     {
-        if (getContext() == null || mCurrentLocation == null) return;
+        if (getContext() == null || mContainer == null) return;
         FuseImage image = new FuseImage(getContext());
 
         image.setAsset(data.getSrc());
         image.setOnImageClickListener((FuseImage.OnImageClickListener) getContext());
         image.setTag(data.getSrc());
 
-        mCurrentLocation.addView(image);
+        mContainer.addView(image);
     }
 
     private void addFuse(FuseItem data)
     {
-        if (mCurrentLocation == null) return;
+        if (mContainer == null || getContext() == null) return;
 
-        ViewGroup viewGroup = (ViewGroup) mLayoutInflater.inflate(R.layout.fuse_view, mMainView, false);
-        ((TextView) viewGroup.findViewById(R.id.FuseID)).setText(data.getId());
-        ((ImageView) viewGroup.findViewById(R.id.FuseIcon)).setImageResource(getFuseImageId(data.getCurrent()));
-        ((TextView) viewGroup.findViewById(R.id.FuseName)).setText(data.getName());
-        viewGroup.setBackgroundColor(getBackgroundColor(data.getCurrent()));
+        FuseView fuse = new FuseView(getContext());
+        fuse.setFuseID(data.getId());
+        fuse.setFuseIcon(getFuseImageId(data.getCurrent()));
+        fuse.setFuseName(data.getName());
+        fuse.setBackgroundColor(getBackgroundColor(data.getCurrent()));
 
-        mCurrentLocation.addView(viewGroup);
+        mContainer.addView(fuse);
     }
 
     private int getColor(int id) {
