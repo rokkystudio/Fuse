@@ -24,11 +24,9 @@ public class EditorFragment extends Fragment
     private static final String FILENAME = "FILENAME";
 
     private ViewGroup mRootView = null;
-    private ViewGroup mMainView = null;
     private EditText mTitleEdit = null;
-
-    private ViewGroup mContainer = null;
-    private LayoutInflater mLayoutInflater = null;
+    private ViewGroup mMainContainer = null;
+    private ViewGroup mCurrentContainer = null;
 
     @NonNull
     public static EditorFragment newInstance(String filename) {
@@ -51,7 +49,6 @@ public class EditorFragment extends Fragment
         EditorModel model = new ViewModelProvider(this).get(EditorModel.class);
         Context context = getContext();
         if (context != null) {
-            mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             FuseItem data = FuseXml.parse(context, path);
             if (data != null) model.setFuseData(data);
         }
@@ -61,8 +58,8 @@ public class EditorFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         mRootView = (ViewGroup) inflater.inflate(R.layout.editor_fragment, container, false);
-        mMainView = mRootView.findViewById(R.id.EditorMain);
-        mTitleEdit = mRootView.findViewById(R.id.EditorTitle);
+        mTitleEdit = mRootView.findViewById(R.id.EditorFragmentTitle);
+        mMainContainer = mRootView.findViewById(R.id.EditorFragmentContainer);
 
         EditorModel model = new ViewModelProvider(this).get(EditorModel.class);
         model.getFuseData().observe(getViewLifecycleOwner(), this::setData);
@@ -77,10 +74,10 @@ public class EditorFragment extends Fragment
 
     public void setData(@NonNull FuseItem data)
     {
-        if (mMainView == null || mTitleEdit == null) return;
-        mMainView.removeAllViews();
+        if (mMainContainer == null || mTitleEdit == null) return;
+        mMainContainer.removeAllViews();
         mTitleEdit.setText(data.getName());
-        mContainer = mMainView;
+        mCurrentContainer = mMainContainer;
 
         for (FuseItem child : data.getChilds()) {
             if (XML_LOCATION.equals(child.getTag())) {
@@ -91,11 +88,12 @@ public class EditorFragment extends Fragment
 
     private void addGroup(FuseItem data)
     {
-        if (getContext() == null) return;
+        if (getContext() == null || mCurrentContainer == null) return;
+
         EditorGroup group = new EditorGroup(getContext());
         group.setTitle(data.getName());
-        mContainer.addView(group);
-        mContainer = group.getContainer();
+        mCurrentContainer.addView(group);
+        mCurrentContainer = group.getContainer();
 
         for (FuseItem child : data.getChilds())
         {
@@ -106,6 +104,28 @@ public class EditorFragment extends Fragment
             }
         }
 
-        mContainer = mMainView;
+        mCurrentContainer = mMainContainer;
+    }
+
+    private void addImage(FuseItem data)
+    {
+        if (getContext() == null || mCurrentContainer == null) return;
+        EditorImage image = new EditorImage(getContext());
+
+        image.setAsset(data.getSrc());
+        image.setTag(data.getSrc());
+
+        mCurrentContainer.addView(image);
+    }
+
+    private void addFuse(FuseItem data)
+    {
+        if (getContext() == null || mCurrentContainer == null) return;
+
+        EditorFuse fuse = new EditorFuse(getContext());
+        // fuse.setFuseIcon(getFuseImageId(data.getCurrent()));
+        // fuse.setBackgroundColor(getBackgroundColor(data.getCurrent()));
+
+        mCurrentContainer.addView(fuse);
     }
 }

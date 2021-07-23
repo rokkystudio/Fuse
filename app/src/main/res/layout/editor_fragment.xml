@@ -2,8 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,7 +13,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="@color/dark_panel">
+            android:background="@color/dark_panel"
+            android:paddingHorizontal="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -23,17 +23,17 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/EditorTitle"
+                android:id="@+id/EditorFragmentTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:textSize="@dimen/title_size"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/EditorMain"
+            android:id="@+id/EditorFragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

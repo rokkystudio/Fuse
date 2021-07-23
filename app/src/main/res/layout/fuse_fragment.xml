@@ -10,17 +10,20 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/FuseTitle"
+            android:id="@+id/FuseFragmentTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#FF777777"
-            android:padding="@dimen/table_padding"
+            android:paddingStart="@dimen/table_padding_start"
+            android:paddingEnd="@dimen/table_padding_end"
+            android:paddingTop="@dimen/table_padding_top"
+            android:paddingBottom="@dimen/table_padding_bottom"
             android:textAlignment="center"
             android:textSize="@dimen/title_size"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/FuseMain"
+            android:id="@+id/FuseFragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

@@ -11,8 +11,13 @@
     <string name="NoData">No Data</string>
     <string name="EnlargeImage">Click to enlarge</string>
 
-    <string name="EditorTitle">Document title:</string>
-    <string name="EditorLocation">Location name:</string>
+    <string name="EditorTitle">Title:</string>
+    <string name="EditorLocation">Location:</string>
+
+
+    <string name="EditorTitleGroup">GROUP</string>
+    <string name="EditorTitleImage">IMAGE</string>
+    <string name="EditorTitleFuse">FUSE</string>
 
 
 </resources>

@@ -20,7 +20,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rokkystudio.fuse.CollapsedLayout;
@@ -33,12 +32,10 @@ public class FuseFragment extends Fragment implements
 {
     private static final String FILENAME = "FILENAME";
 
-    private LayoutInflater mLayoutInflater = null;
-
     private ViewGroup mRootView = null;
-    private ViewGroup mMainView = null;
     private TextView mTitleView = null;
-    private ViewGroup mContainer = null;
+    private ViewGroup mMainContainer = null;
+    private ViewGroup mCurrentContainer = null;
 
     @NonNull
     public static FuseFragment newInstance(String filename) {
@@ -70,8 +67,8 @@ public class FuseFragment extends Fragment implements
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         mRootView = (ViewGroup) inflater.inflate(R.layout.fuse_fragment, container, false);
-        mMainView = mRootView.findViewById(R.id.FuseMain);
-        mTitleView = mRootView.findViewById(R.id.FuseTitle);
+        mMainContainer = mRootView.findViewById(R.id.FuseFragmentContainer);
+        mTitleView = mRootView.findViewById(R.id.FuseFragmentTitle);
 
         FuseModel model = new ViewModelProvider(this).get(FuseModel.class);
         model.getFuseData().observe(getViewLifecycleOwner(), this::setData);
@@ -110,10 +107,10 @@ public class FuseFragment extends Fragment implements
 
     public void setData(@NonNull FuseItem data)
     {
-        if (mMainView == null || mTitleView == null) return;
-        mMainView.removeAllViews();
+        if (mMainContainer == null || mTitleView == null) return;
+        mMainContainer.removeAllViews();
         mTitleView.setText(data.getName());
-        mContainer = mMainView;
+        mCurrentContainer = mMainContainer;
 
         for (FuseItem child : data.getChilds()) {
             if (XML_LOCATION.equals(child.getTag())) {
@@ -124,14 +121,15 @@ public class FuseFragment extends Fragment implements
 
     private void addGroup(FuseItem data)
     {
-        if (getContext() == null) return;
+        if (getContext() == null || mCurrentContainer == null) return;
+
         FuseGroup group = new FuseGroup(getContext());
         group.setTitle(data.getName());
         group.setOnHeaderClickListener(this);
         group.setExpanded(true);
 
-        mMainView.addView(group);
-        mContainer = group.getContainer();
+        mCurrentContainer.addView(group);
+        mCurrentContainer = group.getContainer();
 
         for (FuseItem child : data.getChilds())
         {
@@ -142,24 +140,24 @@ public class FuseFragment extends Fragment implements
             }
         }
 
-        mContainer = mMainView;
+        mCurrentContainer = mMainContainer;
     }
 
     private void addImage(FuseItem data)
     {
-        if (getContext() == null || mContainer == null) return;
+        if (getContext() == null || mCurrentContainer == null) return;
         FuseImage image = new FuseImage(getContext());
 
         image.setAsset(data.getSrc());
         image.setOnImageClickListener((FuseImage.OnImageClickListener) getContext());
         image.setTag(data.getSrc());
 
-        mContainer.addView(image);
+        mCurrentContainer.addView(image);
     }
 
     private void addFuse(FuseItem data)
     {
-        if (mContainer == null || getContext() == null) return;
+        if (getContext() == null || mCurrentContainer == null) return;
 
         FuseView fuse = new FuseView(getContext());
         fuse.setFuseID(data.getId());
@@ -167,7 +165,7 @@ public class FuseFragment extends Fragment implements
         fuse.setFuseName(data.getName());
         fuse.setBackgroundColor(getBackgroundColor(data.getCurrent()));
 
-        mContainer.addView(fuse);
+        mCurrentContainer.addView(fuse);
     }
 
     private int getColor(int id) {

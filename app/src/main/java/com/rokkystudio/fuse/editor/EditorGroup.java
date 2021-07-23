@@ -13,7 +13,7 @@ import androidx.annotation.RequiresApi;
 
 import com.rokkystudio.fuse.R;
 
-public class EditorGroup extends FrameLayout
+public class EditorGroup extends EditorView
 {
     public EditorGroup(@NonNull Context context) {
         super(context);
@@ -37,14 +37,13 @@ public class EditorGroup extends FrameLayout
     }
 
     private void init() {
-        inflate(getContext(), R.layout.editor_group, this);
+        inflate(getContext(), R.layout.editor_group, super.getContainer());
+        setEditorTitle(getResources().getString(R.string.EditorTitleGroup));
     }
 
     public void setTitle(String title) {
         EditText editText = findViewById(R.id.EditorGroupTitle);
-        if (editText != null) {
-            editText.setText(title);
-        }
+        if (editText != null) editText.setText(title);
     }
 
     public ViewGroup getContainer() {

@@ -16,7 +16,8 @@
         android:id="@+id/ItemIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:padding="@dimen/table_padding"
+        android:paddingTop="@dimen/table_padding_top"
+        android:paddingBottom="@dimen/table_padding_bottom"
         android:src="@drawable/arrow_right" />
 
     <TextView
@@ -25,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="1"
-        android:paddingStart="@dimen/table_padding"
-        android:paddingEnd="@dimen/table_padding"
+        android:paddingStart="@dimen/table_padding_start"
+        android:paddingEnd="@dimen/table_padding_end"
         android:textSize="@dimen/text_size" />
     </LinearLayout>
 

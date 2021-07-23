@@ -2,6 +2,8 @@
 <resources>
     <color name="divider">#FFBBBBBB</color>
     <color name="dark_panel">#FF666666</color>
+    <color name="lite_panel">#FFCCCCCC</color>
+    <color name="control">#FFDDDDDD</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

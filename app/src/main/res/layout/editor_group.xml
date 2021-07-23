@@ -4,20 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/dark_panel"
-    android:layout_marginTop="@dimen/table_margin_top"
-    android:layout_marginBottom="@dimen/table_margin_bottom"
-    android:layout_marginStart="@dimen/table_padding_start"
-    android:layout_marginEnd="@dimen/table_margin_end" >
+    android:background="@color/dark_panel">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/table_padding_top"
-        android:paddingBottom="@dimen/table_padding_bottom"
-        android:paddingStart="@dimen/table_padding_start"
-        android:paddingEnd="@dimen/table_padding_end" >
+        android:background="@color/lite_panel"
+        android:paddingHorizontal="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,7 +32,9 @@
         android:id="@+id/EditorGroupContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/control"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
 
     </LinearLayout>
 

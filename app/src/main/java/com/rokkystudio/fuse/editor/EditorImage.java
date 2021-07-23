@@ -5,6 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -17,7 +18,7 @@ import com.rokkystudio.fuse.R;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class EditorImage extends FrameLayout
+public class EditorImage extends EditorView
 {
     private com.rokkystudio.fuse.fuse.FuseImage.OnImageClickListener mOnImageClickListener = null;
     private String mAsset = null;
@@ -44,7 +45,8 @@ public class EditorImage extends FrameLayout
     }
 
     public void init() {
-        inflate(getContext(), R.layout.editor_image, this);
+        inflate(getContext(), R.layout.editor_image, super.getContainer());
+        setEditorTitle(getResources().getString(R.string.EditorTitleImage));
     }
 
     public void setAsset(String asset)
@@ -56,7 +58,7 @@ public class EditorImage extends FrameLayout
         try {
             InputStream inputStream = context.getAssets().open(asset);
             Drawable drawable = BitmapDrawable.createFromStream(inputStream, null);
-            ImageView image = findViewById(R.id.FuseImageView);
+            ImageView image = findViewById(R.id.EditorImageView);
             if (image != null) image.setImageDrawable(drawable);
         } catch (IOException e) {
             e.printStackTrace();

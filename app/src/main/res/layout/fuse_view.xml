@@ -23,7 +23,8 @@
             android:id="@+id/FuseIcon"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="@dimen/table_padding"
+            android:paddingTop="@dimen/table_padding_top"
+            android:paddingBottom="@dimen/table_padding_bottom"
             android:src="@drawable/fuse_40a"
         />
 
@@ -33,8 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:paddingStart="@dimen/table_padding"
-            android:paddingEnd="@dimen/table_padding"
+            android:paddingStart="@dimen/table_padding_start"
+            android:paddingEnd="@dimen/table_padding_end"
+            android:paddingTop="@dimen/table_padding_top"
+            android:paddingBottom="@dimen/table_padding_bottom"
             android:textSize="@dimen/text_size" />
 
     </LinearLayout>
