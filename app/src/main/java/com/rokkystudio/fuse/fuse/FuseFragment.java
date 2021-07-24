@@ -177,47 +177,47 @@ public class FuseFragment extends Fragment implements
     {
         switch (current) {
             case "1A":
-                return getColor(R.color.bg_1a);
+                return getColor(R.color.BG_1A);
             case "2A":
-                return getColor(R.color.bg_2a);
+                return getColor(R.color.BG_2A);
             case "3A":
-                return getColor(R.color.bg_3a);
+                return getColor(R.color.BG_3A);
             case "5A":
-                return getColor(R.color.bg_5a);
+                return getColor(R.color.BG_5A);
             case "7.5A":
-                return getColor(R.color.bg_7_5a);
+                return getColor(R.color.BG_7_5A);
             case "10A":
-                return getColor(R.color.bg_10a);
+                return getColor(R.color.BG_10A);
             case "15A":
-                return getColor(R.color.bg_15a);
+                return getColor(R.color.BG_15A);
             case "20A":
-                return getColor(R.color.bg_20a);
+                return getColor(R.color.BG_20A);
             case "25A":
-                return getColor(R.color.bg_25a);
+                return getColor(R.color.BG_25A);
             case "30A":
-                return getColor(R.color.bg_30a);
+                return getColor(R.color.BG_30A);
             case "40A":
-                return getColor(R.color.bg_40a);
+                return getColor(R.color.BG_40A);
             case "50A":
-                return getColor(R.color.bg_50a);
+                return getColor(R.color.BG_50A);
             case "60A":
-                return getColor(R.color.bg_60a);
+                return getColor(R.color.BG_60A);
             case "70A":
-                return getColor(R.color.bg_70a);
+                return getColor(R.color.BG_70A);
 
             // Cylinder fuses
             case "C5A":
-                return getColor(R.color.bg_c5a);
+                return getColor(R.color.BG_C5A);
             case "C8A":
-                return getColor(R.color.bg_c8a);
+                return getColor(R.color.BG_C8A);
             case "C10A":
-                return getColor(R.color.bg_c10a);
+                return getColor(R.color.BG_C10A);
             case "C16A":
-                return getColor(R.color.bg_c16a);
+                return getColor(R.color.BG_C16A);
             case "C20A":
-                return getColor(R.color.bg_c20a);
+                return getColor(R.color.BG_C20A);
             case "C25A":
-                return getColor(R.color.bg_c25a);
+                return getColor(R.color.BG_C25A);
         }
         return Color.WHITE;
     }

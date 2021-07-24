@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/dark_panel">
+    android:background="@color/PanelDark">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@color/lite_panel"
+        android:background="@color/PanelLite"
         android:paddingHorizontal="10dp">
 
         <TextView
@@ -32,7 +32,7 @@
         android:id="@+id/EditorGroupContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/control"
+        android:background="@color/Control"
         android:orientation="vertical"
         android:paddingBottom="10dp">
 

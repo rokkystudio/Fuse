@@ -5,11 +5,11 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import com.rokkystudio.fuse.R;
 
@@ -38,7 +38,8 @@ public class EditorGroup extends EditorView
 
     private void init() {
         inflate(getContext(), R.layout.editor_group, super.getContainer());
-        setEditorTitle(getResources().getString(R.string.EditorTitleGroup));
+        setHeaderTitle(getResources().getString(R.string.EditorTitleGroup));
+        setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderGroup));
     }
 
     public void setTitle(String title) {

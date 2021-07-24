@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import com.rokkystudio.fuse.R;
 
@@ -35,7 +36,7 @@ public class EditorFuse extends EditorView
 
     private void init() {
         inflate(getContext(), R.layout.editor_fuse, super.getContainer());
-        setEditorTitle(getResources().getString(R.string.EditorTitleFuse));
-        // TODO setEditorColor(); разные цвета заголовков для групп и картинок и предохранителей
+        setHeaderTitle(getResources().getString(R.string.EditorTitleFuse));
+        setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderFuse));
     }
 }

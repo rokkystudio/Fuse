@@ -5,13 +5,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import com.rokkystudio.fuse.R;
 
@@ -46,7 +45,8 @@ public class EditorImage extends EditorView
 
     public void init() {
         inflate(getContext(), R.layout.editor_image, super.getContainer());
-        setEditorTitle(getResources().getString(R.string.EditorTitleImage));
+        setHeaderTitle(getResources().getString(R.string.EditorTitleImage));
+        setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderImage));
     }
 
     public void setAsset(String asset)
