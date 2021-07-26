@@ -45,7 +45,7 @@ public class EditorImage extends EditorView
 
     public void init() {
         inflate(getContext(), R.layout.editor_image, super.getContainer());
-        setHeaderTitle(getResources().getString(R.string.EditorTitleImage));
+        setHeaderTitle(getResources().getString(R.string.editor_header_image));
         setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderImage));
     }
 

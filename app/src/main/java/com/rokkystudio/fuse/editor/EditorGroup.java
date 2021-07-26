@@ -38,7 +38,7 @@ public class EditorGroup extends EditorView
 
     private void init() {
         inflate(getContext(), R.layout.editor_group, super.getContainer());
-        setHeaderTitle(getResources().getString(R.string.EditorTitleGroup));
+        setHeaderTitle(getResources().getString(R.string.editor_header_group));
         setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderGroup));
     }
 

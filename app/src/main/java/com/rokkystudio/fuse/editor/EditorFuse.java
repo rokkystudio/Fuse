@@ -36,7 +36,7 @@ public class EditorFuse extends EditorView
 
     private void init() {
         inflate(getContext(), R.layout.editor_fuse, super.getContainer());
-        setHeaderTitle(getResources().getString(R.string.EditorTitleFuse));
+        setHeaderTitle(getResources().getString(R.string.editor_header_fuse));
         setHeaderColor(ContextCompat.getColor(getContext(), R.color.EditorHeaderFuse));
     }
 }

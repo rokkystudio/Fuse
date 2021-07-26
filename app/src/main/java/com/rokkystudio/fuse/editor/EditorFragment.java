@@ -19,8 +19,7 @@ import com.rokkystudio.fuse.R;
 import com.rokkystudio.fuse.xml.FuseItem;
 import com.rokkystudio.fuse.xml.FuseXml;
 
-public class EditorFragment extends Fragment implements
-    EditorView.OnRemoveClickListener
+public class EditorFragment extends Fragment
 {
     private static final String FILENAME = "FILENAME";
 
@@ -92,7 +91,6 @@ public class EditorFragment extends Fragment implements
         if (getContext() == null || mCurrentContainer == null) return;
 
         EditorGroup group = new EditorGroup(getContext());
-        group.setOnRemoveClickListener(this);
         group.setTitle(data.getName());
         mCurrentContainer.addView(group);
         mCurrentContainer = group.getContainer();
@@ -129,12 +127,5 @@ public class EditorFragment extends Fragment implements
         // fuse.setBackgroundColor(getBackgroundColor(data.getCurrent()));
 
         mCurrentContainer.addView(fuse);
-    }
-
-    @Override
-    public void onRemoveClick(EditorView view) {
-        if (mRootView != null) {
-            mRootView.removeView(view);
-        }
     }
 }

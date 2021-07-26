@@ -22,7 +22,6 @@ public class EditorView extends FrameLayout implements
     View.OnClickListener, View.OnLongClickListener
 {
     private OnRemoveClickListener mOnRemoveClickListener = null;
-    private Toast mRemoveToast = null;
 
     public EditorView(@NonNull Context context) {
         super(context);
@@ -50,7 +49,6 @@ public class EditorView extends FrameLayout implements
         View remove = findViewById(R.id.EditorViewRemove);
         remove.setOnClickListener(this);
         remove.setOnLongClickListener(this);
-        mRemoveToast = Toast.makeText(getContext(), "Long click to remove", Toast.LENGTH_SHORT);
     }
 
     public ViewGroup getContainer() {
@@ -76,7 +74,8 @@ public class EditorView extends FrameLayout implements
     {
         if (view.getId() == R.id.EditorViewRemove) {
             Tools.vibrate(getContext(), 100);
-            mRemoveToast.show();
+            String message = getResources().getString(R.string.editor_remove_long_click);
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -85,9 +84,11 @@ public class EditorView extends FrameLayout implements
     {
         if (view.getId() == R.id.EditorViewRemove)
         {
-            if (mOnRemoveClickListener != null) {
-                mOnRemoveClickListener.onRemoveClick(this);
-            }
+            ViewGroup parent = (ViewGroup) getParent();
+            if (parent != null) parent.removeView(this);
+            Tools.vibrate(getContext(), 30);
+            String message = getResources().getString(R.string.editor_remove_successful);
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;

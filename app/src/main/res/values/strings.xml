@@ -1,23 +1,25 @@
 <resources>
     <string name="app_name">FUSE</string>
     <string name="language">en</string>
-    <string name="MenuPrint">Print</string>
-    <string name="MenuSave">Save</string>
-    <string name="MenuNew">New</string>
-    <string name="MenuEdit">Edit</string>
-    <string name="MenuDelete">Delete</string>
-    <string name="MenuFavorite">Favorite</string>
+    <string name="menu_print">Print</string>
+    <string name="menu_save">Save</string>
+    <string name="menu_new">New</string>
+    <string name="menu_edit">Edit</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_favorite">Favorite</string>
 
-    <string name="NoData">No Data</string>
-    <string name="EnlargeImage">Click to enlarge</string>
+    <string name="no_data">No Data</string>
+    <string name="enlarge_image">Click to enlarge</string>
 
-    <string name="EditorTitle">Title:</string>
-    <string name="EditorLocation">Location:</string>
+    <string name="editor_title">Title:</string>
+    <string name="editor_group">Group:</string>
 
 
-    <string name="EditorTitleGroup">GROUP</string>
-    <string name="EditorTitleImage">IMAGE</string>
-    <string name="EditorTitleFuse">FUSE</string>
+    <string name="editor_header_group">GROUP</string>
+    <string name="editor_header_image">IMAGE</string>
+    <string name="editor_header_fuse">FUSE</string>
 
+    <string name="editor_remove_long_click">Long click to remove.</string>
+    <string name="editor_remove_successful">Item has been removed.</string>
 
 </resources>
