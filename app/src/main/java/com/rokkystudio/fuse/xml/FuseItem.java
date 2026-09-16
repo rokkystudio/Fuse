@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse.fuse;
+package com.rokkystudio.fuse.xml;
 
 import androidx.annotation.NonNull;
 

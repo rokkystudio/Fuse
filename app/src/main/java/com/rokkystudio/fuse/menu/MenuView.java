@@ -121,7 +121,7 @@ public class MenuView extends LinearLayout implements
         if (menuItem.isRoot() && !menuItem.hasName()) {
             ViewGroup header = findViewById(R.id.HeaderLayout);
             if (header != null) header.setVisibility(GONE);
-            ViewGroup wrapper = findViewById(R.id.WrapperLayout);
+            ViewGroup wrapper = findViewById(R.id.ContainerLayout);
             if (wrapper != null) wrapper.setBackgroundResource(0);
         }
 
@@ -165,7 +165,7 @@ public class MenuView extends LinearLayout implements
     }
 
     private ViewGroup getWrapperLayout() {
-        return findViewById(R.id.WrapperLayout);
+        return findViewById(R.id.ContainerLayout);
     }
 
     private int getWrapperHeight() {

@@ -5,49 +5,49 @@
     <item
         android:id="@+id/MenuFavorite"
         android:icon="@drawable/menu_favorite"
-        android:title="@string/MenuFavorite"
+        android:title="@string/menu_favorite"
         android:visible="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/MenuFavoriteDisabled"
         android:icon="@drawable/menu_favorite_disabled"
-        android:title="@string/MenuFavorite"
+        android:title="@string/menu_favorite"
         android:visible="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/MenuSave"
         android:icon="@drawable/menu_save"
-        android:title="@string/MenuSave"
+        android:title="@string/menu_save"
         android:visible="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/MenuPrint"
         android:icon="@drawable/menu_print"
-        android:title="@string/MenuPrint"
+        android:title="@string/menu_print"
         android:visible="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/MenuNew"
         android:icon="@drawable/menu_new"
-        android:title="@string/MenuNew"
+        android:title="@string/menu_new"
         android:visible="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/MenuEdit"
         android:icon="@drawable/menu_edit"
-        android:title="@string/MenuEdit"
+        android:title="@string/menu_edit"
         android:visible="false"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/MenuDelete"
         android:icon="@drawable/menu_delete"
-        android:title="@string/MenuDelete"
+        android:title="@string/menu_delete"
         android:visible="false"
         app:showAsAction="never" />
 </menu>

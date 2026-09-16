@@ -1,14 +1,13 @@
-package com.rokkystudio.fuse.fuse;
+package com.rokkystudio.fuse.editor;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.rokkystudio.fuse.xml.FuseItem;
 
-public class FuseModel extends ViewModel
+public class EditorModel extends ViewModel
 {
     private final MutableLiveData<FuseItem> mFuseData = new MutableLiveData<>();
-    private final MutableLiveData<Integer> mScrollPos = new MutableLiveData<>();
 
     public void setFuseData(FuseItem data) {
         mFuseData.setValue(data);
@@ -16,13 +15,5 @@ public class FuseModel extends ViewModel
 
     public MutableLiveData<FuseItem> getFuseData() {
         return mFuseData;
-    }
-
-    public void setScrollPos(Integer position) {
-        mScrollPos.setValue(position);
-    }
-
-    public MutableLiveData<Integer> getScrollPos() {
-        return mScrollPos;
     }
 }

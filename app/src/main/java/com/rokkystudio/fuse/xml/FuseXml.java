@@ -1,4 +1,4 @@
-package com.rokkystudio.fuse.fuse;
+package com.rokkystudio.fuse.xml;
 
 import static org.xmlpull.v1.XmlPullParser.END_DOCUMENT;
 import static org.xmlpull.v1.XmlPullParser.END_TAG;

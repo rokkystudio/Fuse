@@ -10,7 +10,7 @@
         android:id="@+id/NoDataText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/NoData"
+        android:text="@string/no_data"
         android:gravity="center"
         android:textSize="20sp"
         android:textStyle="bold" />

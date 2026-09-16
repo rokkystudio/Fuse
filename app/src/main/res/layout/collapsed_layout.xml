@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
 
     <LinearLayout
         android:id="@+id/HeaderLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#FFAAAAAA">
 
         <ImageView
             android:id="@+id/HeaderIcon"
@@ -27,8 +29,13 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/Divider" />
+
     <LinearLayout
-        android:id="@+id/WrapperLayout"
+        android:id="@+id/ContainerLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
