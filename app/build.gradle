@@ -3,12 +3,12 @@ plugins {
 }
 
 android {
-    compileSdk 33
-    buildToolsVersion '33.0.0 rc4'
+    namespace "com.rokkystudio.fuse"
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.rokkystudio.fuse"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -28,6 +28,6 @@ android {
 
 dependencies {
 
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.8.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }
